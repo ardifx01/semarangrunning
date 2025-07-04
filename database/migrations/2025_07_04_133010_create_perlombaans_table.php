@@ -13,34 +13,10 @@ return new class extends Migration
     {
         Schema::create('perlombaans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->index();
-            $table->foreignId('pos1_id')->nullable()->index();
-            // ------------------------------------------------------------
-            // START
-            $table->foreignId('pos2_id')->nullable()->index();
-            $table->foreignId('pos3_id')->nullable()->index();
-            $table->foreignId('pos4_id')->nullable()->index();
-            $table->foreignId('pos5_id')->nullable()->index();
-            $table->foreignId('pos6_id')->nullable()->index();
-            // ------------------------------------------------------------
-            // FINISH
-            $table->foreignId('pos7_id')->nullable()->index();
-
             $table->string('kegiatan')->nullable();
             $table->string('tempat')->nullable();
-            $table->string('jumlahlokasi')->nullable();
-            // $table->string('jumlahlokasi')->nullable();
-            $table->string('surat1')->nullable();
-            $table->string('surat2')->nullable();
-
-            $table->string('waktu')->nullable();
-
-
-            $table->string('verifikasi1')->nullable();
-            $table->string('verifikasi2')->nullable();
-            $table->string('verifikasi3')->nullable();
-            $table->string('verifikasi4')->nullable();
-
+            $table->string('koordinat')->nullable();
+            $table->string('lokasi')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

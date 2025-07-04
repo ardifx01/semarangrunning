@@ -47,9 +47,9 @@ class User extends Authenticatable
         return $this->belongsTo(statusadmin::class);
     }
 
-    public function perlombaan()
+    public function berkaslomba()
     {
-        return $this->hasMany(perlombaan::class);
+        return $this->hasMany(berkaslomba::class);
     }
 
 }

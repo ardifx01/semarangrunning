@@ -14,6 +14,7 @@ use App\Http\Controllers\KrkController;
 use App\Http\Controllers\PbgslfController;
 use App\Http\Controllers\PendataanBangunanGedungController;
 use App\Http\Controllers\PenilikbangunanController;
+use App\Http\Controllers\PerlombaanController;
 use App\Models\gambarbantuan;
 use App\Models\pbgslfbangunan;
 use Illuminate\Support\Facades\Route;
@@ -836,6 +837,18 @@ Route::get('/bepbgberitaacaraslfshow/{id}', [PbgslfController::class, 'bepbgberi
 
 // Route::get('/dashboard', [AdminDashboardController::class, 'index'])->middleware('auth');
 Route::get('/dashboard', [AdminDashboardController::class, 'index']);
+Route::get('/beperlombaan', [PerlombaanController::class, 'beperlombaan']);
+Route::get('/bepeserta', [PerlombaanController::class, 'bepeserta']);
+Route::get('/peta/lokasi1', [PerlombaanController::class, 'lokasi1'])->name('lokasi1index');
+Route::get('/tambahdatastart', [PerlombaanController::class, 'tambahdatastart']);
+Route::post('/tambahdatastartnew', [PerlombaanController::class, 'tambahdatastartcreate'])->name('datapos1.store');
+// Route::put('/jawabposstart/{id}', [PerlombaanController::class, 'tambahdatastartcreateupdate'])->name('datapos1.update');
+
+// Route::put('/jawabposstart/{id}', [PerlombaanController::class, 'tambahdatastartcreateupdate'])->name('datapos1.update');
+Route::get('/datapos1/barcode/{kode}', [PerlombaanController::class, 'showByBarcode'])->name('datapos1.search');
+
+Route::get('/menupercarian', [PerlombaanController::class, 'menupercarian'])->name('menupercarian');
+Route::delete('/datapos1/{id}', [PerlombaanController::class, 'destroy'])->name('datapos1.destroy');
 
 // ------------------- BACKEND QA PERTANYAAN ---------------------------
 

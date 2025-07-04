@@ -1274,3 +1274,40 @@ Kembali	Abu-Abu Tua	#374151	Netral, biar nggak menarik perhatian berlebih
 
 ssh -p 65002 u782898958@46.202.138.136
 Adminadmin123$$
+
+
+
+
+
+
+---------------------------
+
+{{-- Form Pencarian Kode Unik --}}
+<div style="margin-top: 24px; border-top: 1px solid #ccc; padding-top: 16px;">
+  <label for="searchBarcode">Cari Data POS berdasarkan Kode Barcode:</label>
+  <div style="display: flex; gap: 8px; margin-top: 8px;">
+    <input type="text" id="searchBarcode" placeholder="Masukkan kode unik barcode" style="padding: 6px 10px; border-radius: 4px; border: 1px solid #ccc; width: 200px;">
+    <button onclick="searchBarcode()" style="
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 6px 12px;
+      cursor: pointer;
+    ">
+      <i class="bi bi-search"></i> Cari
+    </button>
+  </div>
+</div>
+
+<script>
+  function searchBarcode() {
+    const code = document.getElementById('searchBarcode').value.trim();
+    if (code !== '') {
+      // Ganti dengan route tujuan kamu
+      window.location.href = `/datapos1/barcode/${code}`;
+    } else {
+      alert("Masukkan kode barcode terlebih dahulu.");
+    }
+  }
+</script>

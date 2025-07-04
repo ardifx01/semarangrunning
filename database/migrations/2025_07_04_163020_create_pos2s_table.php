@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('pos2s', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('berkaslomba_id')->nullable();
+            $table->string('point')->nullable();
+            $table->string('waktu')->nullable();
+            $table->string('pos')->nullable();
+            $table->string('jawabpos')->nullable();
+            $table->string('barcode')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

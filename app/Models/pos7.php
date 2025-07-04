@@ -13,9 +13,9 @@ class pos7 extends Model
 
     protected $guarded = ['id'];
 
-    public function perlombaan()
+    public function berkaslomba()
     {
-        return $this->hasMany(perlombaan::class);
+        return $this->belongsTo(berkaslomba::class, 'berkaslomba_id');
     }
 
 }

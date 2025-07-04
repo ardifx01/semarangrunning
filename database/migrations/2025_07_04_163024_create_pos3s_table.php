@@ -12,7 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pos3s', function (Blueprint $table) {
-            $table->id();
+             $table->id();
+            $table->foreignId('berkaslomba_id')->nullable();
+            $table->string('point')->nullable();
+            $table->string('waktu')->nullable();
+            $table->string('pos')->nullable();
+            $table->string('jawabpos')->nullable();
+            $table->string('barcode')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

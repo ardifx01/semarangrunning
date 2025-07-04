@@ -84,6 +84,7 @@ use App\Models\profiljakonpersonil;
 use App\Models\artikeljakonmasjaki;
 use App\Models\kategoripelatihan;
 use App\Models\agendapelatihan;
+use App\Models\berkaslomba;
 use App\Models\subhargadiv1;
 use App\Models\subhargadiv1bahan;
 use App\Models\subhargadiv1peralatan;
@@ -277,29 +278,32 @@ class DatabaseSeeder extends Seeder
 
 
 // =========================================================
-        perlombaan::create([
-            'id'  => 1,
-            'user_id'  => '4',
-            'kegiatan' => 'SNOC X 2025',
-            'tempat' => 'Semarang',
-            'jumlahlokasi' => '5',
-        ]);
+    perlombaan::create([
+    'id'        => 1,
+    'kegiatan'  => 'Semarang Running 2025',
+    'tempat'    => 'Semarang',
+    'koordinat' => '-6.9667,110.4167', // Koordinat pusat kota Semarang (Simpang Lima)
+    'lokasi'    => 'Lapangan Simpang Lima',
+]);
 
-        perlombaan::create([
-            'id'  => 2,
-            'user_id'  => '5',
-            'kegiatan' => 'SNOC X 2025',
-            'tempat' => 'Semarang',
-            'jumlahlokasi' => '5',
-        ]);
+// =========================================================
+    berkaslomba::create([
+    'id'        => 1,
+    'perlombaan_id'  => '1',
+    'user_id'  => '4',
+]);
+    berkaslomba::create([
+    'id'        => 2,
+    'perlombaan_id'  => '1',
+    'user_id'  => '5',
+]);
+    berkaslomba::create([
+    'id'        => 3,
+    'perlombaan_id'  => '1',
+    'user_id'  => '6',
+]);
 
-        perlombaan::create([
-            'id'  => 3,
-            'user_id'  => '6',
-            'kegiatan' => 'SNOC X 2025',
-            'tempat' => 'Semarang',
-            'jumlahlokasi' => '5',
-        ]);
+
 
     }
  /**
