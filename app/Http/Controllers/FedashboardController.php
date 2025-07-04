@@ -26,9 +26,9 @@ class FedashboardController extends Controller
 {
     public function index()
     {
-        $data = beritajakon::orderBy('created_at', 'desc')->get(); //
-        $dataartikel = artikeljakonmasjaki::orderBy('created_at', 'desc')->get(); //
-        $dataheaderberanda = headerberanda::orderBy('created_at', 'desc')->get(); //
+        // $data = beritajakon::orderBy('created_at', 'desc')->get(); //
+        // $dataartikel = artikeljakonmasjaki::orderBy('created_at', 'desc')->get(); //
+        // $dataheaderberanda = headerberanda::orderBy('created_at', 'desc')->get(); //
 
 
         $user = Auth::user();
@@ -37,10 +37,10 @@ class FedashboardController extends Controller
         // return view('frontend.00_full.index', [
         // return view('404', [
         return view('00_semarang.01_frontend.01_halamanutama.halamanutama', [
-            'title' => 'SNOC X',
-            'data' => $data, // Mengirimkan data paginasi ke view
-            'dataartikel' => $dataartikel, // Mengirimkan data paginasi ke view
-            'dataheaderberanda' => $dataheaderberanda, // Mengirimkan data paginasi ke view
+            // 'title' => 'SNOC X',
+            // 'data' => $data, // Mengirimkan data paginasi ke view
+            // 'dataartikel' => $dataartikel, // Mengirimkan data paginasi ke view
+            // 'dataheaderberanda' => $dataheaderberanda, // Mengirimkan data paginasi ke view
             'user' => $user, // Mengirimkan data paginasi ke view
             // 'databerita' => $databerita, // Mengirimkan data paginasi ke view
         ]);
