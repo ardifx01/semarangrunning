@@ -144,7 +144,7 @@
     <input type="hidden" name="point" value="20">
 
     {{-- Pos --}}
-    <input type="hidden" name="pos" value="-">
+    <input type="hidden" name="pos" value="1">
 
     {{-- Barcode --}}
     <label>Barcode</label>

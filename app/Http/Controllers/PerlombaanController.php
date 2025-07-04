@@ -16,6 +16,11 @@ use App\Models\berkaslomba;
 use App\Models\headerberanda;
 use App\Models\perlombaan;
 use App\Models\pos1;
+use App\Models\pos2;
+use App\Models\pos3;
+use App\Models\pos4;
+use App\Models\pos5;
+use App\Models\pos6;
 use App\Models\qapertanyaan;
 use App\Models\qasebagai;
 use App\Models\qa;
@@ -109,7 +114,7 @@ class PerlombaanController extends Controller
             'berkaslomba_id' => 'required|string',
             'point' => 'required|string',
             'waktu' => 'nullable|string',
-            'pos' => 'required|string',
+            'pos' => 'nullable|string',
             'jawabpos' => 'nullable|string',
             'barcode' => 'nullable|string',
         ]);
@@ -128,6 +133,25 @@ class PerlombaanController extends Controller
     }
 
 
+
+public function tambahdatastartcreateupdate(Request $request, $id)
+{
+    $request->validate([
+        'jawabpos' => 'nullable|string',
+    ]);
+
+    $data = pos1::findOrFail($id);
+
+    // Logika status otomatis
+    $status = ($data->pos === $request->jawabpos) ? '✔️' : '❌';
+
+    $data->update([
+        'jawabpos' => $request->jawabpos,
+        'status'   => $status,
+    ]);
+
+    return redirect()->route('bepeserta')->with('success', 'Data POS berhasil diperbarui!');
+}
 
     public function destroy($id)
 {
@@ -171,6 +195,36 @@ public function showByBarcode($kode)
             // 'databerita' => $databerita, // Mengirimkan data paginasi ke view
         ]);
     }
+
+
+    public function quickcount()
+    {
+        $data1 = pos1::orderBy('created_at', 'desc')->get(); //
+        $data2 = pos2::orderBy('created_at', 'desc')->get(); //
+        $data3 = pos3::orderBy('created_at', 'desc')->get(); //
+        $data4 = pos4::orderBy('created_at', 'desc')->get(); //
+        $data5 = pos5::orderBy('created_at', 'desc')->get(); //
+        $data6 = pos6::orderBy('created_at', 'desc')->get(); //
+
+        $user = Auth::user();
+
+
+        // return view('frontend.00_full.index', [
+        // return view('404', [
+        return view('00_semarang.02_backend.00_pos.start', [
+            'title' => 'Tambah Start',
+            'data1' => $data1, // Mengirimkan data paginasi ke view
+            'data2' => $data2, // Mengirimkan data paginasi ke view
+            'data3' => $data, // Mengirimkan data paginasi ke view
+            'data4' => $data, // Mengirimkan data paginasi ke view
+            'data5' => $data, // Mengirimkan data paginasi ke view
+            'data6' => $data, // Mengirimkan data paginasi ke view
+            'user' => $user, // Mengirimkan data paginasi ke view
+            // 'databerita' => $databerita, // Mengirimkan data paginasi ke view
+        ]);
+    }
+
+
 
 }
 

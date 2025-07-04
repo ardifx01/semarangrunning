@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('pos')->nullable();
             $table->string('jawabpos')->nullable();
             $table->string('barcode')->nullable();
+            $table->string('status')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

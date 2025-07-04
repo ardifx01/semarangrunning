@@ -838,10 +838,11 @@ Route::get('/bepbgberitaacaraslfshow/{id}', [PbgslfController::class, 'bepbgberi
 // Route::get('/dashboard', [AdminDashboardController::class, 'index'])->middleware('auth');
 Route::get('/dashboard', [AdminDashboardController::class, 'index']);
 Route::get('/beperlombaan', [PerlombaanController::class, 'beperlombaan']);
-Route::get('/bepeserta', [PerlombaanController::class, 'bepeserta']);
+Route::get('/bepeserta', [PerlombaanController::class, 'bepeserta'])->name('bepeserta');
 Route::get('/peta/lokasi1', [PerlombaanController::class, 'lokasi1'])->name('lokasi1index');
 Route::get('/tambahdatastart', [PerlombaanController::class, 'tambahdatastart']);
 Route::post('/tambahdatastartnew', [PerlombaanController::class, 'tambahdatastartcreate'])->name('datapos1.store');
+Route::post('/tambahdatastartupdate/{id}', [PerlombaanController::class, 'tambahdatastartcreateupdate'])->name('datapos1.update');
 // Route::put('/jawabposstart/{id}', [PerlombaanController::class, 'tambahdatastartcreateupdate'])->name('datapos1.update');
 
 // Route::put('/jawabposstart/{id}', [PerlombaanController::class, 'tambahdatastartcreateupdate'])->name('datapos1.update');
@@ -850,6 +851,7 @@ Route::get('/datapos1/barcode/{kode}', [PerlombaanController::class, 'showByBarc
 Route::get('/menupercarian', [PerlombaanController::class, 'menupercarian'])->name('menupercarian');
 Route::delete('/datapos1/{id}', [PerlombaanController::class, 'destroy'])->name('datapos1.destroy');
 
+Route::get('/quickcount', [PerlombaanController::class, 'quickcount'])->name('quickcount');
 // ------------------- BACKEND QA PERTANYAAN ---------------------------
 
 // KATEGORI ADMIN

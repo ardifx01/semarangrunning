@@ -31,22 +31,41 @@
           <!-- Add other cards here -->
         </div> --}}
 
-        <div style="margin-top: 24px; border-top: 1px solid #ccc; padding-top: 16px;">
-  <label for="searchBarcode">Cari Data POS berdasarkan Kode Barcode:</label>
-  <div style="display: flex; gap: 8px; margin-top: 8px;">
-    <input type="text" id="searchBarcode" placeholder="Masukkan kode unik barcode" style="padding: 6px 10px; border-radius: 4px; border: 1px solid #ccc; width: 200px;">
-    <button onclick="searchBarcode()" style="
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      padding: 6px 12px;
-      cursor: pointer;
-    ">
-      <i class="bi bi-search"></i> Cari
-    </button>
+        <div class="container" style="margin-top: -200px;">
+  <div class="card shadow-sm border-0" style="max-width: 500px; margin: auto;">
+    <div class="card-body">
+      <h5 class="card-title mb-3" style="font-weight: 600;">
+        <i class="bi bi-upc-scan text-primary me-2"></i>
+        Cari Data POS
+      </h5>
+      <label for="searchBarcode" class="form-label text-muted" style="font-size: 14px;">
+        Masukkan Kode Barcode Unik:
+      </label>
+
+      <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+        <input
+          type="text"
+          id="searchBarcode"
+          placeholder="Contoh: 123456ABC"
+          style="flex: 1; min-width: 180px; padding: 8px 12px; border-radius: 6px; border: 1px solid #ccc;"
+        >
+        <button onclick="searchBarcode()" style="
+          background-color: #007bff;
+          color: white;
+          border: none;
+          border-radius: 6px;
+          padding: 8px 16px;
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        ">
+          <i class="bi bi-search"></i> Cari
+        </button>
+      </div>
+    </div>
   </div>
 </div>
+
 
 <script>
   function searchBarcode() {
