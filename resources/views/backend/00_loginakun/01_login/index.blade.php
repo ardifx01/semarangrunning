@@ -66,14 +66,14 @@
                     <img src="/assets/icon/logokabupatenblora.png" class="img-fluid" alt="Logo Kabupaten Blora" width="95" loading="lazy">
                     <img src="/assets/icon/pupr.png" class="img-fluid" alt="Logo PUPR" width="95" loading="lazy">
                 </div>
-
+{{--
                 <h1 class="header-title" style="font-family: 'Montserrat', sans-serif; font-size: 2.5rem; font-weight: bold;">
                     <span style="font-weight: bold; font-style: italic; color: black;">MASJAKI</span>
                     <span style="font-weight: bold; font-style: italic; color: #064420;">BLORA</span>
                 </h1>
                 <p class="header-description" style="font-family: 'Montserrat', sans-serif; font-size: 1rem; color: black; font-weight: bold;">
                     Dinas Pekerjaan Umum Dan Penataan Ruang Kabupaten Blora
-                </p>
+                </p> --}}
             </div>
 
             <!-- Form Login -->

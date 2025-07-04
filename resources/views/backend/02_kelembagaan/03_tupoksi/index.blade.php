@@ -44,9 +44,22 @@
                 <!-- /.card -->
                 <div class="card mb-4">
                     <div class="card-header">
-                        <h2 style="color: black; font-weight:900" class="card-title">Halaman Pengaturan : {{$title}} </h2>
-
+                        <div style="
+                        margin-bottom:10px;
+                        font-weight: 900;
+                        font-size: 16px;
+                        text-align: center;
+                        background: linear-gradient(135deg, #166534, #166534);
+                        color: white;
+                        padding: 10px 25px;
+                        border-radius: 10px;
+                        display: inline-block;
+                        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+                        width: 100%;
+                    ">
+                        📌 Halaman : {{$title}}
                     </div>
+
                     <!-- /.card-header -->
                     <div class="card-body p-0">
                         <div class="table-responsive">
@@ -76,10 +89,10 @@
                                 <a href="/betupoksi/update/{{$item->id}}">
                                     <button
                                     onmouseover="this.style.backgroundColor='white'; this.style.color='black';"
-                                    onmouseout="this.style.backgroundColor='#156f2a'; this.style.color='white';"
-                                    style="background-color: #156f2a; color: white; border: none; margin-right: 10px; padding: 10px 20px; border-radius: 15px; font-size: 16px; cursor: pointer; display: flex; align-items: center; transition: background-color 0.3s, color 0.3s; text-decoration: none;">
+                                    onmouseout="this.style.backgroundColor='#117235'; this.style.color='white';"
+                                    style="background-color: #117235; color: white; border: none; margin-right: 10px; padding: 10px 20px; border-radius: 15px; font-size: 16px; cursor: pointer; display: flex; align-items: center; transition: background-color 0.3s, color 0.3s; text-decoration: none;">
                                     <!-- Ikon Kembali -->
-                                    <i class="fa fa-file" style="margin-right: 8px;"></i>
+                                    <i class="fa fa-edit" style="margin-right: 8px;"></i>
                                     Update
                                 </button>
                                 </a>

@@ -46,13 +46,68 @@
                 <!-- /.card -->
                 <div class="card mb-4">
                     <div class="card-header">
-                        <h2 style="color: black;" class="card-title">Data Details : <button class="btn btn-success" style="background-color: #1d643b; border-color: #1d643b; font-weight: bold;"
-                            onmouseover="this.style.backgroundColor='#ffffff'; this.style.color='#000000'; this.style.borderColor='#1d643b';"
-                            onmouseout="this.style.backgroundColor='#1d643b'; this.style.color='#ffffff'; this.style.borderColor='#1d643b';">
-                            {{ $data->nama }}
-                        </button>
+                        <h2 class="card-title" style="color: black;">
+                            Data Details :
+                            <button class="btn btn-success"
+                                    style="background-color: #1d643b; border-color: #1d643b; font-weight: bold; padding: 10px 20px;
+                                           border-radius: 5px; font-size: 16px; margin-right: 10px;"
+                                    onmouseover="this.style.backgroundColor='#ffffff'; this.style.color='#000000'; this.style.borderColor='#1d643b';"
+                                    onmouseout="this.style.backgroundColor='#1d643b'; this.style.color='#ffffff'; this.style.borderColor='#1d643b';">
+                                {{ $data->nama }}
+                            </button>
                         </h2>
+                        <button id="status-{{ $data->id }}" class="btn btn-sm"></button>
 
+                        <script>
+                            function updateStatus() {
+                                let now = new Date().getTime();
+                                let tanggalHabis = new Date("{{ \Carbon\Carbon::parse($data->tanggalhabis)->format('Y-m-d H:i:s') }}").getTime();
+                                let statusButton = document.getElementById("status-{{ $data->id }}");
+
+                                // CSS yang digunakan pada tombol
+                                let buttonStyle = "font-weight: bold; padding: 10px 20px; border-radius: 5px; font-size: 16px; margin-right: 10px;";
+
+                                if (now > tanggalHabis) {
+                                    statusButton.innerText = "TIDAK BERLAKU";
+                                    statusButton.setAttribute("style", buttonStyle + " background-color: red; border-color: red; color: white;"); // Set to red for "TIDAK BERLAKU"
+                                    statusButton.className = "btn btn-danger btn-sm"; // Update class for 'danger' status
+
+                                    // Hover effect: keep background white on hover
+                                    statusButton.onmouseover = function() {
+                                        statusButton.style.backgroundColor = '#ffffff';
+                                        statusButton.style.color = '#000000'; // Color becomes black when hovered
+                                        statusButton.style.borderColor = 'red'; // Keep red border
+                                    };
+                                    statusButton.onmouseout = function() {
+                                        statusButton.style.backgroundColor = 'red';
+                                        statusButton.style.color = 'white'; // Keep white text when mouse out
+                                        statusButton.style.borderColor = 'red'; // Keep red border
+                                    };
+                                } else {
+                                    statusButton.innerText = "BERLAKU";
+                                    statusButton.setAttribute("style", buttonStyle + " background-color: #1d643b; border-color: #1d643b; color: white;");
+                                    statusButton.className = "btn btn-success btn-sm"; // Update class for 'success' status
+
+                                    // Hover effect: keep background white on hover
+                                    statusButton.onmouseover = function() {
+                                        statusButton.style.backgroundColor = '#ffffff';
+                                        statusButton.style.color = '#000000'; // Color becomes black when hovered
+                                        statusButton.style.borderColor = '#1d643b'; // Keep original border color
+                                    };
+                                    statusButton.onmouseout = function() {
+                                        statusButton.style.backgroundColor = '#1d643b';
+                                        statusButton.style.color = 'white'; // Keep white text when mouse out
+                                        statusButton.style.borderColor = '#1d643b'; // Keep original border color
+                                    };
+                                }
+                            }
+
+                            // Jalankan pertama kali saat halaman dimuat
+                            updateStatus();
+
+                            // Update setiap 1 detik untuk realtime
+                            setInterval(updateStatus, 1000);
+                        </script>
 
                     </div>
 
@@ -180,7 +235,7 @@
                             Update
                         </button>
                         </a>
-                        <a href="/beskkdpupr">
+                        <a href="/beskkallblora">
                             <button
                             onmouseover="this.style.backgroundColor='white'; this.style.color='black';"
                             onmouseout="this.style.backgroundColor='#374151'; this.style.color='white';"

@@ -1,788 +1,714 @@
-@include('backend.00_administrator.00_baganterpisah.01_header')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --maroon-red: #800020;
+            --dark-maroon: #5a0018;
+            --light-maroon: #a30029;
+            --accent-blue: #3498db;
+            --light-blue: #e6f2ff;
+            --white: #ffffff;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333333;
+            --transition: all 0.3s ease;
+        }
 
-<!--begin::Body-->
-  <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
-    <!--begin::App Wrapper-->
-    <div class="app-wrapper">
-{{-- ---------------------------------------------------------------------- --}}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-@include('backend.00_administrator.00_baganterpisah.04_navbar')
-{{-- ---------------------------------------------------------------------- --}}
+        body {
+            background-color: var(--light-gray);
+            overflow-x: hidden;
+        }
 
-      @include('backend.00_administrator.00_baganterpisah.03_sidebar')
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
 
-      <!--begin::App Main-->
-      <main class="app-main">
-        <!--begin::App Content Header-->
-        <div class="app-content-header">
-          <!--begin::Container-->
-          <div class="container-fluid">
-            <!--begin::Row-->
-            <div class="row">
+        /* Sidebar Styles */
+        .sidebar {
+            width: 250px;
+            background-color: var(--maroon-red);
+            color: var(--white);
+            transition: var(--transition);
+            position: fixed;
+            height: 100vh;
+            z-index: 100;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        }
 
-              <div class="col-sm-12"><h3 class="mb-0">Selamat datang ! <span style="color: black; font-weight:800;" > {{ Auth::user()->name }}</span> di Dashboard <span style="color: black; font-weight:800;"> {{ Auth::user()->statusadmin->statusadmin }} </span>  Sistem Informasi Pembina Jasa Konstruksi Kab Blora</h3></div>
+        .sidebar-header {
+            padding: 20px;
+            background-color: var(--dark-maroon);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
+        .sidebar-header h3 {
+            font-size: 1.3rem;
+            animation: fadeIn 1s ease-in-out;
+        }
 
+        .sidebar-menu {
+            padding: 20px 0;
+        }
+
+        .menu-item {
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border-left: 4px solid transparent;
+        }
+
+        .menu-item:hover {
+            background-color: var(--dark-maroon);
+            border-left: 4px solid var(--accent-blue);
+        }
+
+        .menu-item.active {
+            background-color: var(--dark-maroon);
+            border-left: 4px solid var(--accent-blue);
+        }
+
+        .menu-item i {
+            margin-right: 10px;
+            font-size: 1.1rem;
+        }
+
+        .menu-item span {
+            font-size: 0.95rem;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            flex: 1;
+            margin-left: 250px;
+            transition: var(--transition);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 25px;
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .header-left h2 {
+            color: var(--dark-gray);
+            font-size: 1.5rem;
+            animation: slideInDown 0.5s ease-in-out;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .user-profile img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+
+        .user-profile span {
+            font-weight: 500;
+        }
+
+        .toggle-sidebar {
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-gray);
+            margin-right: 20px;
+            display: none;
+        }
+
+        .content {
+            padding: 25px;
+        }
+
+        /* Cards Section */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            animation: fadeInUp 0.5s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .card-header h3 {
+            font-size: 1rem;
+            color: var(--dark-gray);
+        }
+
+        .card-header i {
+            font-size: 1.5rem;
+            color: var(--accent-blue);
+        }
+
+        .card-body h2 {
+            font-size: 1.8rem;
+            color: var(--maroon-red);
+            margin-bottom: 5px;
+        }
+
+        .card-body p {
+            font-size: 0.85rem;
+            color: #777;
+        }
+
+        .card-footer {
+            margin-top: 15px;
+            font-size: 0.8rem;
+            color: #777;
+            display: flex;
+            align-items: center;
+        }
+
+        .card-footer i {
+            margin-right: 5px;
+            color: #4CAF50;
+        }
+
+        /* Tables Section */
+        .table-section {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .section-header h3 {
+            font-size: 1.2rem;
+            color: var(--dark-gray);
+        }
+
+        .section-header button {
+            background-color: var(--accent-blue);
+            color: var(--white);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .section-header button:hover {
+            background-color: #2980b9;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table th {
+            background-color: var(--light-blue);
+            color: var(--dark-gray);
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+            color: #555;
+        }
+
+        table tr:last-child td {
+            border-bottom: none;
+        }
+
+        table tr:hover td {
+            background-color: #f9f9f9;
+        }
+
+        .status {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status.active {
+            background-color: #e6f7ee;
+            color: #4CAF50;
+        }
+
+        .status.pending {
+            background-color: #fff8e1;
+            color: #FFC107;
+        }
+
+        .status.inactive {
+            background-color: #ffebee;
+            color: #F44336;
+        }
+
+        /* Quick Count Section */
+        .quick-count {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .count-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            animation: fadeInUp 0.7s ease-in-out;
+        }
+
+        .count-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .count-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .count-header h4 {
+            font-size: 1rem;
+            color: var(--dark-gray);
+        }
+
+        .count-header i {
+            font-size: 1.5rem;
+            color: var(--maroon-red);
+        }
+
+        .count-body {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .count-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--maroon-red);
+        }
+
+        .count-change {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .count-change.positive {
+            color: #4CAF50;
+        }
+
+        .count-change.negative {
+            color: #F44336;
+        }
+
+        .count-change i {
+            margin-right: 5px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 70px;
+                overflow: hidden;
+            }
+
+            .sidebar-header h3, .menu-item span {
+                display: none;
+            }
+
+            .menu-item {
+                justify-content: center;
+                padding: 15px 0;
+            }
+
+            .menu-item i {
+                margin-right: 0;
+                font-size: 1.3rem;
+            }
+
+            .main-content {
+                margin-left: 70px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .toggle-sidebar {
+                display: block;
+            }
+
+            .sidebar {
+                left: -250px;
+            }
+
+            .sidebar.active {
+                left: 0;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-count {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Toggle Animation */
+        .sidebar.active {
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h3>Admin Dashboard</h3>
             </div>
-            <!--end::Row-->
-          </div>
-          <!--end::Container-->
-        </div>
-        <!--end::App Content Header-->
-        <!--begin::App Content-->
-        <div class="app-content">
-          <!--begin::Container-->
-          <div class="container-fluid">
-            <!--begin::Row-->
-            <div class="row">
-                              </div>
-              <!--end::Row-->
+            <div class="sidebar-menu">
+                <div class="menu-item active">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </div>
+                <div class="menu-item">
+                    <i class="fas fa-users"></i>
+                    <span>Users</span>
+                </div>
+                <div class="menu-item">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Statistics</span>
+                </div>
+                <div class="menu-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </div>
+                <div class="menu-item">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Reports</span>
+                </div>
             </div>
-            <!--end::Container-->
-          </div>
-          <div class="app-content">
-            <!--begin::Container-->
-            <div class="container-fluid">
-              <!-- Info boxes -->
+        </div>
 
-{{-- atas  --}}
-
-{{-- -------------------------------------------------------- --}}
-              <div class="row">
-                <div class="col-12 col-sm-6 col-md-3">
-                  <div class="info-box">
-                    <span class="info-box-icon text-bg-success shadow-sm"> <!-- Biru muda untuk berita -->
-                      <i class="bi bi-newspaper"></i> <!-- Ikon koran -->
-                    </span>
-                    <div class="info-box-content">
-                      <span class="info-box-text">Berita Jakon</span>
-                      <span class="info-box-number">
-                        10
-                        <small>%</small>
-                      </span>
-                    </div>
-                    <!-- /.info-box-content -->
-                  </div>
-                  <!-- /.info-box -->
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <div class="header-left">
+                    <h2>Dashboard Overview</h2>
                 </div>
-                <!-- /.col -->
-
-                <div class="col-12 col-sm-6 col-md-3">
-                  <div class="info-box">
-                    <span class="info-box-icon text-bg-success shadow-sm"> <!-- Oranye untuk artikel -->
-                      <i class="bi bi-hand-thumbs-up-fill"></i>
-                    </span>
-                    <div class="info-box-content">
-                      <span class="info-box-text">Artikel Jakon</span>
-                      <span class="info-box-number">41,410</span>
+                <div class="header-right">
+                    <div class="toggle-sidebar" id="toggleSidebar">
+                        <i class="fas fa-bars"></i>
                     </div>
-                    <!-- /.info-box-content -->
-                  </div>
-                  <!-- /.info-box -->
+                    <div class="user-profile">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User">
+                        <span>Admin User</span>
+                    </div>
                 </div>
-                <!-- /.col -->
+            </div>
 
-                <div class="col-12 col-sm-6 col-md-3">
-                  <div class="info-box">
-                    <span class="info-box-icon text-bg-success shadow-sm"> <!-- Hijau untuk konstruksi -->
-                      <i class="bi bi-hammer"></i> <!-- Ikon palu (konstruksi) -->
-                    </span>
-                    <div class="info-box-content">
-                      <span class="info-box-text">BUJK Konstruksi</span>
-                      <span class="info-box-number">760</span>
+            <!-- Content -->
+            <div class="content">
+                <!-- Cards -->
+                <div class="cards">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Total Users</h3>
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="card-body">
+                            <h2>2,453</h2>
+                            <p>+12.5% from last month</p>
+                        </div>
+                        <div class="card-footer">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>5.4% increase</span>
+                        </div>
                     </div>
-                    <!-- /.info-box-content -->
-                  </div>
-                  <!-- /.info-box -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Total Revenue</h3>
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="card-body">
+                            <h2>$34,210</h2>
+                            <p>+8.2% from last month</p>
+                        </div>
+                        <div class="card-footer">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>3.1% increase</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Active Projects</h3>
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <div class="card-body">
+                            <h2>47</h2>
+                            <p>+3 new this week</p>
+                        </div>
+                        <div class="card-footer">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>1.2% increase</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Pending Tasks</h3>
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <div class="card-body">
+                            <h2>24</h2>
+                            <p>-5 from last week</p>
+                        </div>
+                        <div class="card-footer">
+                            <i class="fas fa-arrow-down"></i>
+                            <span>2.3% decrease</span>
+                        </div>
+                    </div>
                 </div>
-                <!-- /.col -->
 
-                <div class="col-12 col-sm-6 col-md-3">
-                  <div class="info-box">
-                    <span class="info-box-icon text-bg-success shadow-sm"> <!-- Kuning terang untuk konsultasi -->
-                      <i class="bi bi-person-lines-fill"></i> <!-- Ikon orang (konsultasi) -->
-                    </span>
-                    <div class="info-box-content">
-                      <span class="info-box-text">BUJK Konstruksi Konsultasi</span>
-                      <span class="info-box-number">2,000</span>
+                <!-- Table Section -->
+                <div class="table-section">
+                    <div class="section-header">
+                        <h3>Recent Statistics</h3>
+                        <button>View All</button>
                     </div>
-                    <!-- /.info-box-content -->
-                  </div>
-                  <!-- /.info-box -->
-                </div>
-                <!-- /.col -->
-              </div>
-              <!-- /.row -->
-
-              {{-- -------------------------------------------------------- --}}
-
-{{-- -------------------------------------------------------- --}}
-<div class="row">
-    <div class="col-12 col-sm-6 col-md-3">
-      <div class="info-box">
-        <span class="info-box-icon text-bg-success shadow-sm">
-          <i class="bi bi-building"></i> <!-- Ikon bangunan untuk asosiasi konstruksi -->
-        </span>
-        <div class="info-box-content">
-          <span class="info-box-text">Asosiasi Konstruksi</span>
-          <span class="info-box-number">
-            10
-            <small>%</small>
-          </span>
-        </div>
-        <!-- /.info-box-content -->
-      </div>
-      <!-- /.info-box -->
-    </div>
-    <!-- /.col -->
-
-    <div class="col-12 col-sm-6 col-md-3">
-      <div class="info-box">
-        <span class="info-box-icon text-bg-success shadow-sm">
-          <i class="bi bi-person-fill"></i> <!-- Ikon orang untuk TKK Binaan DPUPR -->
-        </span>
-        <div class="info-box-content">
-          <span class="info-box-text">TKK Binaan DPUPR</span>
-          <span class="info-box-number">41,410</span>
-        </div>
-        <!-- /.info-box-content -->
-      </div>
-      <!-- /.info-box -->
-    </div>
-    <!-- /.col -->
-
-    <div class="col-12 col-sm-6 col-md-3">
-      <div class="info-box">
-        <span class="info-box-icon text-bg-success shadow-sm">
-          <i class="bi bi-person-check-fill"></i> <!-- Ikon orang dengan centang untuk TKK Kabupaten Blora -->
-        </span>
-        <div class="info-box-content">
-          <span class="info-box-text">TKK Kabupaten Blora</span>
-          <span class="info-box-number">760</span>
-        </div>
-        <!-- /.info-box-content -->
-      </div>
-      <!-- /.info-box -->
-    </div>
-    <!-- /.col -->
-
-    <div class="col-12 col-sm-6 col-md-3">
-      <div class="info-box">
-        <span class="info-box-icon text-bg-success shadow-sm">
-          <i class="bi bi-file-earmark"></i> <!-- Ikon file untuk Profil Paket Pekerjaan -->
-        </span>
-        <div class="info-box-content">
-          <span class="info-box-text">Profil Paket Pekerjaan</span>
-          <span class="info-box-number">2,000</span>
-        </div>
-        <!-- /.info-box-content -->
-      </div>
-      <!-- /.info-box -->
-    </div>
-    <!-- /.col -->
-  </div>
-  <!-- /.row -->
-
-              {{-- -------------------------------------------------------- --}}
-
-{{-- -------------------------------------------------------- --}}
-<div class="row">
-    <div class="col-12 col-sm-6 col-md-3">
-      <div class="info-box">
-        <span class="info-box-icon text-bg-success shadow-sm"> <!-- Biru untuk Agenda Pelatihan -->
-          <i class="bi bi-calendar-event"></i> <!-- Ikon kalender untuk acara pelatihan -->
-        </span>
-        <div class="info-box-content">
-          <span class="info-box-text">Agenda Pelatihan, Workshop, Sosialisasi</span>
-          <span class="info-box-number">
-            10
-            <small>%</small>
-          </span>
-        </div>
-        <!-- /.info-box-content -->
-      </div>
-      <!-- /.info-box -->
-    </div>
-    <!-- /.col -->
-
-    <div class="col-12 col-sm-6 col-md-3">
-      <div class="info-box">
-        <span class="info-box-icon text-bg-success shadow-sm"> <!-- Oranye untuk Peserta -->
-          <i class="bi bi-person-lines-fill"></i> <!-- Ikon orang sekelompok untuk peserta -->
-        </span>
-        <div class="info-box-content">
-          <span class="info-box-text">Peserta Pelatihan, Workshop, Sosialisasi</span>
-          <span class="info-box-number">41,410</span>
-        </div>
-        <!-- /.info-box-content -->
-      </div>
-      <!-- /.info-box -->
-    </div>
-    <!-- /.col -->
-
-    <div class="col-12 col-sm-6 col-md-3">
-      <div class="info-box">
-        <span class="info-box-icon text-bg-success shadow-sm"> <!-- Hijau untuk Agenda SKK -->
-          <i class="bi bi-journal-check"></i> <!-- Ikon jurnal untuk agenda SKK -->
-        </span>
-        <div class="info-box-content">
-          <span class="info-box-text">Agenda SKK</span>
-          <span class="info-box-number">760</span>
-        </div>
-        <!-- /.info-box-content -->
-      </div>
-      <!-- /.info-box -->
-    </div>
-    <!-- /.col -->
-
-    <div class="col-12 col-sm-6 col-md-3">
-      <div class="info-box">
-        <span class="info-box-icon text-bg-success shadow-sm"> <!-- Biru untuk Peserta SKK -->
-          <i class="bi bi-person-check-fill"></i> <!-- Ikon orang centang untuk peserta SKK -->
-        </span>
-        <div class="info-box-content">
-          <span class="info-box-text">Peserta SKK</span>
-          <span class="info-box-number">2,000</span>
-        </div>
-        <!-- /.info-box-content -->
-      </div>
-      <!-- /.info-box -->
-    </div>
-    <!-- /.col -->
-  </div>
-  <!-- /.row -->
-
-              {{-- -------------------------------------------------------- --}}
-
-{{-- -------------------------------------------------------- --}}
-<div class="row">
-    <div class="col-12 col-sm-6 col-md-3">
-      <div class="info-box">
-        <span class="info-box-icon text-bg-success shadow-sm"> <!-- Hijau untuk Tertib Jakon Usaha -->
-          <i class="bi bi-briefcase"></i> <!-- Ikon tas kerja untuk usaha -->
-        </span>
-        <div class="info-box-content">
-          <span class="info-box-text">Tertib Jakon Usaha</span>
-          <span class="info-box-number">
-            10
-            <small>%</small>
-          </span>
-        </div>
-        <!-- /.info-box-content -->
-      </div>
-      <!-- /.info-box -->
-    </div>
-    <!-- /.col -->
-
-    <div class="col-12 col-sm-6 col-md-3">
-      <div class="info-box">
-        <span class="info-box-icon text-bg-success shadow-sm"> <!-- Hijau untuk Tertib Jakon Pemanfaatan -->
-          <i class="bi bi-house-door"></i> <!-- Ikon rumah untuk pemanfaatan -->
-        </span>
-        <div class="info-box-content">
-          <span class="info-box-text">Tertib Jakon Pemanfaatan</span>
-          <span class="info-box-number">41,410</span>
-        </div>
-        <!-- /.info-box-content -->
-      </div>
-      <!-- /.info-box -->
-    </div>
-    <!-- /.col -->
-
-    <div class="col-12 col-sm-6 col-md-3">
-      <div class="info-box">
-        <span class="info-box-icon text-bg-success shadow-sm"> <!-- Hijau untuk Tertib Jakon Penyelenggaraan -->
-          <i class="bi bi-gear"></i> <!-- Ikon roda gigi untuk penyelenggaraan -->
-        </span>
-        <div class="info-box-content">
-          <span class="info-box-text">Tertib Jakon Penyelenggaraan</span>
-          <span class="info-box-number">760</span>
-        </div>
-        <!-- /.info-box-content -->
-      </div>
-      <!-- /.info-box -->
-    </div>
-    <!-- /.col -->
-
-    <div class="col-12 col-sm-6 col-md-3">
-      <div class="info-box">
-        <span class="info-box-icon text-bg-success shadow-sm"> <!-- Hijau untuk Pengawasan BUJK -->
-          <i class="bi bi-eye"></i> <!-- Ikon mata untuk pengawasan -->
-        </span>
-        <div class="info-box-content">
-          <span class="info-box-text">Pengawasan BUJK</span>
-          <span class="info-box-number">2,000</span>
-        </div>
-        <!-- /.info-box-content -->
-      </div>
-      <!-- /.info-box -->
-    </div>
-    <!-- /.col -->
-  </div>
-  <!-- /.row -->
-
-
-              {{-- -------------------------------------------------------- --}}
-              <div class="row">
-                <div class="col-12 col-sm-6 col-md-3">
-                  <div class="info-box">
-                    <span class="info-box-icon text-bg-success shadow-sm"> <!-- Hijau untuk Asuransi Konstruksi -->
-                      <i class="bi bi-shield-lock"></i> <!-- Ikon pelindung untuk asuransi -->
-                    </span>
-                    <div class="info-box-content">
-                      <span class="info-box-text">Asuransi Konstruksi</span>
-                      <span class="info-box-number">
-                        10
-                        <small>%</small>
-                      </span>
-                    </div>
-                    <!-- /.info-box-content -->
-                  </div>
-                  <!-- /.info-box -->
-                </div>
-                <!-- /.col -->
-
-                <div class="col-12 col-sm-6 col-md-3">
-                  <div class="info-box">
-                    <span class="info-box-icon text-bg-success shadow-sm"> <!-- Hijau untuk Material Bangunan/Supplier -->
-                      <i class="bi bi-box"></i> <!-- Ikon kotak untuk material bangunan -->
-                    </span>
-                    <div class="info-box-content">
-                      <span class="info-box-text">Material Bangunan/Supplier</span>
-                      <span class="info-box-number">41,410</span>
-                    </div>
-                    <!-- /.info-box-content -->
-                  </div>
-                  <!-- /.info-box -->
-                </div>
-                <!-- /.col -->
-
-                <div class="col-12 col-sm-6 col-md-3">
-                  <div class="info-box">
-                    <span class="info-box-icon text-bg-success shadow-sm"> <!-- Hijau untuk Supplier Peralatan Konstruksi -->
-                      <i class="bi bi-tools"></i> <!-- Ikon peralatan untuk supplier peralatan konstruksi -->
-                    </span>
-                    <div class="info-box-content">
-                      <span class="info-box-text">Supplier Peralatan Konstruksi</span>
-                      <span class="info-box-number">760</span>
-                    </div>
-                    <!-- /.info-box-content -->
-                  </div>
-                  <!-- /.info-box -->
-                </div>
-                <!-- /.col -->
-
-                <div class="col-12 col-sm-6 col-md-3">
-                  <div class="info-box">
-                    <span class="info-box-icon text-bg-success shadow-sm"> <!-- Hijau untuk Toko Bangunan Kab Blora -->
-                      <i class="bi bi-shop"></i> <!-- Ikon toko untuk toko bangunan -->
-                    </span>
-                    <div class="info-box-content">
-                      <span class="info-box-text">Toko Bangunan Kab Blora</span>
-                      <span class="info-box-number">2,000</span>
-                    </div>
-                    <!-- /.info-box-content -->
-                  </div>
-                  <!-- /.info-box -->
-                </div>
-                <!-- /.col -->
-              </div>
-              <!-- /.row -->
-
-
-              {{-- -------------------------------------------------------- --}}
-
-              <!--begin::Row-->
-
-          </div>
-          <!--end::Container-->
-        </div>
-        <!--end::App Content-->
-
-        <div class="app-content">
-            <!--begin::Container-->
-            <div class="container-fluid">
-              <!--begin::Row-->
-              <div class="row">
-                <div class="col-lg-6">
-                  <div class="card mb-4">
-                    <div class="card-header border-0">
-                      <div class="d-flex justify-content-between">
-                        <h3 class="card-title">Verifikasi Peserta</h3>
-                        <a
-                          href="javascript:void(0);"
-                          class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                          >View Report</a
-                        >
-                      </div>
-                    </div>
-                    <div class="card-body">
-                      <div class="d-flex">
-                        <p class="d-flex flex-column">
-                          <span class="fw-bold fs-5">820</span> <span>Visitors Over Time</span>
-                        </p>
-                        <p class="ms-auto d-flex flex-column text-end">
-                          <span class="text-success"> <i class="bi bi-arrow-up"></i> 12.5% </span>
-                          <span class="text-secondary">Since last week</span>
-                        </p>
-                      </div>
-                      <!-- /.d-flex -->
-                      <div class="position-relative mb-4"><div id="visitors-chart"></div></div>
-                      <div class="d-flex flex-row justify-content-end">
-                        <span class="me-2">
-                          <i class="bi bi-square-fill text-primary"></i> This Week
-                        </span>
-                        <span> <i class="bi bi-square-fill text-secondary"></i> Last Week </span>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- /.card -->
-                  <div class="card mb-4">
-                    <div class="card-header border-0">
-                      <h3 class="card-title">AHSP Konstruksi Umum</h3>
-                      <div class="card-tools">
-                        <a href="#" class="btn btn-tool btn-sm"> <i class="bi bi-download"></i> </a>
-                        <a href="#" class="btn btn-tool btn-sm"> <i class="bi bi-list"></i> </a>
-                      </div>
-                    </div>
-                    <div class="card-body table-responsive p-0">
-                      <table class="table table-striped align-middle">
+                    <table>
                         <thead>
-                          <tr>
-                            <th>Daftar AHSP Konstruksi Umum</th>
-                            <th>Jumlah</th>
-                          </tr>
+                            <tr>
+                                <th>ID</th>
+                                <th>Category</th>
+                                <th>Value</th>
+                                <th>Change</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
                         </thead>
                         <tbody>
-
-                          <tr>
-                            <td>
-                              <img
-                                src="../../assets/icon/pupr.png"
-                                alt="Product 1"
-                                class="rounded-circle img-size-32 me-2"
-                              />
-                              Satuan Harga Material
-                            </td>
-                            <td>----</td>
-
-                            <td>
-                                <a href="#" class="text-secondary"> <i class="bi bi-search"></i> </a>
-                            </td>
-                          </tr>
-
-                          <tr>
-                            <td>
-                              <img
-                                src="../../assets/icon/pupr.png"
-                                alt="Product 1"
-                                class="rounded-circle img-size-32 me-2"
-                              />
-                              Satuan Harga Upah Tenaga Kerja
-                            </td>
-                            <td>----</td>
-
-                            <td>
-                                <a href="#" class="text-secondary"> <i class="bi bi-search"></i> </a>
-                            </td>
-                          </tr>
-
-                          <tr>
-                            <td>
-                              <img
-                                src="../../assets/icon/pupr.png"
-                                alt="Product 1"
-                                class="rounded-circle img-size-32 me-2"
-                              />
-                              Satuan Harga Peralatan
-                            </td>
-                            <td>----</td>
-
-                            <td>
-                                <a href="#" class="text-secondary"> <i class="bi bi-search"></i> </a>
-                            </td>
-                          </tr>
-
-                          <tr>
-                            <td>
-                              <img
-                                src="../../assets/icon/pupr.png"
-                                alt="Product 1"
-                                class="rounded-circle img-size-32 me-2"
-                              />
-                              SHST Kabupaten Blora
-                            </td>
-                            <td>----</td>
-
-                            <td>
-                                <a href="#" class="text-secondary"> <i class="bi bi-search"></i> </a>
-                            </td>
-                          </tr>
-
-                          <tr>
-                            <td>
-                              <img
-                                src="../../assets/icon/pupr.png"
-                                alt="Product 1"
-                                class="rounded-circle img-size-32 me-2"
-                              />
-                              Divisi I Persiapan Pekerjaan
-                            </td>
-                            <td>----</td>
-
-                            <td>
-                                <a href="#" class="text-secondary"> <i class="bi bi-search"></i> </a>
-                            </td>
-                          </tr>
-
-                          <tr>
-                              <td>
-                                  <img
-                                  src="../../assets/icon/pupr.png"
-                                  {{-- src="../../assets/00_administrator/dist/assets/img/default-150x150.png" --}}
-                                  alt="Product 1"
-                                class="rounded-circle img-size-32 me-2"
-                                />
-                                Divisi II Pekerjaan Struktur
-                            </td>
-                            <td>----</td>
-
-                            <td>
-                                <a href="#" class="text-secondary"> <i class="bi bi-search"></i> </a>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <img
-                                {{-- src="../../assets/00_administrator/dist/assets/img/default-150x150.png" --}}
-                                src="../../assets/icon/pupr.png"
-                                alt="Product 1"
-                                class="rounded-circle img-size-32 me-2"
-                              />
-                              Divisi III Pekerjaan Arsitektur
-                            </td>
-                            <td>----</td>
-
-                            <td>
-                                <a href="#" class="text-secondary"> <i class="bi bi-search"></i> </a>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <img
-                                src="../../assets/icon/pupr.png"
-                                {{-- src="../../assets/00_administrator/dist/assets/img/default-150x150.png" --}}
-                                alt="Product 1"
-                                class="rounded-circle img-size-32 me-2"
-                                />
-                              Divisi IV Pekerjaan Lansekap
-                            </td>
-                            <td>----</td>
-
-                            <td>
-                                <a href="#" class="text-secondary"> <i class="bi bi-search"></i> </a>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <img
-                                src="../../assets/icon/pupr.png"
-                                {{-- src="../../assets/00_administrator/dist/assets/img/default-150x150.png" --}}
-                                alt="Product 1"
-                                class="rounded-circle img-size-32 me-2"
-                                />
-                                Divisi V Pekerjaan Mekanikal & Elektrikal
-                            </td>
-                            <td>----</td>
-
-                            <td>
-                                <a href="#" class="text-secondary"> <i class="bi bi-search"></i> </a>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <img
-                                src="../../assets/icon/pupr.png"
-                                {{-- src="../../assets/00_administrator/dist/assets/img/default-150x150.png" --}}
-                                alt="Product 1"
-                                class="rounded-circle img-size-32 me-2"
-                                />
-                                Divisi VI Pekerjaan Plumbing
-                            </td>
-                            <td>----</td>
-
-                            <td>
-                                <a href="#" class="text-secondary"> <i class="bi bi-search"></i> </a>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <img
-                                src="../../assets/icon/pupr.png"
-                                {{-- src="../../assets/00_administrator/dist/assets/img/default-150x150.png" --}}
-                                alt="Product 1"
-                                class="rounded-circle img-size-32 me-2"
-                                />
-                                Divisi VII Jalan Pada Permukiman
-                            </td>
-                            <td>----</td>
-
-                            <td>
-                                <a href="#" class="text-secondary"> <i class="bi bi-search"></i> </a>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <img
-                                src="../../assets/icon/pupr.png"
-                                {{-- src="../../assets/00_administrator/dist/assets/img/default-150x150.png" --}}
-                                alt="Product 1"
-                                class="rounded-circle img-size-32 me-2"
-                                />
-                                Divisi VIII Drainase Jalan
-                            </td>
-                            <td>----</td>
-
-                            <td>
-                                <a href="#" class="text-secondary"> <i class="bi bi-search"></i> </a>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <img
-                                src="../../assets/icon/pupr.png"
-                                {{-- src="../../assets/00_administrator/dist/assets/img/default-150x150.png" --}}
-                                alt="Product 1"
-                                class="rounded-circle img-size-32 me-2"
-                                />
-                                Divisi IX Pekerjaan Pipa di Luar Bangunan Gedung
-                            </td>
-                            <td>----</td>
-
-                            <td>
-                                <a href="#" class="text-secondary"> <i class="bi bi-search"></i> </a>
-                            </td>
-                        </tr>
-
-                        {{-- src="../../assets/icon/logopupr.png" --}}
-
+                            <tr>
+                                <td>#12345</td>
+                                <td>User Growth</td>
+                                <td>1,234</td>
+                                <td>+12.5%</td>
+                                <td><span class="status active">Active</span></td>
+                                <td><i class="fas fa-ellipsis-h"></i></td>
+                            </tr>
+                            <tr>
+                                <td>#12346</td>
+                                <td>Revenue</td>
+                                <td>$8,750</td>
+                                <td>+8.2%</td>
+                                <td><span class="status active">Active</span></td>
+                                <td><i class="fas fa-ellipsis-h"></i></td>
+                            </tr>
+                            <tr>
+                                <td>#12347</td>
+                                <td>Engagement</td>
+                                <td>56.8%</td>
+                                <td>-2.3%</td>
+                                <td><span class="status pending">Pending</span></td>
+                                <td><i class="fas fa-ellipsis-h"></i></td>
+                            </tr>
+                            <tr>
+                                <td>#12348</td>
+                                <td>Conversion</td>
+                                <td>3.2%</td>
+                                <td>+0.5%</td>
+                                <td><span class="status active">Active</span></td>
+                                <td><i class="fas fa-ellipsis-h"></i></td>
+                            </tr>
+                            <tr>
+                                <td>#12349</td>
+                                <td>Retention</td>
+                                <td>78.5%</td>
+                                <td>-5.1%</td>
+                                <td><span class="status inactive">Inactive</span></td>
+                                <td><i class="fas fa-ellipsis-h"></i></td>
+                            </tr>
                         </tbody>
-                      </table>
-                    </div>
-                  </div>
-                  <!-- /.card -->
+                    </table>
                 </div>
 
-
-                <!-- /.col-md-6 -->
-                <div class="col-lg-6">
-                  <div class="card mb-4">
-                    <div class="card-header border-0">
-                      <div class="d-flex justify-content-between">
-                        <h3 class="card-title">Statistik Rantai Pasok</h3>
-                        <a
-                          href="javascript:void(0);"
-                          class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                          >View Report</a
-                        >
-                      </div>
+                <!-- Quick Count Section -->
+                <div class="quick-count">
+                    <div class="count-card">
+                        <div class="count-header">
+                            <h4>Today's Visits</h4>
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div class="count-body">
+                            <div class="count-value">1,245</div>
+                            <div class="count-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>12.5%</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body">
-                      <div class="d-flex">
-                        <p class="d-flex flex-column">
-                          <span class="fw-bold fs-5">453</span>
-                          {{-- <span>Sales Over Time</span> --}}
-                        </p>
-                        <p class="ms-auto d-flex flex-column text-end">
-                          <span class="text-success"> <i class="bi bi-arrow-up"></i> 33.1% </span>
-                          <span class="text-secondary">Since Past Year</span>
-                        </p>
-                      </div>
-                      <!-- /.d-flex -->
-                      <div class="position-relative mb-4"><div id="sales-chart"></div></div>
-                      <div class="d-flex flex-row justify-content-end">
-                        <span class="me-2">
-                          <i class="bi bi-square-fill text-primary"></i> This year
-                        </span>
-                        <span> <i class="bi bi-square-fill text-secondary"></i> Last year </span>
-                      </div>
+                    <div class="count-card">
+                        <div class="count-header">
+                            <h4>New Signups</h4>
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <div class="count-body">
+                            <div class="count-value">87</div>
+                            <div class="count-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>5.4%</span>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-
-                  <div class="card">
-                    <div class="card-header border-0">
-                      <h3 class="card-title">Statistik Kunjungan Web Mas Jaki Blora</h3>
-                      <div class="card-tools">
-                        <a href="#" class="btn btn-sm btn-tool"> <i class="bi bi-download"></i> </a>
-                        <a href="#" class="btn btn-sm btn-tool"> <i class="bi bi-list"></i> </a>
-                      </div>
+                    <div class="count-card">
+                        <div class="count-header">
+                            <h4>Bounce Rate</h4>
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="count-body">
+                            <div class="count-value">32.1%</div>
+                            <div class="count-change negative">
+                                <i class="fas fa-arrow-down"></i>
+                                <span>2.3%</span>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="card-body">
-                      <div class="d-flex justify-content-between align-items-center border-bottom mb-3">
-                        <p class="text-success fs-2">
-                          <svg height="32" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.678 48.678 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3l-3-3m-12 3c0 1.232.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7c.017-.22.032-.441.046-.662M4.5 12l3 3m-3-3l-3 3"></path>
-                          </svg>
-                        </p>
-                        <p class="d-flex flex-column text-end">
-                          <span class="fw-bold">
-                            <i class="bi bi-graph-up-arrow text-success"></i> {{ $conversionRate }}%
-                          </span>
-                          {{-- <span class="text-secondary">CONVERSION RATE</span> --}}
-                        </p>
-                      </div>
-                      <!-- /.d-flex -->
-                      <div class="d-flex justify-content-between align-items-center border-bottom mb-3">
-                        <p class="text-info fs-2">
-                          <svg height="32" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"></path>
-                          </svg>
-                        </p>
-                        <p class="d-flex flex-column text-end">
-                          <span class="fw-bold">
-                            <i class="bi bi-graph-up-arrow text-info"></i> {{ $visitCount }} Orang
-                          </span>
-                          {{-- <span class="text-secondary">SALES RATE</span> --}}
-                        </p>
-                      </div>
-                      <!-- /.d-flex -->
-                      <div class="d-flex justify-content-between align-items-center mb-0">
-                        <p class="text-danger fs-2">
-                          <svg height="32" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"></path>
-                          </svg>
-                        </p>
-                        <p class="d-flex flex-column text-end">
-                          <span class="fw-bold">
-                            <i class="bi bi-graph-down-arrow text-danger"></i> {{ $registrationRate }}%
-                          </span>
-                          {{-- <span class="text-secondary">REGISTRATION RATE</span> --}}
-                        </p>
-                      </div>
-                      <!-- /.d-flex -->
-                    </div>
-                  </div>
-                        <!-- /.d-flex -->
-                    </div>
-                  </div>
                 </div>
-                <!-- /.col-md-6 -->
-              </div>
-              <!--end::Row-->
             </div>
-            <!--end::Container-->
-          </div>
-          <!--end::App Content-->
-      </main>
-      <!--end::App Main-->
+        </div>
+    </div>
 
+    <script>
+        // Toggle Sidebar
+        document.getElementById('toggleSidebar').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('active');
+        });
 
-      @include('backend.00_administrator.00_baganterpisah.02_footer')
+        // Menu Item Active State
+        const menuItems = document.querySelectorAll('.menu-item');
+        menuItems.forEach(item => {
+            item.addEventListener('click', function() {
+                menuItems.forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card, .count-card');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            cards.forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.5s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

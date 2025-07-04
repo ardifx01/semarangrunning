@@ -24,8 +24,8 @@ class AdminDashboardController extends Controller
         $registrationRate = -1; // Angka contoh, sesuaikan dengan logika
 
         // return view('backend.00_adminmasjaki.01_fiturterpisah.01_dashboard', [
-        return view('backend.00_administrator.01_halamanutama.dashboard', [
-            'title' => 'Dashboard Mas Jaki DPUPR Blora',
+        return view('00_semarang.02_backend.01_dashboard.01_halamandasboard', [
+            'title' => 'Dashboard SNOC X 2025',
             'user' => $user,
             'visitCount' => $visitCount,
             'conversionRate' => $conversionRate,
