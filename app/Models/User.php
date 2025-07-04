@@ -47,29 +47,9 @@ class User extends Authenticatable
         return $this->belongsTo(statusadmin::class);
     }
 
-    public function berita()
+    public function perlombaan()
     {
-        return $this->hasMany(beritajakon::class);
-    }
-
-    public function pesertapelatihan()
-    {
-        return $this->hasMany(pesertapelatihan::class);
-    }
-
-    public function allskktenagakerjablora()
-    {
-        return $this->hasMany(allskktenagakerjablora::class);
-    }
-
-    public function beritajakon()
-    {
-        return $this->hasMany(beritajakon::class);
-    }
-
-    public function artikeljakonmasjaki()
-    {
-        return $this->hasMany(artikeljakonmasjaki::class);
+        return $this->hasMany(perlombaan::class);
     }
 
 }

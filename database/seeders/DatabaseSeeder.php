@@ -154,8 +154,7 @@ use App\Models\subhargadiv9peralatan;
 
 // -=============================
 use App\Models\headerberanda;
-
-
+use App\Models\perlombaan;
 // modelbaru
 
 // use App\Models\paketpekerjaan;
@@ -195,23 +194,6 @@ class DatabaseSeeder extends Seeder
         // Tukangterampil::factory(994)->create();
 
 
-// =============== DATABASE HEADER BERANDA
-headerberanda::create([
-    'judul'  => 'Sistem Informasi <br> Pembina Jasa Konstruksi DPUPR Kabupaten Blora',
-    'header'  => '00_beranda/00_tampilanmuka/jakon4.jpeg',
-]);
-
-headerberanda::create([
-    'judul'  => 'Sasarengan mBangun Blora Unggul dan <br> Berdaya Saing',
-    'header'  => '00_beranda/00_tampilanmuka/masjaki2.png',
-]);
-
-headerberanda::create([
-    'judul'  => 'Blora Mustika <br> Cacana Jaya Kerta Bhumi',
-    'header'  => '00_beranda/00_tampilanmuka/petaindonesiabaru.png',
-]);
-
-
 // =========================================================
         User::create([
             'id'  => 1,
@@ -245,8 +227,8 @@ headerberanda::create([
 
         User::create([
             'id'  => 4,
-            'name'  => 'Rahmat Irianto',
-            'username' => 'Sigitpekerja',
+            'name'  => 'Mas Budi',
+            'username' => 'Mas Budi',
             'statusadmin_id' => '3',
             'avatar' => 'user/avatar/sigit.jpg',
             'email' => 'sigitpekerja@gmail.com',
@@ -255,9 +237,9 @@ headerberanda::create([
 
         User::create([
             'id'  => 5,
-            'name'  => 'Sigit Septiadi',
-            'username' => 'Sigitsupppabrik',
-            'statusadmin_id' => '4',
+            'name'  => 'Anam',
+            'username' => 'Anam',
+            'statusadmin_id' => '3',
             'avatar' => 'user/avatar/sigit.jpg',
             'email' => 'sigitsupp_pabrik@gmail.com',
             'password' => bcrypt('adminadmin123$$')
@@ -265,9 +247,9 @@ headerberanda::create([
 
         User::create([
             'id'  => 6,
-            'name'  => 'Sigit Septiadi',
-            'username' => 'Sigitsupppabrik',
-            'statusadmin_id' => '5',
+            'name'  => 'Zaqi',
+            'username' => 'Zaqi',
+            'statusadmin_id' => '3',
             'avatar' => 'user/avatar/sigit.jpg',
             'email' => 'sigitsupp_peralatan@gmail.com',
             'password' => bcrypt('adminadmin123$$')
@@ -294,7 +276,30 @@ headerberanda::create([
             // ================= =====================================================================================
 
 
+// =========================================================
+        perlombaan::create([
+            'id'  => 1,
+            'user_id'  => '4',
+            'kegiatan' => 'SNOC X 2025',
+            'tempat' => 'Semarang',
+            'jumlahlokasi' => '5',
+        ]);
 
+        perlombaan::create([
+            'id'  => 2,
+            'user_id'  => '5',
+            'kegiatan' => 'SNOC X 2025',
+            'tempat' => 'Semarang',
+            'jumlahlokasi' => '5',
+        ]);
+
+        perlombaan::create([
+            'id'  => 3,
+            'user_id'  => '6',
+            'kegiatan' => 'SNOC X 2025',
+            'tempat' => 'Semarang',
+            'jumlahlokasi' => '5',
+        ]);
 
     }
  /**

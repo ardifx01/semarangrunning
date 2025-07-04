@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use Illuminate\Support\Facades\Auth; 
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\undangundang; // Pastikan namespace model sesuai dengan struktur direktori
 
@@ -22,7 +22,7 @@ class UndangundangController extends Controller
         ]);
     }
 
-   
+
     // public function showByName($nama)
     // {
     //     $item = Skktenagakerja::where('nama', $nama)->firstOrFail();
