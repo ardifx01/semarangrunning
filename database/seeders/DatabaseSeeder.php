@@ -273,6 +273,35 @@ class DatabaseSeeder extends Seeder
             'statusadmin'  => 'peserta',
         ]);
 
+        statusadmin::create([
+            'id'  => '4',
+            'statusadmin'  => 'official',
+        ]);
+
+statusadmin::create(['id' => 6, 'statusadmin' => 'pos1']);
+statusadmin::create(['id' => 7, 'statusadmin' => 'pos2']);
+statusadmin::create(['id' => 8, 'statusadmin' => 'pos3']);
+statusadmin::create(['id' => 9, 'statusadmin' => 'pos4']);
+statusadmin::create(['id' => 10, 'statusadmin' => 'pos5']);
+statusadmin::create(['id' => 11, 'statusadmin' => 'pos6']);
+statusadmin::create(['id' => 12, 'statusadmin' => 'pos7']);
+statusadmin::create(['id' => 13, 'statusadmin' => 'pos8']);
+statusadmin::create(['id' => 14, 'statusadmin' => 'pos9']);
+statusadmin::create(['id' => 15, 'statusadmin' => 'pos10']);
+statusadmin::create(['id' => 16, 'statusadmin' => 'pos11']);
+statusadmin::create(['id' => 17, 'statusadmin' => 'pos12']);
+statusadmin::create(['id' => 18, 'statusadmin' => 'pos13']);
+statusadmin::create(['id' => 19, 'statusadmin' => 'pos14']);
+statusadmin::create(['id' => 20, 'statusadmin' => 'pos15']);
+statusadmin::create(['id' => 21, 'statusadmin' => 'pos16']);
+statusadmin::create(['id' => 22, 'statusadmin' => 'pos17']);
+statusadmin::create(['id' => 23, 'statusadmin' => 'pos18']);
+statusadmin::create(['id' => 24, 'statusadmin' => 'pos19']);
+statusadmin::create(['id' => 25, 'statusadmin' => 'pos20']);
+statusadmin::create(['id' => 26, 'statusadmin' => 'pos21']);
+statusadmin::create(['id' => 27, 'statusadmin' => 'pos22']);
+
+
 
             // ================= =====================================================================================
 

@@ -200,11 +200,11 @@ public function showByBarcode($kode)
     public function quickcount()
     {
         $data1 = pos1::orderBy('created_at', 'desc')->get(); //
-        $data2 = pos2::orderBy('created_at', 'desc')->get(); //
-        $data3 = pos3::orderBy('created_at', 'desc')->get(); //
-        $data4 = pos4::orderBy('created_at', 'desc')->get(); //
-        $data5 = pos5::orderBy('created_at', 'desc')->get(); //
-        $data6 = pos6::orderBy('created_at', 'desc')->get(); //
+        // $data2 = pos2::orderBy('created_at', 'desc')->get(); //
+        // $data3 = pos3::orderBy('created_at', 'desc')->get(); //
+        // $data4 = pos4::orderBy('created_at', 'desc')->get(); //
+        // $data5 = pos5::orderBy('created_at', 'desc')->get(); //
+        // $data6 = pos6::orderBy('created_at', 'desc')->get(); //
 
         $user = Auth::user();
 
@@ -214,11 +214,11 @@ public function showByBarcode($kode)
         return view('00_semarang.02_backend.00_pos.start', [
             'title' => 'Tambah Start',
             'data1' => $data1, // Mengirimkan data paginasi ke view
-            'data2' => $data2, // Mengirimkan data paginasi ke view
-            'data3' => $data, // Mengirimkan data paginasi ke view
-            'data4' => $data, // Mengirimkan data paginasi ke view
-            'data5' => $data, // Mengirimkan data paginasi ke view
-            'data6' => $data, // Mengirimkan data paginasi ke view
+            // 'data2' => $data2, // Mengirimkan data paginasi ke view
+            // 'data3' => $data, // Mengirimkan data paginasi ke view
+            // 'data4' => $data, // Mengirimkan data paginasi ke view
+            // 'data5' => $data, // Mengirimkan data paginasi ke view
+            // 'data6' => $data, // Mengirimkan data paginasi ke view
             'user' => $user, // Mengirimkan data paginasi ke view
             // 'databerita' => $databerita, // Mengirimkan data paginasi ke view
         ]);
