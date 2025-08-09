@@ -1311,3 +1311,17 @@ Adminadmin123$$
     }
   }
 </script>
+
+
+
+
+ <div class="table-section">
+          <div class="section-header"><h3>Recent Statistics</h3><button>View All</button></div>
+          <table>
+            <thead><tr><th>ID</th><th>Category</th><th>Value</th><th>Change</th><th>Status</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr><td>#12345</td><td>User Growth</td><td>1,234</td><td>+12.5%</td><td><span class="status active">Active</span></td><td><i class="fas fa-ellipsis-h"></i></td></tr>
+              <!-- Add more rows -->
+            </tbody>
+          </table>
+        </div>

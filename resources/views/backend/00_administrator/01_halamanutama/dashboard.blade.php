@@ -491,14 +491,25 @@
             <!-- Header -->
             <div class="header">
                 <div class="header-left">
-                    <h2>Dashboard Overview</h2>
+                    <h2>Dashboard SNOC X</h2>
                 </div>
                 <div class="header-right">
                     <div class="toggle-sidebar" id="toggleSidebar">
                         <i class="fas fa-bars"></i>
                     </div>
                     <div class="user-profile">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User">
+<img id="mountain-img" src="https://source.unsplash.com/800x500/?mountain" alt="Pegunungan" style="width: 100%; border-radius: 8px;">
+
+<script>
+    const imgElement = document.getElementById('mountain-img');
+
+    function changeMountainImage() {
+        // Ganti gambar setiap 5 detik, gambar random dari Unsplash
+        imgElement.src = `https://source.unsplash.com/800x500/?mountain&sig=${Math.random()}`;
+    }
+
+    setInterval(changeMountainImage, 5000);
+</script>
                         <span>Admin User</span>
                     </div>
                 </div>

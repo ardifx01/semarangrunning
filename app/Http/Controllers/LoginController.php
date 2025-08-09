@@ -26,7 +26,7 @@ class LoginController extends Controller
 
  public function showRegisterForm()
 {
-    $datastatus = status::whereIn('id', [3, 7])->get();
+    $datastatus = statusadmin::whereIn('id', [3, 7])->get();
 
     return view('login.register', [
         'title' => 'Silahkan Daftar',

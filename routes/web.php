@@ -8,6 +8,7 @@ use App\Http\Controllers\akuncontroller;
 use App\Http\Controllers\BantuanhibahbgController;
 use App\Http\Controllers\BantuanhibahController;
 use App\Http\Controllers\BantuanteknisController;
+use App\Http\Controllers\DaftartimController;
 use App\Http\Controllers\DatabaseAbgController;
 use App\Http\Controllers\GambarbantuanController;
 use App\Http\Controllers\KrkController;
@@ -877,9 +878,14 @@ Route::post('/himbauandinas/{nama_lengkap}', [AdministratorController::class, 'c
 //     ]);
 // });
 
-// Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
-// Route::post('/login', [LoginController::class, 'authenticate']);
-// Route::post('/logout', [LoginController::class, 'logout']);
+// ----------------------
+// EVENT SNOC X 2025
+Route::get('/perlombaan/daftartim', [DaftartimController::class, 'daftartim'])->middleware('auth');
+
+
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout']);
 
 // Route::get('/daftar', [LoginController::class, 'showRegisterForm']);
 // Route::post('/daftar', [LoginController::class, 'register']);

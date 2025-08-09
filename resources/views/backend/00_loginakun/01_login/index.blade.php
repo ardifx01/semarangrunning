@@ -1,130 +1,256 @@
-<style>
-    /* Default height for small devices (mobile phones) */
-
-    /* Responsive typography and spacing */
-    @media (max-width: 576px) {
-        .header-title {
-            font-size: 1.8rem; /* Adjusted font size */
-        }
-
-        .header-description {
-            font-size: 0.9rem;
-        }
-
-        .container-fluid {
-            padding: 20px;
-        }
-    }
-
-    @media (max-width: 360px) {
-        .header-title {
-            font-size: 1.5rem;
-        }
-
-        .header-description {
-            font-size: 0.8rem;
-        }
-    }
-</style>
-
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta http-equiv="x-ua-compatible" content="ie=edge" />
-  <title>Silahkan Login !</title>
-  <!-- MDB icon -->
-  <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
-  <!-- Google Fonts Roboto -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
-  <!-- MDB -->
-  <link rel="stylesheet" href="/assets/login/css/bootstrap-login-form.min.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silahkan Login - SNOC X</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
-  <link rel="icon" href="/assets/icon/logokabupatenblora.png"  type="image/x-icon">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+                        url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
 
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.96);
+            width: 420px;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(128, 0, 0, 0.2);
+            position: relative;
+            border-top: 4px solid #800000;
+        }
 
+        .mountain-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .mountain-icon {
+            color: #800000;
+            font-size: 42px;
+            margin-bottom: 10px;
+            animation: mountainGlow 2s infinite alternate;
+        }
+
+        @keyframes mountainGlow {
+            0% { text-shadow: 0 0 5px rgba(128, 0, 0, 0.3); }
+            100% { text-shadow: 0 0 15px rgba(128, 0, 0, 0.6); }
+        }
+
+        .mountain-header h1 {
+            color: #800000;
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            margin-bottom: 5px;
+        }
+
+        .mountain-header p {
+            color: #4CAF50;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 14px 14px 45px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.3s;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-group input:focus {
+            border-color: #800000;
+            box-shadow: 0 0 0 3px rgba(128, 0, 0, 0.1);
+            outline: none;
+        }
+
+        .form-group i {
+            position: absolute;
+            left: 15px;
+            top: 14px;
+            color: #800000;
+            font-size: 18px;
+        }
+
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .remember {
+            display: flex;
+            align-items: center;
+        }
+
+        .remember input {
+            margin-right: 8px;
+            accent-color: #800000;
+        }
+
+        .remember label {
+            color: #555;
+        }
+
+        .forgot-password {
+            color: #800000;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .forgot-password:hover {
+            color: #4CAF50;
+            text-decoration: underline;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(to right, #800000, #a23535);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-btn:hover {
+            background: linear-gradient(to right, #a23535, #800000);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(128, 0, 0, 0.3);
+        }
+
+        .login-btn::after {
+            content: '↑';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        .login-btn:hover::after {
+            opacity: 1;
+            right: 15px;
+        }
+
+        .register {
+            text-align: center;
+            margin-top: 25px;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .register a {
+            color: #800000;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px dashed #800000;
+            padding-bottom: 2px;
+            transition: all 0.3s;
+        }
+
+        .register a:hover {
+            color: #4CAF50;
+            border-bottom-color: #4CAF50;
+        }
+
+        .mountain-border {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, transparent, #4CAF50, transparent);
+            opacity: 0.3;
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                width: 90%;
+                padding: 30px 20px;
+            }
+
+            .mountain-header h1 {
+                font-size: 26px;
+            }
+
+            .mountain-icon {
+                font-size: 36px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-
 <body>
-  <!-- Start your project here-->
-  <section style="height: 100vh; display: flex; flex-direction: column; justify-content: space-between; align-items: center; overflow: hidden; margin: 0; padding: 0;">
-    <div class="container-fluid h-custom" style="height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <div class="login-container">
+      <div class="mountain-header text-center">
+    <img src="/assets/abgblora/logo/racenewlogo.png" alt="Logo" class="mb-2" style="max-width: 120px;" loading="lazy">
+    <h1 class="fw-bold">SNOC-X</h1>
+    <p class="text-muted">SABHAGIRIWANA17</p>
+</div>
 
-        <div class="row d-flex justify-content-center align-items-center w-100">
-            <!-- Logo dan Teks -->
-            <div class="col-12 col-md-6 d-flex flex-column text-center text-md-left align-items-center" style="gap: 15px;">
 
-                <div class="d-flex justify-content-center align-items-center mb-3">
-                    <img src="/assets/icon/logokabupatenblora.png" class="img-fluid" alt="Logo Kabupaten Blora" width="95" loading="lazy">
-                    <img src="/assets/icon/pupr.png" class="img-fluid" alt="Logo PUPR" width="95" loading="lazy">
-                </div>
-{{--
-                <h1 class="header-title" style="font-family: 'Montserrat', sans-serif; font-size: 2.5rem; font-weight: bold;">
-                    <span style="font-weight: bold; font-style: italic; color: black;">MASJAKI</span>
-                    <span style="font-weight: bold; font-style: italic; color: #064420;">BLORA</span>
-                </h1>
-                <p class="header-description" style="font-family: 'Montserrat', sans-serif; font-size: 1rem; color: black; font-weight: bold;">
-                    Dinas Pekerjaan Umum Dan Penataan Ruang Kabupaten Blora
-                </p> --}}
-            </div>
+<form action="{{ url('/login') }}" method="POST">
+    @csrf
 
-            <!-- Form Login -->
-            <div class="col-12 col-md-4">
-                <form action="/login" method="post">
-                    @csrf
-                    <div class="mb-4">
-                        <input type="text" name="email" class="form-control rounded-full" id="email" placeholder="Email" style="padding: 10px 15px;" />
-                        <label class="form-label" for="email">Email address</label>
-                    </div>
-
-                    <div class="mb-3">
-                        <input type="password" name="password" class="form-control rounded-full" id="password" placeholder="Password" style="padding: 10px 15px;" />
-                        <label class="form-label" for="password">Password</label>
-                    </div>
-
-                    <div class="text-center mt-4 pt-2">
-                        <button type="submit" class="btn btn-dark btn-lg"
-                            style="background-color: #064420; color: white; padding: 10px 50px; border: none;"
-                            onmouseover="this.style.backgroundColor='white'; this.style.color='black';"
-                            onmouseout="this.style.backgroundColor='#064420'; this.style.color='white';">
-                            <i class="fas fa-sign-in-alt me-2"></i> <span style="font-size:14px; text-transform:capitalize;">Login</span>
-                        </button>
-
-                        <p class="small fw-bold mt-2 pt-1 mb-0">
-                            Belum Punya Akun? <a href="/404" class="link-danger">Daftar</a>
-                        </p>
-                    </div>
-                </form>
-            </div>
-        </div>
+    <div class="form-group">
+        <i class="fas fa-envelope"></i>
+        <input type="email" name="email" placeholder="Email Address" required>
     </div>
 
-    <!-- Footer -->
-    <div class="d-flex flex-column text-center justify-content-center py-3 px-4 w-100"
-         style="background: rgb(3, 69, 3); display: flex; align-items: center;">
-        <div class="d-flex justify-content-center align-items-center mb-2">
-            <img src="/assets/icon/logokabupatenblora.png" class="img-fluid" alt="Logo Kabupaten Blora" width="20" loading="lazy">
-            <img src="/assets/icon/pupr.png" class="img-fluid" alt="Logo PUPR" width="20" loading="lazy">
-        </div>
-
-        <div class="text-white" style="font-size: 14px; font-weight: 400;">
-            © Dinas Pekerjaan Umum Dan Penataan Ruang Kabupaten Blora Provinsi Jawa Tengah
-        </div>
+    <div class="form-group">
+        <i class="fas fa-lock"></i>
+        <input type="password" name="password" placeholder="Password" required>
     </div>
-</section>
 
-  <!-- MDB -->
-  <script type="text/javascript" src="/assets/login/js/mdb.min.js"></script>
-  <!-- Custom scripts -->
-  <script type="text/javascript"></script>
+    {{-- <div class="options">
+        <div class="remember">
+            <input type="checkbox" name="remember" id="remember">
+            <label for="remember">Remember me</label>
+        </div>
+        <a href="#" class="forgot-password">Forgot password?</a>
+    </div> --}}
+
+    <button type="submit" class="login-btn">Begin Climb</button>
+
+    <div class="register">
+        New climber? <a href="#">Register here</a>
+    </div>
+</form>
+        <div class="mountain-border"></div>
+    </div>
 </body>
-
 </html>

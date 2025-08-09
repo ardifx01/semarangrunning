@@ -85,6 +85,7 @@ use App\Models\artikeljakonmasjaki;
 use App\Models\kategoripelatihan;
 use App\Models\agendapelatihan;
 use App\Models\berkaslomba;
+use App\Models\daftartim;
 use App\Models\subhargadiv1;
 use App\Models\subhargadiv1bahan;
 use App\Models\subhargadiv1peralatan;
@@ -304,6 +305,31 @@ statusadmin::create(['id' => 27, 'statusadmin' => 'pos22']);
 
 
             // ================= =====================================================================================
+for ($i = 1; $i <= 11; $i++) {
+    daftartim::create([
+        'id'           => $i,
+        'akun_id'      => 1,
+        'namalengkap'  => 'Peserta ' . $i,
+        'jeniskelamin' => $i % 2 == 0 ? 'Perempuan' : 'Laki-laki',
+        'ttl'          => '2000-01-' . str_pad($i, 2, '0', STR_PAD_LEFT),
+        'nik'          => str_pad($i, 16, $i),
+        'notelepon'    => '081234567' . str_pad($i, 3, '0', STR_PAD_LEFT),
+        'foto'         => 'https://source.unsplash.com/random/300x300/?mountain&sig=' . $i,
+    ]);
+}
+
+for ($i = 12; $i <= 15; $i++) {
+    daftartim::create([
+        'id'           => $i,
+        'akun_id'      => 2,
+        'namalengkap'  => 'Peserta ' . $i,
+        'jeniskelamin' => $i % 2 == 0 ? 'Perempuan' : 'Laki-laki',
+        'ttl'          => '2000-01-' . str_pad($i, 2, '0', STR_PAD_LEFT),
+        'nik'          => str_pad($i, 16, $i),
+        'notelepon'    => '081234567' . str_pad($i, 3, '0', STR_PAD_LEFT),
+        'foto'         => 'https://source.unsplash.com/random/300x300/?mountain&sig=' . $i,
+    ]);
+}
 
 
 // =========================================================
