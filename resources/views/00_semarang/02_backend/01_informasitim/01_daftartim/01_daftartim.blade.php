@@ -21,31 +21,43 @@
         </div>
         </div>
       </div>
+
 <div class="content">
   <div class="table-container">
     <table class="responsive-table">
-      <thead>
-        <tr>
-          <th>Subjudul</th>
-          <th>Nama Tim</th>
-          <th>Logo</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Selamat Datang di EVENT SNOC-X</td>
-          <td>Sabhagiriwana17</td>
-          <td>
-            <div class="logo-circle">
-              <svg viewBox="0 0 100 100" class="logo-svg">
-                <path d="M50 15 L75 50 L50 85 L25 50 Z" class="logo-path"/>
-              </svg>
-            </div>
-          </td>
-        </tr>
-      </tbody>
+        <thead>
+            <tr>
+                <th>Nama Lengkap</th>
+                <th>Jenis Kelamin</th>
+                <th>Tanggal Lahir</th>
+                <th>NIK</th>
+                <th>No. Telepon</th>
+                <th>Foto</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($data as $item)
+            <tr>
+                <td>{{ $item->namalengkap }}</td>
+                <td>{{ $item->jeniskelamin }}</td>
+                <td>{{ \Carbon\Carbon::parse($item->ttl)->format('d-m-Y') }}</td>
+                <td>{{ $item->nik }}</td>
+                <td>{{ $item->notelepon }}</td>
+                <td>
+                    @if($item->foto)
+                        <img src="{{ asset('storage/' . $item->foto) }}"
+                             alt="Foto Peserta"
+                             style="width:50px; height:50px; border-radius:50%; object-fit:cover;">
+                    @else
+                        <span>Tidak ada foto</span>
+                    @endif
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
     </table>
-  </div>
+</div>
+
 </div>
 
 <style>
