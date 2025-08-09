@@ -406,55 +406,92 @@
 <br>
     <div class="section">
         <h3 class="button-baru" style="font-family: 'Poppins', sans-serif;">FASILITAS</h3>
-        <ul>
-            <li>Konsumsi 1X</li>
-            <li>T-shirt</li>
-            <li>Live music & Door Prize</li>
-            <li>BIB Number</li>
-            <li>Piala Juara</li>
-            <li>Buku Teknis</li>
-            <li>Peta Perlombaan</li>
-            <li>Stiker Perlombaan</li>
-            <li>E-Sertifikat</li>
-            <li>Mendali Juara</li>
+        <ul style="font-family: 'Poppins', sans-serif;">
+            <li style="font-family: 'Poppins', sans-serif;">Konsumsi 1X</li>
+            <li style="font-family: 'Poppins', sans-serif;">T-shirt</li>
+            <li style="font-family: 'Poppins', sans-serif;">Live music & Door Prize</li>
+            <li style="font-family: 'Poppins', sans-serif;">BIB Number</li>
+            <li style="font-family: 'Poppins', sans-serif;">Piala Juara</li>
+            <li style="font-family: 'Poppins', sans-serif;">Buku Teknis</li>
+            <li style="font-family: 'Poppins', sans-serif;">Peta Perlombaan</li>
+            <li style="font-family: 'Poppins', sans-serif;">Stiker Perlombaan</li>
+            <li style="font-family: 'Poppins', sans-serif;">E-Sertifikat</li>
+            <li style="font-family: 'Poppins', sans-serif;">Mendali Juara</li>
         </ul>
     </div>
+<br>
+    <div class="section">
+        <h3 class="button-baru">Transfer</h3>
+        <p style="font-family: 'Poppins', sans-serif;">Seabank: 901727726533 a/n Rudi Setiyono</p>
+        <p style="font-family: 'Poppins', sans-serif;">Shopee Pay: 0895360119028 a/n Rudi Setiyono</p>
+        <p style="font-family: 'Poppins', sans-serif;">Dana: 0895360119028 a/n Rudi Setiyono</p>
+    </div>
+    <br>
 
     <div class="section">
-        <h3 class="highlight">Transfer</h3>
-        <p>Seabank: 901727726533 a/n Rudi Setiyono</p>
-        <p>Shopee Pay: 0895360119028 a/n Rudi Setiyono</p>
-        <p>Dana: 0895360119028 a/n Rudi Setiyono</p>
+        <h3 class="button-baru">Timeline</h3>
+        <p style="font-family: 'Poppins', sans-serif;">Pendaftaran: 8 Agustus - 24 Oktober 2025</p>
+        <p style="font-family: 'Poppins', sans-serif;">Pelaksanaan: 25 - 26 Oktober 2025</p>
     </div>
+<br>
 
     <div class="section">
-        <h3 class="highlight">Timeline</h3>
-        <p>Pendaftaran: 8 Agustus - 24 Oktober 2025</p>
-        <p>Pelaksanaan: 25 - 26 Oktober 2025</p>
+        <h3 class="button-baru" style="font-family: 'Poppins', sans-serif;">Lokasi</h3>
+        <p style="font-family: 'Poppins', sans-serif;">Kota Semarang</p>
     </div>
-
+<br>
     <div class="section">
-        <h3 class="highlight">Lokasi</h3>
-        <p>Kota Semarang</p>
+        <h3 class="button-baru">Contact Person</h3>
+<!-- Pastikan sudah memanggil Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+<p style="font-family: 'Poppins', sans-serif;">
+    <a href="https://wa.me/62895711760801" target="_blank" class="button-hijau" style="margin-left:8px;">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+    Arga Penyu: 0895711760801
+</p>
+
+<p style="font-family: 'Poppins', sans-serif;">
+    <a href="https://wa.me/62895366960050" target="_blank" class="button-hijau" style="margin-left:8px;">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+    Iqbal Entok: 0895366960050
+</p>
     </div>
 
-    <div class="section">
-        <h3 class="highlight">Contact Person</h3>
-        <p class="contact">Arga Penyu: 0895711760801</p>
-        <p class="contact">Iqbal Entok: 0895366960050</p>
-    </div>
-
-    <div class="section" style="text-align:center;">
+    {{-- <div class="section" style="text-align:center;">
         <span class="gold">TOTAL HADIAH 14 JT</span>
-    </div>
+    </div> --}}
 
-    <div class="section">
-        <h3 class="highlight">Social Media</h3>
-        <p>Instagram: @SNOC_X sabhagiriwana 17</p>
-        <p>TikTok: SABHAGIRIWANA17</p>
-        <p>Facebook: SABHAGIRIWANA UNTAG SEMARANG</p>
-        <p>Email: sabhagiriwana17untagsmrg@gmail.com</p>
-    </div>
+    <br>
+   <!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+<div class="section">
+    <h3 class="button-baru">Social Media</h3>
+
+    <p style="font-family: 'Poppins', sans-serif;">
+        <i class="bi bi-instagram" style="color:#E4405F; margin-right:8px;"></i>
+        : @SNOC_X sabhagiriwana 17
+    </p>
+
+    <p style="font-family: 'Poppins', sans-serif;">
+        <i class="bi bi-tiktok" style="color:#000; margin-right:8px;"></i>
+        : SABHAGIRIWANA17
+    </p>
+
+    <p style="font-family: 'Poppins', sans-serif;">
+        <i class="bi bi-facebook" style="color:#1877F2; margin-right:8px;"></i>
+        : SABHAGIRIWANA UNTAG SEMARANG
+    </p>
+
+    <p style="font-family: 'Poppins', sans-serif;">
+        <i class="bi bi-envelope-fill" style="color:#EA4335; margin-right:8px;"></i>
+        : sabhagiriwana17untagsmrg@gmail.com
+    </p>
+</div>
+
 </div>
 
 </div>
