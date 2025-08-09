@@ -1,11 +1,13 @@
 @include('frontend.android.00_fiturmenu.01_header')
 @include('frontend.android.00_fiturmenu.06_alert')
+@include('frontend.button')
 
 <body class="font-poppins text-[#2A2A2A]">
   <section id="content" class="max-w-[640px] w-full min-h-screen mx-auto flex flex-col bg-gradient-to-b from-[#F9F9F9] to-[#F0F0F0] overflow-x-hidden pb-[122px] relative">
     <!-- Modern Header with Gradient -->
     <header class="flex justify-center h-[376px] px-[18px] relative overflow-hidden -mb-[106px]">
       <div class="absolute inset-0 bg-gradient-to-br from-[#800020] via-[#5D1F1E] to-[#2E8B57] opacity-90"></div>
+
       <img src="/assets/android/iconmenu/race.png" class="absolute object-cover w-full h-full mix-blend-overlay" alt="backgrounds">
 
       <!-- Elegant Navigation Bar -->
@@ -282,89 +284,184 @@
 <div class="promo-section poppins">
   <div class="promo-header flex justify-between items-center mb-6 px-4">
    <h2 class="text-2xl font-semibold text-gray-800 font-[Poppins, sans-serif]">
-  Events SNOC X
+  SNOC-X
 </h2>
 
-    <a href="#" class="flex items-center text-blue-600 hover:text-blue-800 font-medium text-sm">
+    {{-- <a href="#" class="flex items-center text-blue-600 hover:text-blue-800 font-medium text-sm">
       View All
       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
       </svg>
-    </a>
+    </a> --}}
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
     <!-- CARD 1 -->
     <div class="bg-white rounded-xl shadow-md overflow-hidden">
-      <div class="relative">
-        <img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-             class="w-full h-48 object-cover" alt="Orienteering Sprint" loading="lazy">
-        <div class="absolute inset-0 bg-black bg-opacity-30"></div>
-        {{-- <div class="absolute top-2 left-2 bg-white text-xs font-semibold px-3 py-1 rounded-full shadow">
-          12 Jun 2023
-        </div> --}}
-      </div>
-      <div class="p-4">
-        <h3 class="text-lg font-semibold text-gray-800 mb-1" style="font-family: 'Poppins', sans-serif;">National Sprint Championship</h3>
-        <p class="text-sm text-gray-600 mb-3" style="font-family: 'Poppins', sans-serif;">Fast-paced urban orienteering in Jakarta city center</p>
-        <div class="flex items-center justify-between">
-          <span class="text-xs font-medium text-blue-600" style="font-family: 'Poppins', sans-serif;">#Sprint</span>
-          <button class="text-blue-600 hover:text-blue-800 transition">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </button>
-        </div>
-      </div>
+<div class="relative">
+    <img src="/assets/abgblora/logo/1.jpg"
+         class="w-full h-full object-cover p-3"
+         alt="Orienteering Sprint"
+         loading="lazy">
+
+    <a href="/assets/abgblora/logo/1.jpg"
+       download
+       class="button-maroon">
+        Download Brosur
+    </a>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+    h1, h2, h3 {
+        text-transform: uppercase;
+        font-weight: 800;
+        margin: 0 0 10px 0;
+    }
+    h1 {
+        color: maroon;
+        font-size: 2em;
+        letter-spacing: 1px;
+        text-align: center;
+    }
+    h2 {
+        color: #006400; /* hijau tua */
+        font-size: 1.4em;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .highlight {
+        background: maroon;
+        color: white;
+        padding: 5px 12px;
+        border-radius: 5px;
+        font-weight: 600;
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    ul li {
+        background: #f8f8f8;
+        margin: 5px 0;
+        padding: 8px 12px;
+        border-radius: 5px;
+        transition: 0.3s;
+        border-left: 4px solid maroon;
+    }
+    ul li:hover {
+        background: maroon;
+        color: white;
+        transform: scale(1.02);
+    }
+
+    .contact {
+        background: maroon;
+        padding: 8px 12px;
+        border-radius: 5px;
+        font-weight: 600;
+        color: white;
+        margin: 5px 0;
+        display: inline-block;
+    }
+
+    .gold {
+        background: linear-gradient(to right, gold, orange);
+        color: black;
+        font-size: 1.3em;
+        padding: 8px 14px;
+        border-radius: 8px;
+        display: inline-block;
+        font-weight: bold;
+    }
+
+    p {
+        margin: 5px 0;
+    }
+</style>
+
+<div class="container">
+    {{-- <h1>SNOCX - SABHAGIRIWANA’17</h1> --}}
+    {{-- <h2>National Orienteering Competition</h2> --}}
+
+    <div class="section">
+        <br>
+        {{-- <h3 class="button-berkas">Score Orienteering Event</h3> --}}
+        <p><strong class="button-baru" style="font-family: 'Poppins', sans-serif;">KATEGORI</strong></p>
+        <ul style="list-style-type: none; padding: 0; margin: 0; font-family: 'Poppins', sans-serif;">
+    <li style="font-family: 'Poppins', sans-serif;">
+        1 Tim 2 Orang Non Militer
+    </li>
+    <li style="font-family: 'Poppins', sans-serif;">
+        Umum Putra/Putri IDR 280.000
+    </li>
+    <li style="font-family: 'Poppins', sans-serif;">
+        Pelajar Putra/Putri IDR 250.000
+    </li>
+</ul>
+    </div>
+<br>
+    <div class="section">
+        <h3 class="button-baru" style="font-family: 'Poppins', sans-serif;">FASILITAS</h3>
+        <ul>
+            <li>Konsumsi 1X</li>
+            <li>T-shirt</li>
+            <li>Live music & Door Prize</li>
+            <li>BIB Number</li>
+            <li>Piala Juara</li>
+            <li>Buku Teknis</li>
+            <li>Peta Perlombaan</li>
+            <li>Stiker Perlombaan</li>
+            <li>E-Sertifikat</li>
+            <li>Mendali Juara</li>
+        </ul>
     </div>
 
-    <!-- CARD 2 -->
-    <div class="bg-white rounded-xl shadow-md overflow-hidden">
-      <div class="relative">
-        <img src="https://images.unsplash.com/photo-1470114716159-e389f8712fda?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-             class="w-full h-48 object-cover" alt="Orienteering Mountain" loading="lazy">
-        <div class="absolute inset-0 bg-black bg-opacity-30"></div>
-        {{-- <div class="absolute top-2 left-2 bg-white text-xs font-semibold px-3 py-1 rounded-full shadow">
-          25 Jul 2023
-        </div> --}}
-      </div>
-      <div class="p-4">
-        <h3 class="text-lg font-semibold text-gray-800 mb-1" style="font-family: 'Poppins', sans-serif;">Mountain Orienteering Challenge</h3>
-        <p class="text-sm text-gray-600 mb-3" style="font-family: 'Poppins', sans-serif;">Technical terrain in the hills of Bandung</p>
-        <div class="flex items-center justify-between">
-          <span class="text-xs font-medium text-green-600" style="font-family: 'Poppins', sans-serif;">#Mountain</span>
-          <button class="text-green-600 hover:text-green-800 transition">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </button>
-        </div>
-      </div>
+    <div class="section">
+        <h3 class="highlight">Transfer</h3>
+        <p>Seabank: 901727726533 a/n Rudi Setiyono</p>
+        <p>Shopee Pay: 0895360119028 a/n Rudi Setiyono</p>
+        <p>Dana: 0895360119028 a/n Rudi Setiyono</p>
     </div>
 
-    <!-- CARD 3 -->
-    <div class="bg-white rounded-xl shadow-md overflow-hidden">
-      <div class="relative">
-        <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-             class="w-full h-48 object-cover" alt="Junior Orienteering" loading="lazy">
-        <div class="absolute inset-0 bg-black bg-opacity-30"></div>
-        {{-- <div class="absolute top-2 left-2 bg-white text-xs font-semibold px-3 py-1 rounded-full shadow">
-          15 Aug 2023
-        </div> --}}
-      </div>
-      <div class="p-4">
-        <h3 class="text-lg font-semibold text-gray-800 mb-1" style="font-family: 'Poppins', sans-serif;">Junior National Championships</h3>
-        <p class="text-sm text-gray-600 mb-3" style="font-family: 'Poppins', sans-serif;">For competitors under 18 years old in Yogyakarta</p>
-        <div class="flex items-center justify-between">
-          <span class="text-xs font-medium text-purple-600" style="font-family: 'Poppins', sans-serif;">#Junior</span>
-          <button class="text-purple-600 hover:text-purple-800 transition">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </button>
-        </div>
-      </div>
+    <div class="section">
+        <h3 class="highlight">Timeline</h3>
+        <p>Pendaftaran: 8 Agustus - 24 Oktober 2025</p>
+        <p>Pelaksanaan: 25 - 26 Oktober 2025</p>
     </div>
+
+    <div class="section">
+        <h3 class="highlight">Lokasi</h3>
+        <p>Kota Semarang</p>
+    </div>
+
+    <div class="section">
+        <h3 class="highlight">Contact Person</h3>
+        <p class="contact">Arga Penyu: 0895711760801</p>
+        <p class="contact">Iqbal Entok: 0895366960050</p>
+    </div>
+
+    <div class="section" style="text-align:center;">
+        <span class="gold">TOTAL HADIAH 14 JT</span>
+    </div>
+
+    <div class="section">
+        <h3 class="highlight">Social Media</h3>
+        <p>Instagram: @SNOC_X sabhagiriwana 17</p>
+        <p>TikTok: SABHAGIRIWANA17</p>
+        <p>Facebook: SABHAGIRIWANA UNTAG SEMARANG</p>
+        <p>Email: sabhagiriwana17untagsmrg@gmail.com</p>
+    </div>
+</div>
+
+</div>
+
+
+    </div>
+
   </div>
 </div>
 
