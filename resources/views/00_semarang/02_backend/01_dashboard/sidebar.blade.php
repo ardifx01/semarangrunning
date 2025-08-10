@@ -91,7 +91,7 @@
       ">
     <i class="bi bi-people"></i> Daftar Tim
   </a>
-<a href="/404" class="submenu-item" style="
+<a href="/daftarlomba" class="submenu-item" style="
     color: white;
     text-decoration: none;
     display: flex;             /* Flex supaya sejajar horizontal */
@@ -102,7 +102,7 @@
     margin-bottom: 4px;
     transition: background-color 0.3s;
 ">
-  <i class="bi bi-trophy-fill" style="font-size: 1.2rem;"></i> Lomba
+  <i class="bi bi-trophy-fill" style="font-size: 1.2rem;"></i> Daftar Lomba
 </a>
 
   <a href="/404" class="submenu-item" style="

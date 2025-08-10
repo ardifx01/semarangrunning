@@ -23,69 +23,71 @@
         </div>
         </div>
       </div>
-
 <div class="content">
   <div class="table-container">
     <table class="responsive-table">
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Nama Lengkap</th>
-                <th>Jenis Kelamin</th>
-                <th>Tanggal Lahir</th>
-                <th>NIK</th>
-                <th>No. Telepon</th>
-                <th>Foto</th>
-                <th style="width: 100px;">Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Nama Lengkap</th>
+          <th>Jenis Kelamin</th>
+          <th>Tanggal Lahir</th>
+          <th>NIK</th>
+          <th>No. Telepon</th>
+          <th>Foto</th>
+          <th>KTP</th>
+          <th style="width: 100px;">Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        @forelse($data as $item)
+          <tr>
+            <td>{{ $loop->iteration }}</td> <!-- nomor urut -->
+            <td>{{ $item->namalengkap ?? '-' }}</td>
+            <td>{{ $item->jeniskelamin ?? '-' }}</td>
+            <td>{{ $item->ttl ? \Carbon\Carbon::parse($item->ttl)->format('d-m-Y') : '-' }}</td>
+            <td>{{ $item->nik ?? '-' }}</td>
+            <td>{{ $item->notelepon ?? '-' }}</td>
+            <td>
+              <div style="margin-top: 10px; text-align: center;">
+                @if($item->foto && file_exists(public_path('storage/' . $item->foto)))
+                  <img src="{{ asset('storage/' . $item->foto) }}" alt="Foto" style="width: 100%; max-height: 100px; object-fit: contain;" loading="lazy">
+                @elseif($item->foto)
+                  <img src="{{ asset($item->foto) }}" alt="Foto" style="width: 100%; max-height: 100px; object-fit: contain;" loading="lazy">
+                @else
+                  <p style="font-size: 11px;">Foto belum diupload</p>
+                @endif
+              </div>
+            </td>
+            <td>
+              <div style="margin-top: 10px; text-align: center;">
+                @if($item->ktp && file_exists(public_path('storage/' . $item->ktp)))
+                  <img src="{{ asset('storage/' . $item->ktp) }}" alt="KTP" style="width: 100%; max-height: 100px; object-fit: contain;" loading="lazy">
+                @elseif($item->ktp)
+                  <img src="{{ asset($item->ktp) }}" alt="KTP" style="width: 100%; max-height: 100px; object-fit: contain;" loading="lazy">
+                @else
+                  <p style="font-size: 11px;">KTP belum diupload</p>
+                @endif
+              </div>
+            </td>
+            <td>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <!-- Tombol Edit -->
+                <a href="{{ url('/daftartimupdateupdate/' . $item->id ) }}" class="button-berkas">
+                  <i class="bi bi-pencil-square"></i> Update
+                </a>
 
-            @forelse($data as $item)
-<tr>
-    <td>{{ $loop->iteration }}</td> <!-- nomor urut -->
-    <td>{{ $item->namalengkap ?? '-' }}</td>
-    <td>{{ $item->jeniskelamin ?? '-' }}</td>
-    <td>{{ $item->ttl ? \Carbon\Carbon::parse($item->ttl)->format('d-m-Y') : '-' }}</td>
-    <td>{{ $item->nik ?? '-' }}</td>
-    <td>{{ $item->notelepon ?? '-' }}</td>
-    <td>
-
-        <div style="margin-top: 10px;">
-
-                                                                                                            @if($item->foto && $item->foto && $item->foto && file_exists(public_path('storage/' . $item->foto)))
-                                                                                                                <!-- Menampilkan gambar dari storage -->
-                                                                                                                <img src="{{ asset('storage/' . $item->foto) }}" alt="Foto Belum Di Upload" style="width: 100%; max-height: 100px; object-fit: contain;" loading="lazy">
-                                                                                                            @elseif($item->foto && $item->foto && $item->foto)
-                                                                                                                <!-- Menampilkan gambar dari path luar storage -->
-                                                                                                                <img src="{{ asset($item->foto) }}" alt="Foto Belum Di Upload " style="width: 100%; max-height: 100px; object-fit: contain;" loading="lazy">
-                                                                                                            @else
-                                                                                                                <!-- Placeholder jika tidak ada data -->
-                                                                                                                <p style="font-size: 11px;">Tidak Ada Tanda Tangan !</p>
-
-                                                                                                                @endif
-                                                                                                        </div>
-
-    <td>
-<div style="display: flex; align-items: center; gap: 8px;">
-    <!-- Tombol Edit -->
-    <a href="{{ url('/daftartimupdateupdate/' . $item->id ) }}" class="button-berkas">
-        <i class="bi bi-pencil-square"></i> Update
-    </a>
-
-    <!-- Tombol Hapus -->
-    <form action="{{ route('daftartim.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Apakah Saudara ingin menghapus data ini?')" style="margin: 0;">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="button-merah">
-            <i class="bi bi-trash-fill" style="font-size: 18px;"></i> Hapus
-        </button>
-    </form>
-</div>
-
-</td>
-
-</tr>
+                <!-- Tombol Hapus -->
+                <form action="{{ route('daftartim.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Apakah Saudara ingin menghapus data ini?')" style="margin: 0;">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="button-merah">
+                    <i class="bi bi-trash-fill" style="font-size: 18px;"></i> Hapus
+                  </button>
+                </form>
+              </div>
+            </td>
+          </tr>
                 @empty
     <tr>
     <td colspan="100%"> {{-- Memenuhi semua kolom --}}

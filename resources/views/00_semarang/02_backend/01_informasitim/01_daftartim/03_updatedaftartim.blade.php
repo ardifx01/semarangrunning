@@ -154,51 +154,122 @@
 
             <hr class="my-4 custom-divider" style="border-top: 2px dashed maroon; width: 60%; margin: auto;">
         </div>
-          <div class="form-group">
-        <label for="foto" style="font-weight: bold; font-size:16px;">
-            <i class="bi bi-image"></i> Foto
-        </label>
-        <input
-            type="file"
-            id="foto"
-            name="foto"
-            class="form-control @error('foto') is-invalid @enderror"
-            accept="image/*"
-            onchange="previewImage(event)"
-        />
-        @error('foto')
-            <div class="invalid-feedback">{{ $message }}</div>
-        @enderror
+<div style="display: flex; gap: 30px; flex-wrap: wrap;">
 
-        <!-- Preview Gambar -->
-        <div style="margin-top: 10px; text-align: center;">
-            <img
-                id="fotoPreview"
-                src="{{ $data->foto ? asset($data->foto) : '#' }}"
-                alt="Preview Foto"
-                style="max-width: 200px; {{ $data->foto ? 'display: block;' : 'display: none;' }} border: 1px solid #ccc; padding: 5px; border-radius: 5px;"
-            >
-        </div>
+  <!-- Foto -->
+  <div style="flex: 1; min-width: 280px; background: white; padding: 15px; border-radius: 8px;">
+    <div class="form-group">
+      <label for="foto" style="font-weight: bold; font-size: 16px;">
+        <i class="bi bi-image"></i> Foto
+      </label>
+      <input
+        type="file"
+        id="foto"
+        name="foto"
+        class="form-control @error('foto') is-invalid @enderror"
+        accept="image/*"
+        onchange="previewImage(event)"
+      />
+      @error('foto')
+        <div class="invalid-feedback">{{ $message }}</div>
+      @enderror
+
+      <div style="margin-top: 10px; text-align: center;">
+        <img
+          id="fotoPreview"
+          src="{{ $data->foto ? asset($data->foto) : '#' }}"
+          alt="Preview Foto"
+          style="max-width: 200px; {{ $data->foto ? 'display: block;' : 'display: none;' }} border: 1px solid #ccc; padding: 5px; border-radius: 5px;"
+        >
+      </div>
     </div>
+  </div>
+
+  <!-- KTP -->
+  <div style="flex: 1; min-width: 280px; background: white; padding: 15px; border-radius: 8px;">
+    <div class="form-group">
+      <label for="ktp" style="font-weight: bold; font-size: 16px;">
+        <i class="bi bi-card-heading"></i> KTP / (Foto / PDF)
+      </label>
+      <input
+        type="file"
+        id="ktp"
+        name="ktp"
+        class="form-control @error('ktp') is-invalid @enderror"
+        accept="image/*,application/pdf"
+        onchange="previewFile(event, 'ktpPreview', 'ktpPreviewPdf')"
+      />
+      @error('ktp')
+        <div class="invalid-feedback">{{ $message }}</div>
+      @enderror
+
+      <div style="margin-top: 10px; text-align: center;">
+        <img
+          id="ktpPreview"
+          src="{{ $data->ktp && !str_contains($data->ktp, '.pdf') ? asset($data->ktp) : '#' }}"
+          alt="Preview KTP"
+          style="max-width: 200px; {{ $data->ktp && !str_contains($data->ktp, '.pdf') ? 'display: block;' : 'display: none;' }} border: 1px solid #ccc; padding: 5px; border-radius: 5px;"
+        >
+        <p
+          id="ktpPreviewPdf"
+          style="display: {{ $data->ktp && str_contains($data->ktp, '.pdf') ? 'block' : 'none' }}; font-size: 14px; color: #555;"
+        >
+          File PDF terpilih
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div>
 
 <script>
 function previewImage(event) {
-    const input = event.target;
-    const preview = document.getElementById('fotoPreview');
+  const input = event.target;
+  const preview = document.getElementById('fotoPreview');
 
-    if (input.files && input.files[0]) {
-        const reader = new FileReader();
+  if (input.files && input.files[0]) {
+    const reader = new FileReader();
 
-        reader.onload = function(e) {
-            preview.src = e.target.result;
-            preview.style.display = 'block';
-        }
-
-        reader.readAsDataURL(input.files[0]);
-    } else {
-        preview.src = "#";
-        preview.style.display = 'none';
+    reader.onload = function(e) {
+      preview.src = e.target.result;
+      preview.style.display = 'block';
     }
+
+    reader.readAsDataURL(input.files[0]);
+  } else {
+    preview.src = "#";
+    preview.style.display = 'none';
+  }
+}
+
+function previewFile(event, previewImgId, previewPdfId) {
+  const input = event.target;
+  const previewImg = document.getElementById(previewImgId);
+  const previewPdfText = document.getElementById(previewPdfId);
+
+  if (input.files && input.files[0]) {
+    const file = input.files[0];
+    const fileType = file.type;
+
+    if (fileType === 'application/pdf') {
+      previewImg.style.display = 'none';
+      previewPdfText.style.display = 'block';
+    } else if (fileType.startsWith('image/')) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        previewImg.src = e.target.result;
+        previewImg.style.display = 'block';
+        previewPdfText.style.display = 'none';
+      }
+      reader.readAsDataURL(file);
+    } else {
+      previewImg.style.display = 'none';
+      previewPdfText.style.display = 'none';
+    }
+  } else {
+    previewImg.style.display = 'none';
+    previewPdfText.style.display = 'none';
+  }
 }
 </script>
 

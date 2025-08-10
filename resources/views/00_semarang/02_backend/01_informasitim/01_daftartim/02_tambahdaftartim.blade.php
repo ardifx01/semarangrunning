@@ -155,48 +155,91 @@
 
             <hr class="my-4 custom-divider" style="border-top: 2px dashed maroon; width: 60%; margin: auto;">
         </div>
-<div class="form-column" style="background: white; padding: 15px; border-radius: 8px;">
+<div class="form-row" style="display: flex; gap: 20px; flex-wrap: wrap; background: white; padding: 15px; border-radius: 8px;">
+  <!-- Foto -->
+  <div class="form-column" style="flex: 1; min-width: 280px;">
     <div class="form-group">
-        <label class="form-label" for="foto" style="font-weight: bold; font-size:16px;">
-            <i class="bi bi-image form-icon"></i> Foto
-        </label>
-        <input
-            type="file"
-            id="foto"
-            name="foto"
-            class="form-control @error('foto') is-invalid @enderror"
-            accept="image/*"
-            onchange="previewImage(event)"
-        />
-        @error('foto')
-            <div class="invalid-feedback">{{ $message }}</div>
-        @enderror
+      <label class="form-label" for="foto" style="font-weight: bold; font-size:16px;">
+        <i class="bi bi-image form-icon"></i> Foto / (Foto/ PDF) Max 15MB
+      </label>
+      <input
+        type="file"
+        id="foto"
+        name="foto"
+        class="form-control @error('foto') is-invalid @enderror"
+        accept="image/*,application/pdf"
+        onchange="previewFile(event, 'fotoPreview')"
+      />
+      @error('foto')
+        <div class="invalid-feedback">{{ $message }}</div>
+      @enderror
 
-        <!-- Preview Gambar -->
-        <div style="margin-top: 10px; text-align: center;">
-            <img id="fotoPreview" src="#" alt="Preview Foto" style="max-width: 200px; display: none; border: 1px solid #ccc; padding: 5px; border-radius: 5px;">
-        </div>
+      <div style="margin-top: 10px; text-align: center;">
+        <img id="fotoPreview" src="#" alt="Preview Foto" style="max-width: 200px; display: none; border: 1px solid #ccc; padding: 5px; border-radius: 5px;">
+        <p id="fotoPreviewPdf" style="display:none; font-size: 14px; color: #555;">File PDF terpilih</p>
+      </div>
     </div>
+  </div>
+
+  <!-- KTP -->
+  <div class="form-column" style="flex: 1; min-width: 280px;">
+    <div class="form-group">
+      <label class="form-label" for="ktp" style="font-weight: bold; font-size:16px;">
+        <i class="bi bi-card-heading form-icon"></i> KTP / (Foto/ PDF) Max 15MB
+      </label>
+      <input
+        type="file"
+        id="ktp"
+        name="ktp"
+        class="form-control @error('ktp') is-invalid @enderror"
+        accept="image/*,application/pdf"
+        onchange="previewFile(event, 'ktpPreview')"
+      />
+      @error('ktp')
+        <div class="invalid-feedback">{{ $message }}</div>
+      @enderror
+
+      <div style="margin-top: 10px; text-align: center;">
+        <img id="ktpPreview" src="#" alt="Preview KTP" style="max-width: 200px; display: none; border: 1px solid #ccc; padding: 5px; border-radius: 5px;">
+        <p id="ktpPreviewPdf" style="display:none; font-size: 14px; color: #555;">File PDF terpilih</p>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
-function previewImage(event) {
-    const input = event.target;
-    const preview = document.getElementById('fotoPreview');
+function previewFile(event, previewImgId) {
+  const input = event.target;
+  const previewImg = document.getElementById(previewImgId);
+  const previewPdfText = document.getElementById(previewImgId + 'Pdf');
 
-    if (input.files && input.files[0]) {
-        const reader = new FileReader();
+  if (input.files && input.files[0]) {
+    const file = input.files[0];
+    const fileType = file.type;
 
-        reader.onload = function(e) {
-            preview.src = e.target.result;
-            preview.style.display = 'block';
-        }
-
-        reader.readAsDataURL(input.files[0]);
+    if (fileType === 'application/pdf') {
+      // Jika file PDF, sembunyikan preview gambar, tampilkan teks PDF
+      previewImg.style.display = 'none';
+      previewPdfText.style.display = 'block';
+      previewPdfText.textContent = 'File PDF terpilih: ' + file.name;
+    } else if (fileType.startsWith('image/')) {
+      // Jika file gambar, tampilkan preview gambar, sembunyikan teks PDF
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        previewImg.src = e.target.result;
+        previewImg.style.display = 'block';
+        previewPdfText.style.display = 'none';
+      }
+      reader.readAsDataURL(file);
     } else {
-        preview.src = "#";
-        preview.style.display = 'none';
+      // Format file lain, sembunyikan keduanya
+      previewImg.style.display = 'none';
+      previewPdfText.style.display = 'none';
     }
+  } else {
+    previewImg.style.display = 'none';
+    previewPdfText.style.display = 'none';
+  }
 }
 </script>
 
