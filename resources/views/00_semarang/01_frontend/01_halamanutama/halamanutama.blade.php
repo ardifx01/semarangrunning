@@ -475,7 +475,7 @@
 
     <p style="font-family: 'Poppins', sans-serif;">
         <i class="bi bi-instagram" style="color:#E4405F; margin-right:8px;"></i>
-        Instagram : <br> @SNOC_X sabhagiriwana 17
+        Instagram : <br> <span class="button-hijau"> @SNOC_X sabhagiriwana 17</span>
     </p>
 
     <p style="font-family: 'Poppins', sans-serif;">
