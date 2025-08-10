@@ -15,15 +15,16 @@
 </a>
 
 <!-- Tracking -->
-
 <a href="/404" class="nav-icon" style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 56px; color: #757C98;">
-    <div style="width: 24px; height: 24px; display: flex; justify-content: center; align-items: center;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-        </svg>
-    </div>
-    <span style="font-size: 10px;">Status</span>
+  <div style="width: 24px; height: 24px; display: flex; justify-content: center; align-items: center;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+      <rect x="9" y="2" width="6" height="4" rx="1" ry="1"/>
+    </svg>
+  </div>
+  <span style="font-size: 10px;">Status</span>
 </a>
+
 
 <!-- Home (Center) -->
 <a href="/404" class="nav-icon" style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 56px; transform: translateY(-24px);">
@@ -58,15 +59,16 @@
     <span style="font-size: 10px;">Pengaturan</span>
 </a>
 
-  <!-- Login -->
-  <a href="/login" id="login-icon" class="nav-icon" style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 56px; color: #757C98;">
+<!-- Login -->
+<a href="/login" id="login-icon" class="nav-icon" style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 56px; color: #757C98;">
     <div style="width: 24px; height: 24px; display: flex; justify-content: center; align-items: center;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
-        <polyline points="10 17 15 12 10 7"></polyline>
-        <line x1="15" y1="12" x2="3" y2="12"></line>
-      </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+            <polyline points="10 17 15 12 10 7"></polyline>
+            <line x1="15" y1="12" x2="3" y2="12"></line>
+        </svg>
     </div>
+    <span style="font-size: 10px;">Login</span>
   </a>
 
 </div>
