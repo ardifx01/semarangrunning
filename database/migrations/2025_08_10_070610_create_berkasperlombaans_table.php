@@ -11,13 +11,29 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('berkasperlombaans', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('akunpengguna_id')->nullable()->index();
-            $table->string('nama')->nullable();
-            $table->softDeletes();
-            $table->timestamps();
-        });
+Schema::create('berkasperlombaans', function (Blueprint $table) {
+    $table->id();
+    $table->foreignId('akunpengguna_id')->nullable()->index();
+
+    // Kolom info tim dan organisasi
+    $table->foreignId('kategori')->nullable()->index();        // Pilih Kategori
+    $table->foreignId('kota_id')->nullable()->index();        // Pilih Kategori
+    $table->foreignIdstring('provinsi_id')->nullable()->index();        // Pilih Kategori
+
+    $table->string('nama_tim')->nullable();        // Nama Tim
+    $table->string('nama_organisasi')->nullable();// Nama Organisasi
+    $table->text('alamat_organisasi')->nullable();// Alamat Organisasi
+
+    // Kolom upload file, simpan path/file name
+    $table->string('surat_tugas_organisasi')->nullable();  // Surat tugas dr organisasi
+    $table->string('surat_keterangan_sehat')->nullable();  // Surat keterangan sehat
+    $table->string('bukti_pembayaran')->nullable();        // Bukti Pembayaran
+    $table->string('surat_pernyataan')->nullable();        // Surat Pernyataan
+
+    $table->softDeletes();
+    $table->timestamps();
+});
+
     }
 
     /**

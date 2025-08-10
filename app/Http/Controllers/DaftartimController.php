@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\berkasperlombaan;
 use Carbon\Carbon;
 
 use App\Models\daftartim;
@@ -283,7 +285,7 @@ public function daftarlomba()
     $userId = Auth::id(); // Dapatkan ID user yang login
 
     // Ambil data daftartim yang akun_id-nya sama dengan user yang login
-    $data = daftartim::where('akun_id', $userId)->get();
+    $data = berkasperlombaan::where('akunpengguna_id', $userId)->get();
 
     return view('00_semarang.02_backend.02_daftarlomba.01_daftarlomba', [
         'title' => 'Silahkan Untuk Daftar Event',
