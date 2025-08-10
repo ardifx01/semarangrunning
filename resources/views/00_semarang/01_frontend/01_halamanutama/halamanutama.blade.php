@@ -475,25 +475,25 @@
 
     <p style="font-family: 'Poppins', sans-serif;">
         <i class="bi bi-instagram" style="color:#E4405F; margin-right:8px;"></i>
-        Instagram : <br> <span class="button-hijau"> @SNOC_X sabhagiriwana 17</span>
+        Instagram : <br> <span class="button-maroon"> @SNOC_X sabhagiriwana 17</span>
     </p>
 
     <p style="font-family: 'Poppins', sans-serif;">
         <i class="bi bi-tiktok" style="color:#000; margin-right:8px;"></i>
         Tiktok : <br>
-        <span class="button-hijau">SABHAGIRIWANA17</span>
+        <span class="button-maroon">SABHAGIRIWANA17</span>
     </p>
 
     <p style="font-family: 'Poppins', sans-serif;">
         <i class="bi bi-facebook" style="color:#1877F2; margin-right:8px;"></i>
         Facebook : <br>
-        <span class="button-hijau">SABHAGIRIWANA UNTAG SEMARANG</span>
+        <span class="button-maroon">SABHAGIRIWANA UNTAG SEMARANG</span>
     </p>
 
     <p style="font-family: 'Poppins', sans-serif;">
         <i class="bi bi-envelope-fill" style="color:#EA4335; margin-right:8px;"></i>
         Email : <br>
-        <span class="button-hijau">sabhagiriwana17untagsmrg@gmail.com</span>
+        <span class="button-maroon">sabhagiriwana17untagsmrg@gmail.com</span>
     </p>
 </div>
 
