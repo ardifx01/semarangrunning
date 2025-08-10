@@ -20,7 +20,8 @@
         </h2>
       </div>
 
-      <img src="/assets/abgblora/logo/1.jpg" alt="">
+      <img src="/assets/abgblora/logo/3.jpg" alt="" width="20px;">
+      <img src="/assets/abgblora/logo/5.png" alt="" width="20px;">
 
       <a href="#" class="block text-center mt-2">
         <h6 class="font-semibold text-sm text-stone-600">
