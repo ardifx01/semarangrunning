@@ -38,7 +38,7 @@
         <th>NIK</th>
         <th>No. Telepon</th>
         <th>Foto</th> --}}
-        <th style="width: 150px;">Aksi</th>
+        {{-- <th style="width: 150px;">Aksi</th> --}}
       </tr>
     </thead>
     <tbody>
@@ -53,12 +53,12 @@
       <i class="bi bi-eye"></i> Lihat
     </a>
   </td>
-        <td>
+        {{-- <td>
           <div style="display: flex; align-items: center; gap: 8px;">
             <!-- Tombol Edit -->
             <a href="{{ url('/daftartimupdateupdate/' . $item->id ) }}" class="button-berkas">
               <i class="bi bi-pencil-square"></i> Edit
-            </a>
+            </a> --}}
 
             <!-- Tombol Hapus -->
             {{-- <form action="{{ route('daftartim.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Apakah Saudara ingin menghapus data ini?')" style="margin: 0;">
@@ -68,8 +68,8 @@
                 <i class="bi bi-trash-fill" style="font-size: 18px;"></i> Hapus
               </button>
             </form> --}}
-          </div>
-        </td>
+          {{-- </div>
+        </td> --}}
       </tr>
                 @empty
     <tr>

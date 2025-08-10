@@ -159,8 +159,9 @@
 
     @endcanany
 
+@can('super_admin')
 
-    <a href="/bedaftartim" class="menu-item" style="
+<a href="/bedaftartim" class="menu-item" style="
       color: white;
       text-decoration: none;
       display: flex;
@@ -170,9 +171,10 @@
       border-radius: 4px;
       margin-bottom: 4px;
       transition: background-color 0.3s;
-    ">
+      ">
       <i class="bi bi-person"></i><span>Daftar Tim</span>
     </a>
+    @endcan
 
     <!-- Menu Peta (Trigger) -->
     {{-- <div class="menu-item" onclick="toggleSubmenu()" style="
