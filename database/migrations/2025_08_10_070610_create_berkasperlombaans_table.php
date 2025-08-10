@@ -49,6 +49,29 @@ Schema::create('berkasperlombaans', function (Blueprint $table) {
             $table->string('cadangan3')->nullable();
             $table->string('cadangan4')->nullable();
 
+            $table->string('pos1')->nullable();
+            $table->string('pos2')->nullable();
+            $table->string('pos3')->nullable();
+            $table->string('pos4')->nullable();
+            $table->string('pos5')->nullable();
+            $table->string('pos6')->nullable();
+            $table->string('pos7')->nullable();
+            $table->string('pos8')->nullable();
+            $table->string('pos9')->nullable();
+            $table->string('pos10')->nullable();
+            $table->string('pos11')->nullable();
+            $table->string('pos12')->nullable();
+            $table->string('pos13')->nullable();
+            $table->string('pos14')->nullable();
+            $table->string('pos15')->nullable();
+            $table->string('pos16')->nullable();
+            $table->string('pos17')->nullable();
+            $table->string('pos18')->nullable();
+            $table->string('pos19')->nullable();
+            $table->string('pos20')->nullable();
+            $table->string('pos21')->nullable();
+            $table->string('pos22')->nullable();
+
     $table->softDeletes();
     $table->timestamps();
 });
