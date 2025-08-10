@@ -259,7 +259,7 @@
     <button type="submit" class="login-btn">Login</button>
 
     <div class="register">
-        Belum Punya Akun ? <a href="/daftar">Daftar Disini !</a>
+        Belum Punya Akun ? <a href="/404">Daftar Disini !</a>
     </div>
 </form>
         <div class="mountain-border"></div>
