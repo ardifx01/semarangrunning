@@ -158,115 +158,9 @@
 </script>
 
     @endcanany
-{{--
-    @canany(['super_admin'])
-
-    <!-- Menu Perlombaan -->
-<div class="menu-item" onclick="toggleSubmenuPerlombaan()" style="
-      color: white;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 8px;
-      border-radius: 4px;
-      margin-bottom: 4px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    ">
-  <i class="bi bi-people-fill"></i>
-  <span>Daftar Peserta</span>
-  <i class="bi bi-caret-down-fill ms-auto" id="perlombaan-arrow"></i>
-</div>
-
-<!-- Submenu Perlombaan -->
-<div id="submenu-bedaftartim" style="
-      margin-left: 20px;
-      display: none;
-      border-left: 1px solid #333;
-      padding-left: 12px;
-    ">
-  <a href="/bedaftartim" class="submenu-item" style="
-        color: white;
-        text-decoration: none;
-        display: block;
-        padding: 8px 8px;
-        border-radius: 4px;
-        margin-bottom: 4px;
-        transition: background-color 0.3s;
-      ">
-    <i class="bi bi-people"></i> Daftar Tim
-  </a>
-<a href="/daftarlomba" class="submenu-item" style="
-    color: white;
-    text-decoration: none;
-    display: flex;             /* Flex supaya sejajar horizontal */
-    align-items: center;       /* Vertikal rata tengah */
-    gap: 8px;                  /* Jarak icon ke teks */
-    padding: 8px 8px;
-    border-radius: 4px;
-    margin-bottom: 4px;
-    transition: background-color 0.3s;
-">
-  <i class="bi bi-trophy-fill" style="font-size: 1.2rem;"></i> Daftar Lomba
-</a>
-
-  <a href="/404" class="submenu-item" style="
-        color: white;
-        text-decoration: none;
-        display: block;
-        padding: 8px 8px;
-        border-radius: 4px;
-        margin-bottom: 4px;
-        transition: background-color 0.3s;
-      ">
-    <i class="bi bi-flag-fill"></i> Status
-  </a>
-  <a href="/404" class="submenu-item" style="
-        color: white;
-        text-decoration: none;
-        display: block;
-        padding: 8px 8px;
-        border-radius: 4px;
-        margin-bottom: 4px;
-        transition: background-color 0.3s;
-      ">
-    <i class="bi bi-award-fill"></i> Sertifikat
-  </a>
-</div>
-
-<!-- Script Toggle Submenu Perlombaan -->
-<script>
-  function toggleSubmenuPerlombaan() {
-    const submenu = document.getElementById("submenu-bedaftartim");
-    const arrow = document.getElementById("perlombaan-arrow");
-
-    if (submenu.style.display === "none") {
-      submenu.style.display = "block";
-      arrow.classList.remove("bi-caret-down-fill");
-      arrow.classList.add("bi-caret-up-fill");
-    } else {
-      submenu.style.display = "none";
-      arrow.classList.remove("bi-caret-up-fill");
-      arrow.classList.add("bi-caret-down-fill");
-    }
-  }
-
-  // Hover effect
-  document.querySelectorAll('.menu-item, .submenu-item').forEach(item => {
-    item.addEventListener('mouseenter', function() {
-      this.style.backgroundColor = '#333';
-    });
-    item.addEventListener('mouseleave', function() {
-      this.style.backgroundColor = '';
-    });
-  });
-</script>
-
-    @endcanany --}}
 
 
-    {{-- <a href="/bepeserta" class="menu-item" style="
+    <a href="/bedaftartim" class="menu-item" style="
       color: white;
       text-decoration: none;
       display: flex;
@@ -277,8 +171,8 @@
       margin-bottom: 4px;
       transition: background-color 0.3s;
     ">
-      <i class="bi bi-bar-chart-fill"></i><span>Peserta</span>
-    </a> --}}
+      <i class="bi bi-person"></i><span>Daftar Tim</span>
+    </a>
 
     <!-- Menu Peta (Trigger) -->
     {{-- <div class="menu-item" onclick="toggleSubmenu()" style="

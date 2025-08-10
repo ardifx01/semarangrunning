@@ -1,0 +1,229 @@
+
+@include('00_semarang.02_backend.01_dashboard.header')
+
+<body>
+  <div class="container">
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Sidebar -->
+   @include('00_semarang.02_backend.01_dashboard.sidebar')
+   @include('frontend.android.00_fiturmenu.06_alert')
+   @include('frontend.button')
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="header">
+
+        <div class="header-left"><h3>Dashboard SNOC X | Selamat Datang <span>{{ $user?->name ?? 'Data Belum Diupdate' }}</span></h3></div>
+        <div class="header-right">
+          <div class="toggle-sidebar" id="toggleSidebar"><i class="fas fa-bars"></i></div>
+          <div class="user-profile">
+                <span>{{ $user?->statusadmin?->statusadmin ?? 'Data Belum Diupdate' }}</span>
+            {{-- <span>{{ $auth->user()?->statusadmin?->statusadmin }}</span> --}}
+        </div>
+        </div>
+      </div>
+<div class="content">
+  <div class="table-container">
+    <table class="responsive-table">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Nama Tim</th>
+          <th>Nama Organisasi</th>
+          <th>Provinsi</th>
+          <th>Kota</th>
+
+          <th style="width: 100px;">Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        @forelse($data as $item)
+          <tr>
+            <td>{{ $loop->iteration }}</td> <!-- nomor urut -->
+            <td>{{ $item->nama_tim ?? '-' }}</td>
+            <td>{{ $item->nama_organisasi ?? '-' }}</td>
+            {{-- <td>{{ $item->ttl ? \Carbon\Carbon::parse($item->ttl)->format('d-m-Y') : '-' }}</td> --}}
+            <td>{{ $item->provinsi->provinsi ?? '-' }}</td>
+            {{-- <td>{{ $item->notelepon ?? '-' }}</td>
+            <td>
+              <div style="margin-top: 10px; text-align: center;">
+                @if($item->foto && file_exists(public_path('storage/' . $item->foto)))
+                  <img src="{{ asset('storage/' . $item->foto) }}" alt="Foto" style="width: 100%; max-height: 100px; object-fit: contain;" loading="lazy">
+                @elseif($item->foto)
+                  <img src="{{ asset($item->foto) }}" alt="Foto" style="width: 100%; max-height: 100px; object-fit: contain;" loading="lazy">
+                @else
+                  <p style="font-size: 11px;">Foto belum diupload</p>
+                @endif
+              </div>
+            </td> --}}
+            {{-- <td>
+              <div style="margin-top: 10px; text-align: center;">
+                @if($item->ktp && file_exists(public_path('storage/' . $item->ktp)))
+                  <img src="{{ asset('storage/' . $item->ktp) }}" alt="KTP" style="width: 100%; max-height: 100px; object-fit: contain;" loading="lazy">
+                @elseif($item->ktp)
+                  <img src="{{ asset($item->ktp) }}" alt="KTP" style="width: 100%; max-height: 100px; object-fit: contain;" loading="lazy">
+                @else
+                  <p style="font-size: 11px;">KTP belum diupload</p>
+                @endif
+              </div>
+            </td> --}}
+            <td>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <!-- Tombol Edit -->
+                <a href="{{ url('/daftartimupdateupdate/' . $item->id ) }}" class="button-berkas">
+                  <i class="bi bi-pencil-square"></i> Update
+                </a>
+
+                <!-- Tombol Hapus -->
+                <form action="{{ route('daftartim.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Apakah Saudara ingin menghapus data ini?')" style="margin: 0;">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="button-merah">
+                    <i class="bi bi-trash-fill" style="font-size: 18px;"></i> Hapus
+                  </button>
+                </form>
+              </div>
+            </td>
+          </tr>
+                @empty
+    <tr>
+    <td colspan="100%"> {{-- Memenuhi semua kolom --}}
+            <div style="
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 30px;
+                font-weight: 600;
+                font-family: 'Poppins', sans-serif;
+                color: #6c757d;
+                background-color: #f8f9fa;
+                border: 2px dashed #ced4da;
+                border-radius: 12px;
+                font-size: 16px;
+                animation: fadeIn 0.5s ease-in-out;
+            ">
+                <i class="bi bi-folder-x" style="margin-right: 8px; font-size: 20px; color: #dc3545;"></i>
+                Saudara Belum Mendaftarkan Anggota Tim, Silahkan Tambahkan Tim Saudara  !!
+            </div>
+        </td>
+        <br>
+    </tr>
+    @endforelse
+
+</tbody>
+</table>
+@if($data->count() < 2)
+<div style="display: flex; justify-content: center; margin-top: 20px;">
+    <a href="{{ url('/daftartim/create/' . $userId) }}" class="button-maroon">
+        <i class="bi bi-person-plus-fill" style="margin-right: 8px;"></i> Tambahkan Anggota Tim
+    </a>
+</div>
+@endif
+
+
+</div>
+
+</div>
+
+<style>
+    .table-container {
+  width: 100%;
+  overflow-x: auto; /* Scroll horizontal jika layar kecil */
+}
+
+.responsive-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 300px;
+  font-family: Arial, sans-serif;
+}
+
+/* Border & text */
+.responsive-table th,
+.responsive-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Header merah maroon */
+.responsive-table th {
+  background-color: #800000; /* maroon */
+  color: #fff;
+}
+
+/* Belang abu-abu */
+.responsive-table tbody tr:nth-child(even) {
+  background-color: #f7f7f7; /* abu tipis */
+}
+.responsive-table tbody tr:nth-child(odd) {
+  background-color: #ffffff; /* putih */
+}
+
+/* Logo bulat */
+.logo-circle {
+  width: 50px;
+  height: 50px;
+  background: #ddd;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-svg {
+  width: 30px;
+  height: 30px;
+}
+
+.logo-path {
+  fill: #000;
+}
+
+/* Mobile friendly */
+@media (max-width: 600px) {
+  .responsive-table th,
+  .responsive-table td {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+</style>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script>
+    const sidebar = document.getElementById('sidebar');
+    const toggleSidebar = document.getElementById('toggleSidebar');
+    const overlay = document.getElementById('overlay');
+    const mainContent = document.querySelector('.main-content');
+
+    toggleSidebar.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+      overlay.classList.toggle('active');
+      mainContent.style.filter = sidebar.classList.contains('active') ? 'blur(2px)' : 'none';
+    });
+
+    overlay.addEventListener('click', () => {
+      sidebar.classList.remove('active');
+      overlay.classList.remove('active');
+      mainContent.style.filter = 'none';
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        sidebar.classList.add('active');
+        overlay.classList.remove('active');
+        mainContent.style.filter = 'none';
+      } else {
+        sidebar.classList.remove('active');
+      }
+    });
+  </script>
+</body>
+</html>
+

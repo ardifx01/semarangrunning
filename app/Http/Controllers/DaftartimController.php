@@ -429,9 +429,9 @@ public function bedaftartim()
 
     // Ambil data daftartim yang akun_id-nya sama dengan user yang login
     // $data = daftartim::where('akun_id', $userId)->get();
-    $data = daftartim::all();
+    $data = berkasperlombaan::all();
 
-    return view('00_semarang.02_backend.01_informasitim.01_daftartim.01_daftartim', [
+    return view('00_semarang.02_backend.00_superadmin.01_daftartim.01_daftartimall', [
         'title' => 'Daftar Tim Saudara',
         'user' => $user,
         'userId' => $userId, // kirim juga ID user ke view
