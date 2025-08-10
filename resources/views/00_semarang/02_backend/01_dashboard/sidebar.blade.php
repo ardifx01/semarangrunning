@@ -158,7 +158,7 @@
 </script>
 
     @endcanany
-
+{{--
     @canany(['super_admin'])
 
     <!-- Menu Perlombaan -->
@@ -263,7 +263,9 @@
   });
 </script>
 
-    @endcanany
+    @endcanany --}}
+
+
     {{-- <a href="/bepeserta" class="menu-item" style="
       color: white;
       text-decoration: none;
