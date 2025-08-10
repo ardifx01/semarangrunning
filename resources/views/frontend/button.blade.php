@@ -1,3 +1,4 @@
+
 <style>
 
     body {
@@ -849,6 +850,17 @@ font-family: 'Poppins', sans-serif;
     transform: translateY(-1px);
 }
 
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.col-md-6 {
+    padding-right: 15px;
+    padding-left: 15px;
+}
 
 </style>
 

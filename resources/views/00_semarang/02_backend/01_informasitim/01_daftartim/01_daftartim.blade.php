@@ -36,7 +36,7 @@
                 <th>NIK</th>
                 <th>No. Telepon</th>
                 <th>Foto</th>
-                <th>Aksi</th>
+                <th style="width: 100px;">Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -51,7 +51,8 @@
     <td>{{ $item->notelepon ?? '-' }}</td>
     <td>
 
-     <div style="margin-top: 10px;">
+        <div style="margin-top: 10px;">
+
                                                                                                             @if($item->foto && $item->foto && $item->foto && file_exists(public_path('storage/' . $item->foto)))
                                                                                                                 <!-- Menampilkan gambar dari storage -->
                                                                                                                 <img src="{{ asset('storage/' . $item->foto) }}" alt="Foto Belum Di Upload" style="width: 100%; max-height: 100px; object-fit: contain;" loading="lazy">
@@ -65,15 +66,23 @@
                                                                                                                 @endif
                                                                                                         </div>
 
-    </td>
     <td>
-    <form action="{{ route('daftartim.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Apakah Saudara ingin menghapus data ini?')">
+<div style="display: flex; align-items: center; gap: 8px;">
+    <!-- Tombol Edit -->
+    <a href="{{ url('/daftartimupdateupdate/' . $item->id ) }}" class="button-berkas">
+        <i class="bi bi-pencil-square"></i> Update
+    </a>
+
+    <!-- Tombol Hapus -->
+    <form action="{{ route('daftartim.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Apakah Saudara ingin menghapus data ini?')" style="margin: 0;">
         @csrf
         @method('DELETE')
         <button type="submit" class="button-merah">
             <i class="bi bi-trash-fill" style="font-size: 18px;"></i> Hapus
         </button>
     </form>
+</div>
+
 </td>
 
 </tr>
@@ -107,7 +116,7 @@
 </table>
 <div style="display: flex; justify-content: center; margin-top: 20px;">
     <a href="{{ url('/daftartim/create/' . $userId) }}" class="button-maroon">
-        <i class="bi bi-person-plus-fill" style="margin-right: 8px;"></i> Tambahkan Tim
+        <i class="bi bi-person-plus-fill" style="margin-right: 8px;"></i> Tambahkan Anggota Tim
     </a>
 </div>
 

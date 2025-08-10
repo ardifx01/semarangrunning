@@ -52,4 +52,9 @@ class User extends Authenticatable
         return $this->hasMany(berkaslomba::class);
     }
 
+    public function daftartim()
+    {
+        return $this->hasMany(daftartim::class);
+    }
+
 }

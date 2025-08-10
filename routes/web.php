@@ -880,8 +880,14 @@ Route::post('/himbauandinas/{nama_lengkap}', [AdministratorController::class, 'c
 
 // ----------------------
 // EVENT SNOC X 2025
-Route::get('/perlombaan/daftartim', [DaftartimController::class, 'daftartim'])->middleware('auth');
+Route::get('/perlombaan/daftartim', [DaftartimController::class, 'daftartim'])->middleware('auth')->name('daftartimindex');
 Route::delete('/daftartimdelete/{id}', [DaftartimController::class, 'deletedaftartim'])->middleware('auth')->name('daftartim.destroy');
+// Route::get('/daftartim/create/{id}', [DaftartimController::class, 'daftartimcreate'])->middleware('auth')->name('tambahtim');
+Route::get('/daftartim/create/{userId}', [DaftarTimController::class, 'daftartimcreate'])->name('daftartim.create');
+Route::post('/daftartim/createnew', [DaftarTimController::class, 'daftartimcreatenew'])->name('daftartim.tambah');
+Route::get('/daftartimupdateupdate/{id}', [DaftarTimController::class, 'daftartimupdateupdate'])->name('daftartimupdateupdate');
+Route::put('/daftartim/updatenew/{id}', [DaftarTimController::class, 'daftartimupdatenew'])->name('daftartim.update');
+// Route::put('/daftartim/update/{id}', [DaftarTimController::class, 'daftartimupdatenew'])->name('daftartim.update');
 
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');

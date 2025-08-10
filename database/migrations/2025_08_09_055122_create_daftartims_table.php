@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('daftartims', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('akun_id')->nullable()->index();
-            $table->string('namalengkap')->nullable();
-            $table->string('jeniskelamin')->nullable();
-            $table->date('ttl')->nullable();
-            $table->string('nik')->nullable();
-            $table->string('notelepon')->nullable();
-            $table->string('foto')->nullable();
+                $table->foreignId('akun_id')->nullable()->index();
+                $table->string('namalengkap')->nullable();
+                $table->string('jeniskelamin')->nullable();
+                $table->date('ttl')->nullable();
+                $table->string('nik')->nullable();
+                $table->string('notelepon')->nullable();
+                $table->string('foto')->nullable();
 
             $table->string('cadangan1')->nullable();
             $table->string('cadangan2')->nullable();

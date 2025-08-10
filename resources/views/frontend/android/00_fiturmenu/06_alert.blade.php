@@ -140,7 +140,10 @@
 <div class="modal-verify-alert">
     <div class="modal-box">
         <button type="button" class="btnalert-view" onclick="this.closest('.modal-verify-alert').style.display='none';">&times;</button>
-        <img src="/assets/abgblora/logo/pupr.png" alt="Logo" class="logo-animate-bounce">
+    <div style="display: flex; gap: 10px; align-items: center;">
+    <img src="/assets/abgblora/logo/3.jpg" alt="Logo" class="logo-animate-bounce">
+    <img src="/assets/abgblora/logo/5.png" alt="Logo" class="logo-animate-bounce">
+</div>
         <p style="color:black;">SNOC-X</p>
         <div class="success-text">Berhasil !</div>
         {{-- <a href="/dashboard"><span>Silahkan Klik Untuk Mengetahui Informasi Berkas Anda</span></a> --}}
@@ -154,7 +157,10 @@
 <div class="modal-verify-alert">
     <div class="modal-box">
         <button type="button" class="btnalert-view" onclick="this.closest('.modal-verify-alert').style.display='none';">&times;</button>
-        <img src="/assets/abgblora/logo/pupr.png" alt="Logo" class="logo-animate-bounce">
+            <div style="display: flex; gap: 10px; align-items: center;">
+    <img src="/assets/abgblora/logo/3.jpg" alt="Logo" class="logo-animate-bounce">
+    <img src="/assets/abgblora/logo/5.png" alt="Logo" class="logo-animate-bounce">
+</div>
         <p style="color:black;">SNOC-X</p>
         <div class="success-text">Berhasil</div>
         <button class="button-text">{{ session('info') }}</button>
@@ -166,7 +172,10 @@
 <div class="modal-verify-alert">
     <div class="modal-box">
         <button type="button" class="btnalert-view" onclick="this.closest('.modal-verify-alert').style.display='none';">&times;</button>
-        <img src="/assets/abgblora/logo/pupr.png" alt="Logo" class="logo-animate-bounce">
+          <div style="display: flex; gap: 10px; align-items: center;">
+    <img src="/assets/abgblora/logo/3.jpg" alt="Logo" class="logo-animate-bounce">
+    <img src="/assets/abgblora/logo/5.png" alt="Logo" class="logo-animate-bounce">
+</div>
         <p style="color:black;">SNOC-X</p>
         <div class="success-text">Berhasil</div>
         <button class="button-text">{{ session('pengesahankrk') }}</button>
@@ -178,8 +187,11 @@
 <div class="modal-verify-alert">
     <div class="modal-box">
         <button type="button" class="btnalert-view" onclick="this.closest('.modal-verify-alert').style.display='none';">&times;</button>
-        <img src="/assets/abgblora/logo/pupr.png" alt="Logo" class="logo-animate-bounce">
-        <p style="color:black;">SNOC-X </p>
+        <div style="display: flex; gap: 10px; align-items: center;">
+    <img src="/assets/abgblora/logo/3.jpg" alt="Logo" class="logo-animate-bounce">
+    <img src="/assets/abgblora/logo/5.png" alt="Logo" class="logo-animate-bounce">
+</div>
+<p style="color:black;">SNOC-X </p>
         <div class="success-textupdate">Update Berhasil !</div>
         <button class="button-textupdate">{{ session('update') }}</button>
     </div>
@@ -205,7 +217,10 @@
 <div class="modal-verify-alert">
     <div class="modal-box">
         <button type="button" class="btnalert-view" onclick="this.closest('.modal-verify-alert').style.display='none';">&times;</button>
-        <img src="/assets/abgblora/logo/pupr.png" alt="Logo" class="logo-animate-bounce">
+          <div style="display: flex; gap: 10px; align-items: center;">
+    <img src="/assets/abgblora/logo/3.jpg" alt="Logo" class="logo-animate-bounce">
+    <img src="/assets/abgblora/logo/5.png" alt="Logo" class="logo-animate-bounce">
+</div>
         <p style="color:black;">SNOC-X <br> Kabupaten Blora Provinsi Jawa Tengah</p>
         <div style="font-size: 36px; color: red; font-weight: bold; margin: 20px 0;">Berhasil!</div>
         <button class="button-delete">{{ session('gagal') }}</button>

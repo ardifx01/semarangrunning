@@ -28,9 +28,15 @@
   width: 250px;
   box-sizing: border-box;
 ">
-  <div class="sidebar-header">
-    <h3 style="color: white; margin: 0 0 20px 0; padding-bottom: 15px; border-bottom: 1px solid #333;">SNOC X Dashboard</h3>
-  </div>
+<div class="sidebar-header" style="display: flex; flex-direction: column; align-items: flex-start;">
+    <div style="display: flex; gap: 5px; margin-bottom: 10px;">
+        <img src="/assets/abgblora/logo/3remove.png" alt="" width="75px;">
+        <img src="/assets/abgblora/logo/5remove.png" alt="" width="75px;">
+    </div>
+    <h3 style="color: white; margin: 0; padding-bottom: 15px; border-bottom: 1px solid #333; width: 100%;">
+        SNOC X Dashboard
+    </h3>
+</div>
 
   <div class="sidebar-menu" style="margin-top: 10px;">
     <a href="/dashboard" class="menu-item active" style="
