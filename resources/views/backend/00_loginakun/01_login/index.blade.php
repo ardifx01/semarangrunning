@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="icon" href="/assets/abgblora/logo/racenewlogo.png" type="image/x-icon">
+  <link rel="icon" href="/assets/abgblora/logo/racenewlogo.png" type="image/x-icon">
 
     <title>Silahkan Login - SNOC X</title>
     <style>
@@ -218,14 +218,20 @@
 </head>
 <body>
     <div class="login-container">
+      <div class="mountain-header text-center">
+    {{-- <img src="/assets/abgblora/logo/racenewlogo.png" alt="Logo" class="mb-2" style="max-width: 120px;" loading="lazy"> --}}
 <div class="mountain-header text-center">
   <div style="display: flex; gap: 10px; align-items: center; justify-content: center;">
-    <img src="/assets/abgblora/logo/3.jpg" alt="" width="50px">
-    <img src="/assets/abgblora/logo/5.png" alt="" width="50px">
+    <img src="/assets/abgblora/logo/3.jpg" alt="" width="75px">
+    <img src="/assets/abgblora/logo/5.png" alt="" width="75px">
   </div>
 
   <h1 class="fw-bold">SNOC-X</h1>
   <p class="text-muted">SABHAGIRIWANA17</p>
+</div>
+
+    {{-- <h1 class="fw-bold">SNOC-X</h1>
+    <p class="text-muted">SABHAGIRIWANA17</p> --}}
 </div>
 
 
@@ -252,7 +258,7 @@
 
     <button type="submit" class="login-btn">Login</button>
 
-    <div class="/daftar">
+    <div class="register">
         Belum Punya Akun ? <a href="#">Daftar Disini !</a>
     </div>
 </form>
