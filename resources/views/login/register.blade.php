@@ -1,346 +1,413 @@
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-{{-- <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"> --}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/assets/abgblora/logo/racenewlogo.png" type="image/x-icon">
 
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500;600&display=swap');
+    <title>Silahkan Login - SNOC X</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
-    :root {
-      --primary: #000080;
-      --accent: #ffd100;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
-    html, body {
-      height: 100%;
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(45deg, #000428, #004e92);
-      overflow-x: hidden;
-    }
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+                        url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
 
-    .architect-grid {
-      position: fixed;
-      width: 100vw;
-      height: 100vh;
-      background:
-        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px),
-        linear-gradient(180deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-      background-size: 30px 30px;
-      animation: gridMove 40s linear infinite;
-    }
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.96);
+            width: 420px;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(128, 0, 0, 0.2);
+            position: relative;
+            border-top: 4px solid #800000;
+        }
 
-    @keyframes gridMove {
-      0% { background-position: 0 0; }
-      100% { background-position: 1000px 1000px; }
-    }
+        .mountain-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
 
-    .login-container {
-      position: relative;
-      max-width: 450px;
-      padding: 3rem;
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 20px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-      backdrop-filter: blur(10px);
-      transform-style: preserve-3d;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      margin: 5vh auto;
-      border: 1px solid rgba(255,255,255,0.3);
-      z-index: 2;
-    }
+        .mountain-icon {
+            color: #800000;
+            font-size: 42px;
+            margin-bottom: 10px;
+            animation: mountainGlow 2s infinite alternate;
+        }
 
-    .login-container::before {
-      content: '';
-      position: absolute;
-      inset: -2px;
-      background: linear-gradient(45deg, var(--primary), var(--accent), var(--primary));
-      z-index: -1;
-      border-radius: 22px;
-      animation: borderGlow 6s ease-in-out infinite;
-      filter: blur(20px);
-      opacity: 0.6;
-      background-size: 400% 400%;
-    }
+        @keyframes mountainGlow {
+            0% { text-shadow: 0 0 5px rgba(128, 0, 0, 0.3); }
+            100% { text-shadow: 0 0 15px rgba(128, 0, 0, 0.6); }
+        }
 
-    @keyframes borderGlow {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
+        .mountain-header h1 {
+            color: #800000;
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            margin-bottom: 5px;
+        }
 
-    .logo-section {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-bottom: 2.5rem;
-    }
+        .mountain-header p {
+            color: #4CAF50;
+            font-size: 14px;
+            font-weight: 600;
+        }
 
-    .logo-section img {
-      width: 80px;
-      height: 80px;
-      object-fit: contain;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-      transition: transform 0.4s ease;
-    }
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
 
-    .logo-section img:hover {
-      transform: scale(1.1);
-    }
+        .form-group input {
+            width: 100%;
+            padding: 14px 14px 14px 45px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.3s;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
 
-    h1.title {
-      text-align: center;
-      color: var(--primary);
-      font-size: 2rem;
-      margin-bottom: 2rem;
-      font-weight: 600;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
+        .form-group input:focus {
+            border-color: #800000;
+            box-shadow: 0 0 0 3px rgba(128, 0, 0, 0.1);
+            outline: none;
+        }
 
-    .input-group {
-      position: relative;
-      margin-bottom: 1.5rem;
-    }
+        .form-group i {
+            position: absolute;
+            left: 15px;
+            top: 14px;
+            color: #800000;
+            font-size: 18px;
+        }
 
-    .input-group input {
-      width: 100%;
-      padding: 1rem;
-      border: 2px solid #e0e0e0;
-      border-radius: 10px;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-      background: rgba(255,255,255,0.9);
-    }
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
 
-    .input-group input:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 15px rgba(0,0,128,0.1);
-      outline: none;
-    }
+        .remember {
+            display: flex;
+            align-items: center;
+        }
 
-    .input-group i {
-      position: absolute;
-      right: 15px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #666;
-    }
+        .remember input {
+            margin-right: 8px;
+            accent-color: #800000;
+        }
 
-    .btn-login {
-      width: 100%;
-      padding: 1rem;
-      background: linear-gradient(45deg, var(--primary), #1a237e);
-      border: none;
-      border-radius: 10px;
-      color: white;
-      font-size: 1.1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      margin-top: 1rem;
-    }
+        .remember label {
+            color: #555;
+        }
 
-    .btn-login:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 5px 15px rgba(241, 239, 239, 0.3);
-    }
+        .forgot-password {
+            color: #800000;
+            text-decoration: none;
+            font-weight: 600;
+        }
 
-    .footer-links {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 1.5rem;
-      font-size: 0.9rem;
-    }
+        .forgot-password:hover {
+            color: #4CAF50;
+            text-decoration: underline;
+        }
 
-    .footer-links a {
-      color: var(--primary);
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(to right, #800000, #a23535);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
 
-    .footer-links a:hover {
-      color: var(--accent);
-    }
+        .login-btn:hover {
+            background: linear-gradient(to right, #a23535, #800000);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(128, 0, 0, 0.3);
+        }
 
-    @media (max-width: 576px) {
-      .login-container {
-        margin: 2rem;
-        padding: 2rem;
-      }
+        .login-btn::after {
+            content: '↑';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: all 0.3s;
+        }
 
-      .logo-section img {
-        width: 60px;
-        height: 60px;
-      }
+        .login-btn:hover::after {
+            opacity: 1;
+            right: 15px;
+        }
 
-      h1.title {
-        font-size: 1.5rem;
-      }
+        .register {
+            text-align: center;
+            margin-top: 25px;
+            color: #555;
+            font-size: 14px;
+        }
 
-      .footer-text {
-        font-size: 0.8rem;
-        padding: 1rem;
-      }
-    }
+        .register a {
+            color: #800000;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px dashed #800000;
+            padding-bottom: 2px;
+            transition: all 0.3s;
+        }
 
-    .footer-text {
-      text-align: center;
-      color: white;
-      background-color: rgba(0, 0, 0, 0.4);
-      border: 2px solid black;
-      border-radius: 10px;
-      padding: 1rem 1.5rem;
-      margin: 3rem auto 1rem auto;
-      max-width: 25%;
-      font-size: 1rem;
-      font-weight: 500;
-      backdrop-filter: blur(4px);
-      z-index: 2;
-      margin-top: 150px;
-    }
-    .footer-text {
-  max-width: 100%; /* default untuk mobile */
-}
+        .register a:hover {
+            color: #4CAF50;
+            border-bottom-color: #4CAF50;
+        }
 
-@media (min-width: 768px) {
-  .footer-text {
-    max-width: 90%;
-  }
-}
+        .mountain-border {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, transparent, #4CAF50, transparent);
+            opacity: 0.3;
+        }
 
-@media (min-width: 992px) {
-  .footer-text {
-    max-width: 60%;
-  }
-}
+        @media (max-width: 480px) {
+            .login-container {
+                width: 90%;
+                padding: 30px 20px;
+            }
 
-@media (min-width: 1200px) {
-  .footer-text {
-    max-width: 25%;
-  }
-}
+            .mountain-header h1 {
+                font-size: 26px;
+            }
 
-
-    .skyscraper {
-      position: fixed;
-      bottom: 0;
-      height: 30vh;
-      width: 100%;
-      background: linear-gradient(to top, rgba(0,0,0,0.1), transparent);
-      z-index: -1;
-    }
+            .mountain-icon {
+                font-size: 36px;
+            }
+        }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
 
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
-      <title>Silahkan Daftar !</title>
-      <link rel="icon" href="/assets/abgblora/logo/logokabupatenblora.png" type="image/x-icon">
+@include('frontend.button')
+<body>
+    <div class="login-container">
+      <div class="mountain-header text-center">
+    {{-- <img src="/assets/abgblora/logo/racenewlogo.png" alt="Logo" class="mb-2" style="max-width: 120px;" loading="lazy"> --}}
+<div class="mountain-header text-center">
+  <div style="display: flex; gap: 10px; align-items: center; justify-content: center;">
+    <img src="/assets/abgblora/logo/3.jpg" alt="" width="75px">
+    <img src="/assets/abgblora/logo/5.png" alt="" width="75px">
+  </div>
 
-    </head>
-    <body>
-      <div class="architect-grid"></div>
-      <div class="skyscraper"></div>
-
-      <div class="login-container">
-        <div class="logo-section">
-            <img src="/assets/abgblora/logo/iconabgblora.png" alt="Kabupaten Blora" style="width: 80%;" />
-          </div>
-              <div class="container">
-            <h4 class="title" style="font-family: 'Poppins', sans-serif; text-align: center;">Sign in to ABG Blora</h4>
-          </div>
-
-          <div style="font-family: 'Poppins', sans-serif;">
-            <style>
-                input::placeholder {
-                    font-family: 'Poppins', sans-serif;
-                }
-            </style>
-
-            <form action="/daftar" method="POST">
-                @csrf
-
-                <div class="input-group">
-                    <input type="text" name="name" placeholder="Nama Lengkap" value="{{ old('name') }}" />
-                    @error('name')
-                        <div style="color: red;">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                <div class="input-group">
-                    <input type="text" name="username" placeholder="Username" value="{{ old('username') }}" />
-                    @error('username')
-                        <div style="color: red;">{{ $message }}</div>
-                    @enderror
-                </div>
-
-
-{{-- <div class="input-group">
-    <select name="statusadmin_id"
-        style="width: 100%; background-color: #e0edff; color: black; border: none; border-radius: 8px; padding: 12px; margin-bottom: 10px; font-family: 'Poppins', sans-serif;">
-        <option value="">-- Pilih Akun --</option>
-        @foreach ($datastatusadmin as $status)
-            <option value="{{ $status->id }}" {{ old('statusadmin_id') == $status->id ? 'selected' : '' }}>
-                {{ $status->status ?? 'Status ' . $status->id }}
-            </option>
-        @endforeach
-    </select>
-    @error('statusadmin_id')
-        <div style="color: red;">{{ $message }}</div>
-    @enderror
-</div> --}}
-
-
-                <div class="input-group">
-                    <input type="text" name="phone_number" placeholder="Nomor HP" value="{{ old('phone_number') }}" />
-                    @error('phone_number')
-                        <div style="color: red;">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                <div class="input-group">
-                    <input type="email" name="email" placeholder="Email" value="{{ old('email') }}" />
-                    @error('email')
-                        <div style="color: red;">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                <div class="input-group">
-                    <input type="password" name="password" placeholder="Password" />
-                    @error('password')
-                        <div style="color: red;">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                <button type="submit" class="btn-login" style="font-size: 16px;">Daftar</button>
-
-                <div class="footer-links" style="display: flex; justify-content: flex-end;">
-                    <a href="/login">Sudah punya akun? Login</a>
-                </div>
-            </form>
-        </div>
-
-
-      </div>
-
-      {{-- <div class="footer-text" style=" font-family: 'Poppins', sans-serif;">
-        <img src="/assets/abgblora/logo/logokabupatenblora.png" alt="" width="35px;" style=" font-family: 'Poppins', sans-serif;">
-        <img src="/assets/abgblora/logo/pupr.png" alt="" width="35px;" style=" font-family: 'Poppins', sans-serif;">
-
-        <br>ABG Blora Bangunan Gedung <br>
-
-<br>        Dinas Pekerjaan Umum Dan Penataan Ruang <br> Kabupaten Blora Provinsi Jawa Tengah
-      </div> --}}
-      <br>
-
-      <div class="footer-text" style="font-family: 'Poppins', sans-serif; font-size: 12px; margin-top:-30px;">
-  <img src="/assets/abgblora/logo/logokabupatenblora.png" alt="Logo Kabupaten Blora" width="35">
-  <img src="/assets/abgblora/logo/pupr.png" alt="Logo PUPR" width="35">
-  <br>
-  ABG Blora Bangunan Gedung <br>
-  Dinas Pekerjaan Umum Dan Penataan Ruang <br>
-  Kabupaten Blora Provinsi Jawa Tengah
+  <h1 class="fw-bold">SNOC-X</h1>
+  <p class="text-muted">SABHAGIRIWANA17</p>
 </div>
 
-    </body>
-    </html>
+    {{-- <h1 class="fw-bold">SNOC-X</h1>
+    <p class="text-muted">SABHAGIRIWANA17</p> --}}
+</div>
+<style>
+  .form-group {
+    position: relative;
+    margin-bottom: 15px;
+  }
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 12px 40px 12px 40px;
+    border-radius: 8px;
+    border: 2px solid #800000; /* maroon border */
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #333;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+  }
+  .form-group input:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: #b22222; /* sedikit lebih terang maroon saat fokus */
+    box-shadow: 0 0 5px #b22222;
+  }
+  .form-group select {
+    padding-right: 40px;
+  }
+  .form-group i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #800000; /* maroon icon */
+    font-size: 18px;
+  }
+  .toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #800000; /* maroon icon */
+    font-size: 18px;
+    transition: color 0.3s ease;
+  }
+  .toggle-password:hover {
+    color: #b22222;
+  }
+  .button-hijau {
+    background-color: #800000; /* maroon */
+    border: none;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s ease;
+  }
+  .button-hijau:hover {
+    background-color: #b22222;
+  }
+  .error-message {
+    color: #b22222;
+    font-size: 12px;
+    margin-top: 4px;
+  }
+  .footer-links {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+  }
+  .footer-links a {
+    color: #800000;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .footer-links a:hover {
+    text-decoration: underline;
+    color: #b22222;
+  }
+</style>
+
+<form action="/daftar" method="POST">
+    @csrf
+
+    <div class="form-group">
+        <i class="fas fa-user"></i>
+        <input type="text" name="name" placeholder="Nama Lengkap" value="{{ old('name') }}" />
+        @error('name')
+            <div class="error-message">{{ $message }}</div>
+        @enderror
+    </div>
+
+    <div class="form-group">
+        <i class="fas fa-id-badge"></i>
+        <input type="text" name="username" placeholder="Username" value="{{ old('username') }}" />
+        @error('username')
+            <div class="error-message">{{ $message }}</div>
+        @enderror
+    </div>
+
+    <div class="form-group">
+        <i class="fas fa-user-tag"></i>
+        <select name="statusadmin_id">
+            <option value="">-- Pilih Akun --</option>
+            @foreach ($datastatusadmin as $status)
+                <option value="{{ $status->id }}" {{ old('statusadmin_id') == $status->id ? 'selected' : '' }}>
+                    {{ $status->statusadmin ?? 'Status ' . $status->id }}
+                </option>
+            @endforeach
+        </select>
+        @error('statusadmin_id')
+            <div class="error-message">{{ $message }}</div>
+        @enderror
+    </div>
+
+    <div class="form-group">
+        <i class="fas fa-phone"></i>
+        <input type="text" name="phone_number" placeholder="Nomor HP" value="{{ old('phone_number') }}" />
+        @error('phone_number')
+            <div class="error-message">{{ $message }}</div>
+        @enderror
+    </div>
+
+    <div class="form-group">
+        <i class="fas fa-envelope"></i>
+        <input type="email" name="email" placeholder="Email" value="{{ old('email') }}" />
+        @error('email')
+            <div class="error-message">{{ $message }}</div>
+        @enderror
+    </div>
+
+    <div class="form-group">
+        <i class="fas fa-lock"></i>
+        <input type="password" name="password" placeholder="Password" id="password" />
+        <i class="fas fa-eye toggle-password" toggle="#password"></i>
+        @error('password')
+            <div class="error-message">{{ $message }}</div>
+        @enderror
+    </div>
+
+    <div class="form-group">
+        <i class="fas fa-lock"></i>
+        <input type="password" name="password_confirmation" placeholder="Konfirmasi Password" id="password_confirmation" />
+        <i class="fas fa-eye toggle-password" toggle="#password_confirmation"></i>
+    </div>
+
+    <button type="submit" class="button-hijau" style="font-size: 16px;">Daftar</button>
+
+    <br>
+
+    <div class="footer-links" style="display: flex; justify-content: flex-end;">
+        <a href="/login">Sudah punya akun? Login</a>
+    </div>
+</form>
+
+<script>
+  document.querySelectorAll('.toggle-password').forEach(function(element){
+    element.addEventListener('click', function() {
+      const input = document.querySelector(this.getAttribute('toggle'));
+      if (input.type === 'password') {
+        input.type = 'text';
+        this.classList.remove('fa-eye');
+        this.classList.add('fa-eye-slash');
+      } else {
+        input.type = 'password';
+        this.classList.remove('fa-eye-slash');
+        this.classList.add('fa-eye');
+      }
+    });
+  });
+</script>
+
+        <div class="mountain-border"></div>
+    </div>
+</body>
+</html>
