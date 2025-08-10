@@ -430,8 +430,8 @@
 
     <div class="section">
         <h3 class="button-baru">Timeline</h3>
-        <p style="font-family: 'Poppins', sans-serif;">Pendaftaran: 8 Agustus - 24 Oktober 2025</p>
-        <p style="font-family: 'Poppins', sans-serif;">Pelaksanaan: 25 - 26 Oktober 2025</p>
+        <p style="font-family: 'Poppins', sans-serif;">Pendaftaran : <br> 8 Agustus - 24 Oktober 2025</p>
+        <p style="font-family: 'Poppins', sans-serif;">Pelaksanaan : <br> 25 - 26 Oktober 2025</p>
     </div>
 <br>
 
@@ -449,14 +449,16 @@
     <a href="https://wa.me/62895711760801" target="_blank" class="button-hijau" style="margin-left:8px;">
         <i class="bi bi-whatsapp"></i>
     </a>
-    Arga Penyu: 0895711760801
+    Arga Penyu
+    {{-- : 0895711760801 --}}
 </p>
 
 <p style="font-family: 'Poppins', sans-serif;">
     <a href="https://wa.me/62895366960050" target="_blank" class="button-hijau" style="margin-left:8px;">
         <i class="bi bi-whatsapp"></i>
     </a>
-    Iqbal Entok: 0895366960050
+    Iqbal Entok
+    {{-- : 0895366960050 --}}
 </p>
     </div>
 
