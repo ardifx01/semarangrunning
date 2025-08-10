@@ -180,7 +180,7 @@
 </div>
 
 <!-- Submenu Perlombaan -->
-<div id="submenu-perlombaan" style="
+<div id="submenu-bedaftartim" style="
       margin-left: 20px;
       display: none;
       border-left: 1px solid #333;
@@ -238,7 +238,7 @@
 <!-- Script Toggle Submenu Perlombaan -->
 <script>
   function toggleSubmenuPerlombaan() {
-    const submenu = document.getElementById("submenu-perlombaan");
+    const submenu = document.getElementById("submenu-bedaftartim");
     const arrow = document.getElementById("perlombaan-arrow");
 
     if (submenu.style.display === "none") {
