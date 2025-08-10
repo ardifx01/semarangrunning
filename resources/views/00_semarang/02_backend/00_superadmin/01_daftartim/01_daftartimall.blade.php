@@ -45,6 +45,7 @@
             <td>{{ $item->nama_organisasi ?? '-' }}</td>
             {{-- <td>{{ $item->ttl ? \Carbon\Carbon::parse($item->ttl)->format('d-m-Y') : '-' }}</td> --}}
             <td>{{ $item->provinsi->provinsi ?? '-' }}</td>
+            <td>{{ $item->kota ?? '-' }}</td>
             {{-- <td>{{ $item->notelepon ?? '-' }}</td>
             <td>
               <div style="margin-top: 10px; text-align: center;">
