@@ -237,16 +237,26 @@
 
 <form action="{{ url('/login') }}" method="POST">
     @csrf
+<div class="form-group">
+    <i class="fas fa-envelope"></i>
+    <input type="email" name="email" placeholder="Email Address" value="{{ old('email') }}" required>
+    @error('email')
+        <div style="color: red; font-size: 13px; margin-top: 4px;">
+            {{ $message }}
+        </div>
+    @enderror
+</div>
 
-    <div class="form-group">
-        <i class="fas fa-envelope"></i>
-        <input type="email" name="email" placeholder="Email Address" required>
-    </div>
+<div class="form-group">
+    <i class="fas fa-lock"></i>
+    <input type="password" name="password" placeholder="Password" required>
+    @error('password')
+        <div style="color: red; font-size: 13px; margin-top: 4px;">
+            {{ $message }}
+        </div>
+    @enderror
+</div>
 
-    <div class="form-group">
-        <i class="fas fa-lock"></i>
-        <input type="password" name="password" placeholder="Password" required>
-    </div>
 
     {{-- <div class="options">
         <div class="remember">

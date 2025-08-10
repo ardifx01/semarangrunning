@@ -881,6 +881,7 @@ Route::post('/himbauandinas/{nama_lengkap}', [AdministratorController::class, 'c
 // ----------------------
 // EVENT SNOC X 2025
 Route::get('/perlombaan/daftartim', [DaftartimController::class, 'daftartim'])->middleware('auth');
+Route::delete('/daftartimdelete/{id}', [DaftartimController::class, 'deletedaftartim'])->middleware('auth')->name('daftartim.destroy');
 
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');

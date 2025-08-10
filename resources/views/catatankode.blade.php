@@ -1329,3 +1329,50 @@ Adminadmin123$$
             </tbody>
           </table>
         </div>
+
+
+        {{-- ----------------------------- --}}
+
+
+
+                @empty
+    <tr>
+    <td colspan="100%"> {{-- Memenuhi semua kolom --}}
+            <div style="
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 30px;
+                font-weight: 600;
+                font-family: 'Poppins', sans-serif;
+                color: #6c757d;
+                background-color: #f8f9fa;
+                border: 2px dashed #ced4da;
+                border-radius: 12px;
+                font-size: 16px;
+                animation: fadeIn 0.5s ease-in-out;
+            ">
+                <i class="bi bi-folder-x" style="margin-right: 8px; font-size: 20px; color: #dc3545;"></i>
+                Data Tidak Ditemukan !!
+            </div>
+        </td>
+    </tr>
+@endforelse
+
+
+
+     <div style="margin-top: 10px;">
+                                                                                                            @if($item->tandatangan && $item->tandatangan && $item->tandatangan && file_exists(public_path('storage/' . $item->tandatangan)))
+                                                                                                                <!-- Menampilkan gambar dari storage -->
+                                                                                                                <img src="{{ asset('storage/' . $item->tandatangan) }}" alt="Gambar Peraturan" style="width: 100%; max-height: 100px; object-fit: contain;" loading="lazy">
+                                                                                                            @elseif($item->tandatangan && $item->tandatangan && $item->tandatangan)
+                                                                                                                <!-- Menampilkan gambar dari path luar storage -->
+                                                                                                                <img src="{{ asset($item->tandatangan) }}" alt="Gambar Peraturan" style="width: 100%; max-height: 100px; object-fit: contain;" loading="lazy">
+                                                                                                            @else
+                                                                                                                <!-- Placeholder jika tidak ada data -->
+                                                                                                                <p style="font-size: 11px;">Tidak Ada Tanda Tangan !</p>
+
+                                                                                                                @endif
+                                                                                                        </div>
+

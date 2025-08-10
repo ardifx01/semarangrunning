@@ -7,6 +7,8 @@
 
     <!-- Sidebar -->
    @include('00_semarang.02_backend.01_dashboard.sidebar')
+   @include('frontend.android.00_fiturmenu.06_alert')
+   @include('frontend.button')
 
     <!-- Main Content -->
     <div class="main-content">
@@ -27,35 +29,89 @@
     <table class="responsive-table">
         <thead>
             <tr>
+                <th>No</th>
                 <th>Nama Lengkap</th>
                 <th>Jenis Kelamin</th>
                 <th>Tanggal Lahir</th>
                 <th>NIK</th>
                 <th>No. Telepon</th>
                 <th>Foto</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($data as $item)
-            <tr>
-                <td>{{ $item->namalengkap }}</td>
-                <td>{{ $item->jeniskelamin }}</td>
-                <td>{{ \Carbon\Carbon::parse($item->ttl)->format('d-m-Y') }}</td>
-                <td>{{ $item->nik }}</td>
-                <td>{{ $item->notelepon }}</td>
-                <td>
-                    @if($item->foto)
-                        <img src="{{ asset('storage/' . $item->foto) }}"
-                             alt="Foto Peserta"
-                             style="width:50px; height:50px; border-radius:50%; object-fit:cover;">
-                    @else
-                        <span>Tidak ada foto</span>
-                    @endif
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+
+            @forelse($data as $item)
+<tr>
+    <td>{{ $loop->iteration }}</td> <!-- nomor urut -->
+    <td>{{ $item->namalengkap ?? '-' }}</td>
+    <td>{{ $item->jeniskelamin ?? '-' }}</td>
+    <td>{{ $item->ttl ? \Carbon\Carbon::parse($item->ttl)->format('d-m-Y') : '-' }}</td>
+    <td>{{ $item->nik ?? '-' }}</td>
+    <td>{{ $item->notelepon ?? '-' }}</td>
+    <td>
+
+     <div style="margin-top: 10px;">
+                                                                                                            @if($item->foto && $item->foto && $item->foto && file_exists(public_path('storage/' . $item->foto)))
+                                                                                                                <!-- Menampilkan gambar dari storage -->
+                                                                                                                <img src="{{ asset('storage/' . $item->foto) }}" alt="Foto Belum Di Upload" style="width: 100%; max-height: 100px; object-fit: contain;" loading="lazy">
+                                                                                                            @elseif($item->foto && $item->foto && $item->foto)
+                                                                                                                <!-- Menampilkan gambar dari path luar storage -->
+                                                                                                                <img src="{{ asset($item->foto) }}" alt="Foto Belum Di Upload " style="width: 100%; max-height: 100px; object-fit: contain;" loading="lazy">
+                                                                                                            @else
+                                                                                                                <!-- Placeholder jika tidak ada data -->
+                                                                                                                <p style="font-size: 11px;">Tidak Ada Tanda Tangan !</p>
+
+                                                                                                                @endif
+                                                                                                        </div>
+
+    </td>
+    <td>
+    <form action="{{ route('daftartim.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Apakah Saudara ingin menghapus data ini?')">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="button-merah">
+            <i class="bi bi-trash-fill" style="font-size: 18px;"></i> Hapus
+        </button>
+    </form>
+</td>
+
+</tr>
+                @empty
+    <tr>
+    <td colspan="100%"> {{-- Memenuhi semua kolom --}}
+            <div style="
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 30px;
+                font-weight: 600;
+                font-family: 'Poppins', sans-serif;
+                color: #6c757d;
+                background-color: #f8f9fa;
+                border: 2px dashed #ced4da;
+                border-radius: 12px;
+                font-size: 16px;
+                animation: fadeIn 0.5s ease-in-out;
+            ">
+                <i class="bi bi-folder-x" style="margin-right: 8px; font-size: 20px; color: #dc3545;"></i>
+                Saudara Belum Mendaftarkan Anggota Tim, Silahkan Tambahkan Tim Saudara  !!
+            </div>
+        </td>
+        <br>
+    </tr>
+    @endforelse
+
+</tbody>
+</table>
+<div style="display: flex; justify-content: center; margin-top: 20px;">
+    <a href="{{ url('/daftartim/create/' . $userId) }}" class="button-maroon">
+        <i class="bi bi-person-plus-fill" style="margin-right: 8px;"></i> Tambahkan Tim
+    </a>
+</div>
+
+
 </div>
 
 </div>

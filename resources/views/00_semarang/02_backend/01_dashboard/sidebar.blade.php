@@ -47,6 +47,8 @@
       <i class="bi bi-speedometer2"></i><span>Dashboard</span>
     </a>
 
+    @canany(['peserta', 'super_admin'])
+
     <!-- Menu Perlombaan -->
 <div class="menu-item" onclick="toggleSubmenuPerlombaan()" style="
       color: white;
@@ -149,6 +151,7 @@
   });
 </script>
 
+    @endcanany
     <a href="/bepeserta" class="menu-item" style="
       color: white;
       text-decoration: none;

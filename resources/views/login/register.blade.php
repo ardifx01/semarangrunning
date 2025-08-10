@@ -360,7 +360,7 @@
 
     <div class="form-group">
         <i class="fas fa-envelope"></i>
-        <input type="email" name="email" placeholder="Email" value="{{ old('email') }}" />
+        <input type="email" name="email" placeholder="Email Aktif Saudara" value="{{ old('email') }}" />
         @error('email')
             <div class="error-message">{{ $message }}</div>
         @enderror
