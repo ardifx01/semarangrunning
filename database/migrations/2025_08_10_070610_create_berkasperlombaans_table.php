@@ -16,7 +16,7 @@ Schema::create('berkasperlombaans', function (Blueprint $table) {
     $table->foreignId('akunpengguna_id')->nullable()->index();
 
     // Kolom info tim dan organisasi
-    $table->foreignId('kategori')->nullable()->index();        // Pilih Kategori
+    $table->foreignId('kategori_id')->nullable()->index();        // Pilih Kategori
     $table->foreignId('kota_id')->nullable()->index();        // Pilih Kategori
     $table->foreignIdstring('provinsi_id')->nullable()->index();        // Pilih Kategori
 
@@ -29,6 +29,24 @@ Schema::create('berkasperlombaans', function (Blueprint $table) {
     $table->string('surat_keterangan_sehat')->nullable();  // Surat keterangan sehat
     $table->string('bukti_pembayaran')->nullable();        // Bukti Pembayaran
     $table->string('surat_pernyataan')->nullable();        // Surat Pernyataan
+
+            $table->string('cekdokumen1')->nullable();
+            $table->string('cekdokumen2')->nullable();
+            $table->string('cekdokumen3')->nullable();
+            $table->string('cekdokumen4')->nullable();
+
+            $table->string('validasiberkas1')->nullable();
+            $table->string('validasiberkas2')->nullable();
+            $table->string('validasiberkas3')->nullable();
+            $table->string('validasiberkas4')->nullable();
+            $table->string('validasiberkas5')->nullable();
+            $table->string('validasiberkas6')->nullable();
+            $table->string('validasiberkas7')->nullable();
+
+            $table->string('cadangan1')->nullable();
+            $table->string('cadangan2')->nullable();
+            $table->string('cadangan3')->nullable();
+            $table->string('cadangan4')->nullable();
 
     $table->softDeletes();
     $table->timestamps();

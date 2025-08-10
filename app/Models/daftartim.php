@@ -13,7 +13,7 @@ class daftartim extends Model
 
     protected $guarded = ['id'];
 
-    public function berkaslomba()
+    public function akun()
     {
         return $this->belongsTo(User::class, 'akun_id');
     }
