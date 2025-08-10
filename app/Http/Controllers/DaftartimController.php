@@ -408,10 +408,10 @@ public function informasitim($id)
             ->where('akunpengguna_id', $userId)
             ->first();
 
-    if (!$data) {
-        // Jika data tidak ditemukan atau bukan milik user, redirect atau abort 404
-        return redirect()->route('datas')->with('error', 'Data tidak ditemukan atau akses ditolak.');
-    }
+    // if (!$data) {
+    //     // Jika data tidak ditemukan atau bukan milik user, redirect atau abort 404
+    //     return redirect()->route('datas')->with('error', 'Data tidak ditemukan atau akses ditolak.');
+    // }
 
     return view('00_semarang.02_backend.02_daftarlomba.03_berkasinformasi', [
         'title' => 'Detail Informasi Tim',
