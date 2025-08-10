@@ -33,6 +33,7 @@
           <th>Nama Organisasi</th>
           <th>Provinsi</th>
           <th>Kota</th>
+          <th>Informasi</th>
 
           {{-- <th style="width: 100px;">Aksi</th> --}}
         </tr>
@@ -46,6 +47,12 @@
             {{-- <td>{{ $item->ttl ? \Carbon\Carbon::parse($item->ttl)->format('d-m-Y') : '-' }}</td> --}}
             <td>{{ $item->provinsi->provinsi ?? '-' }}</td>
             <td>{{ $item->kota ?? '-' }}</td>
+<td>
+    <a href="/lihatinformasipeserta/{{ $item->id }}" class="button-baru">
+        Lihat
+    </a>
+</td>
+
             {{-- <td>{{ $item->notelepon ?? '-' }}</td>
             <td>
               <div style="margin-top: 10px; text-align: center;">
@@ -115,13 +122,13 @@
 
 </tbody>
 </table>
-@if($data->count() < 2)
+{{-- @if($data->count() < 2)
 <div style="display: flex; justify-content: center; margin-top: 20px;">
     <a href="{{ url('/daftartim/create/' . $userId) }}" class="button-maroon">
         <i class="bi bi-person-plus-fill" style="margin-right: 8px;"></i> Tambahkan Anggota Tim
     </a>
 </div>
-@endif
+@endif --}}
 
 
 </div>
