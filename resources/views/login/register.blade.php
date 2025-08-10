@@ -381,7 +381,7 @@
         <i class="fas fa-eye toggle-password" toggle="#password_confirmation"></i>
     </div>
 
-    <button type="submit" class="button-hijau" style="font-size: 16px;">Daftar</button>
+    <button type="submit" class="button-maroon" style="font-size: 16px;">Daftar</button>
 
     <br>
 

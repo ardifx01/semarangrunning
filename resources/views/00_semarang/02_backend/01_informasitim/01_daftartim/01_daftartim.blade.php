@@ -114,11 +114,13 @@
 
 </tbody>
 </table>
+@if($data->count() < 2)
 <div style="display: flex; justify-content: center; margin-top: 20px;">
     <a href="{{ url('/daftartim/create/' . $userId) }}" class="button-maroon">
         <i class="bi bi-person-plus-fill" style="margin-right: 8px;"></i> Tambahkan Anggota Tim
     </a>
 </div>
+@endif
 
 
 </div>
