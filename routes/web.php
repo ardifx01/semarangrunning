@@ -878,6 +878,7 @@ Route::post('/himbauandinas/{nama_lengkap}', [AdministratorController::class, 'c
 //     ]);
 // });
 
+Route::get('/bedaftartim', [DaftartimController::class, 'bedaftartim'])->middleware('auth')->name('bedaftartimindex');
 // ----------------------
 // EVENT SNOC X 2025
 Route::get('/perlombaan/daftartim', [DaftartimController::class, 'daftartim'])->middleware('auth')->name('daftartimindex');

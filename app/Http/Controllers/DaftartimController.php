@@ -25,6 +25,7 @@ use App\Models\User;
 class DaftartimController extends Controller
 {
     //
+
 public function daftartim()
 {
     $user = Auth::user(); // Dapatkan data user yang login
@@ -417,6 +418,24 @@ public function informasitim($id)
         'title' => 'Detail Informasi Tim',
         'data' => $data,
         'user' => $user,
+    ]);
+}
+
+
+public function bedaftartim()
+{
+    $user = Auth::user(); // Dapatkan data user yang login
+    $userId = Auth::id(); // Dapatkan ID user yang login
+
+    // Ambil data daftartim yang akun_id-nya sama dengan user yang login
+    // $data = daftartim::where('akun_id', $userId)->get();
+    $data = daftartim::all();
+
+    return view('00_semarang.02_backend.01_informasitim.01_daftartim.01_daftartim', [
+        'title' => 'Daftar Tim Saudara',
+        'user' => $user,
+        'userId' => $userId, // kirim juga ID user ke view
+        'data' => $data,
     ]);
 }
 
