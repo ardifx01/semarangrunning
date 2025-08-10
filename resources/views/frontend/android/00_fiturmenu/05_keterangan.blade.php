@@ -26,7 +26,7 @@
 
       <a href="#" class="block text-center mt-2">
         <h6 class="font-semibold text-sm text-stone-600">
-          {{-- dpuprblora @2025 --}}
+          SNOC-X @2025
         </h6>
       </a>
 

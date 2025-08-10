@@ -887,8 +887,8 @@ Route::get('/login', [LoginController::class, 'index'])->name('login')->middlewa
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
-// Route::get('/daftar', [LoginController::class, 'showRegisterForm']);
-// Route::post('/daftar', [LoginController::class, 'register']);
+Route::get('/daftar', [LoginController::class, 'showRegisterForm']);
+Route::post('/daftar', [LoginController::class, 'register']);
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');

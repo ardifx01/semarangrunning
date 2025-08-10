@@ -244,10 +244,10 @@
         <a href="#" class="forgot-password">Forgot password?</a>
     </div> --}}
 
-    <button type="submit" class="login-btn">Begin Climb</button>
+    <button type="submit" class="login-btn">Login</button>
 
     <div class="register">
-        New climber? <a href="#">Register here</a>
+        Belum Punya Akun ? <a href="#">Daftar Disini !</a>
     </div>
 </form>
         <div class="mountain-border"></div>
