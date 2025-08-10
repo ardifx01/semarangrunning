@@ -481,19 +481,19 @@
     <p style="font-family: 'Poppins', sans-serif;">
         <i class="bi bi-tiktok" style="color:#000; margin-right:8px;"></i>
         Tiktok : <br>
-        SABHAGIRIWANA17
+        <span class="button-hijau">SABHAGIRIWANA17</span>
     </p>
 
     <p style="font-family: 'Poppins', sans-serif;">
         <i class="bi bi-facebook" style="color:#1877F2; margin-right:8px;"></i>
         Facebook : <br>
-        SABHAGIRIWANA UNTAG SEMARANG
+        <span class="button-hijau">SABHAGIRIWANA UNTAG SEMARANG</span>
     </p>
 
     <p style="font-family: 'Poppins', sans-serif;">
         <i class="bi bi-envelope-fill" style="color:#EA4335; margin-right:8px;"></i>
         Email : <br>
-        sabhagiriwana17untagsmrg@gmail.com
+        <span class="button-hijau">sabhagiriwana17untagsmrg@gmail.com</span>
     </p>
 </div>
 
