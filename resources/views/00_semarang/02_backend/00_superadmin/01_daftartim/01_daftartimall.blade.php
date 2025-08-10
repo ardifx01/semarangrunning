@@ -34,7 +34,7 @@
           <th>Provinsi</th>
           <th>Kota</th>
 
-          <th style="width: 100px;">Aksi</th>
+          {{-- <th style="width: 100px;">Aksi</th> --}}
         </tr>
       </thead>
       <tbody>
@@ -69,7 +69,7 @@
                 @endif
               </div>
             </td> --}}
-            <td>
+            {{-- <td>
               <div style="display: flex; align-items: center; gap: 8px;">
                 <!-- Tombol Edit -->
                 <a href="{{ url('/daftartimupdateupdate/' . $item->id ) }}" class="button-berkas">
@@ -85,7 +85,7 @@
                   </button>
                 </form>
               </div>
-            </td>
+            </td> --}}
           </tr>
                 @empty
     <tr>
