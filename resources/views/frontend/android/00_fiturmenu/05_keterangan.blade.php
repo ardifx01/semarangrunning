@@ -20,6 +20,8 @@
         </h2>
       </div>
 
+      <img src="/assets/abgblora/logo/1.jpg" alt="">
+
       <a href="#" class="block text-center mt-2">
         <h6 class="font-semibold text-sm text-stone-600">
           {{-- dpuprblora @2025 --}}
