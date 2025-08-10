@@ -6,6 +6,10 @@ use App\Models\berkasperlombaan;
 use Carbon\Carbon;
 
 use App\Models\daftartim;
+use App\Models\kategoriperlombaan;
+use App\Models\kota;
+use App\Models\perlombaan;
+use App\Models\provinsi;
 use App\Models\statusadmin;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Auth;
@@ -67,6 +71,7 @@ public function daftartimcreate()
         'data' => $data,
     ]);
 }
+
 public function daftartimcreatenew(Request $request)
 {
     $userId = Auth::id();
@@ -278,20 +283,140 @@ public function daftartimupdatenew(Request $request, $id)
                      ->with('update', 'Data anggota tim berhasil diperbarui!');
 }
 
-
 public function daftarlomba()
 {
-    $user = Auth::user(); // Dapatkan data user yang login
-    $userId = Auth::id(); // Dapatkan ID user yang login
+    $user = Auth::user();
+    $userId = Auth::id();
 
-    // Ambil data daftartim yang akun_id-nya sama dengan user yang login
+    // Ambil ID pertama dari tabel perlombaan
+    $perlombaanPertama = perlombaan::orderBy('id', 'asc')->first();
+    $perlombaanId = $perlombaanPertama ? $perlombaanPertama->id : null;
+
     $data = berkasperlombaan::where('akunpengguna_id', $userId)->get();
 
     return view('00_semarang.02_backend.02_daftarlomba.01_daftarlomba', [
         'title' => 'Silahkan Untuk Daftar Event',
         'user' => $user,
-        'userId' => $userId, // kirim juga ID user ke view
+        'userId' => $userId,
         'data' => $data,
+        'perlombaanId' => $perlombaanId,  // Kirim juga ID perlombaan pertama ke view
+    ]);
+}
+
+public function daftarlombanew($userId, $perlombaanId)
+{
+    // Pastikan user yang login sama dengan $userId yang diterima (opsional)
+    if (Auth::id() != $userId) {
+        abort(403, 'Unauthorized action.');
+    }
+
+    $user = Auth::user();
+    $kota = kota::all();
+    $provinsi = provinsi::all();
+    $kategoriperlombaan = kategoriperlombaan::all();
+
+    // Ambil data daftartim yang akun_id-nya sama dengan user yang login
+    $data = daftartim::where('akun_id', $userId)->get();
+
+    return view('00_semarang.02_backend.02_daftarlomba.02_berkasperlombaan', [
+        'title' => 'Silahkan Daftarkan Tim Saudara',
+        'user' => $user,
+        'userId' => $userId,
+        'perlombaanId' => $perlombaanId,  // Kirim juga ID perlombaan ke view
+        'data' => $data,
+        'provinsiList' => $provinsi,
+        'kotaList' => $kota,
+        'kategoriperlombaan' => $kategoriperlombaan,
+    ]);
+}
+
+
+public function daftarlombatimnew(Request $request)
+{
+    $userId = Auth::id();
+
+    $validated = $request->validate([
+        'provinsi_id' => 'nullable|string',
+        'perlombaan_id' => 'nullable|string',
+        'kota' => 'nullable|string|max:100',
+        'kategoriperlombaan_id' => 'nullable|string',
+        'nama_tim' => 'required|string|max:255',
+        'nama_organisasi' => 'nullable|string',
+        'alamat_organisasi' => 'nullable|string',
+
+        'surat_tugas_organisasi' => 'nullable|mimes:pdf|max:15360', // 15MB
+        'surat_keterangan_sehat' => 'nullable|mimes:pdf|max:15360',
+        'bukti_pembayaran' => 'nullable|mimes:pdf|max:15360',
+        'surat_pernyataan' => 'nullable|mimes:pdf|max:15360',
+    ], [
+        // Tambahkan pesan error custom jika perlu
+    ]);
+
+    // Fungsi helper untuk upload file PDF, return relative path
+    $uploadFile = function ($fileInputName, $folder) use ($request) {
+        if ($request->hasFile($fileInputName)) {
+            $file = $request->file($fileInputName);
+            $filename = time() . '_' . \Illuminate\Support\Str::random(10) . '.' . $file->getClientOriginalExtension();
+            $pathFolder = public_path($folder);
+
+            if (!file_exists($pathFolder)) {
+                mkdir($pathFolder, 0755, true);
+            }
+
+            $file->move($pathFolder, $filename);
+
+            return $folder . '/' . $filename;
+        }
+        return null;
+    };
+
+    // Upload semua file PDF ke folder masing-masing
+    $suratTugasPath = $uploadFile('surat_tugas_organisasi', '01_daftartim/surat_tugas_organisasi');
+    $suratSehatPath = $uploadFile('surat_keterangan_sehat', '01_daftartim/surat_keterangan_sehat');
+    $buktiBayarPath = $uploadFile('bukti_pembayaran', '01_daftartim/bukti_pembayaran');
+    $suratPernyataanPath = $uploadFile('surat_pernyataan', '01_daftartim/surat_pernyataan');
+
+    // Simpan data ke database
+    berkasperlombaan::create([
+        'akunpengguna_id' => $userId,
+        'provinsi_id' => $validated['provinsi_id'] ?? null,
+        'perlombaan_id' => $validated['perlombaan_id'] ?? null,
+        'kota' => $validated['kota'] ?? null,
+        'kategoriperlombaan_id' => $validated['kategoriperlombaan_id'] ?? null,
+        'nama_tim' => $validated['nama_tim'] ?? null,
+        'nama_organisasi' => $validated['nama_organisasi'] ?? null,
+        'alamat_organisasi' => $validated['alamat_organisasi'] ?? null,
+
+        'surat_tugas_organisasi' => $suratTugasPath ?? null,
+        'surat_keterangan_sehat' => $suratSehatPath ?? null,
+        'bukti_pembayaran' => $buktiBayarPath ?? null,
+        'surat_pernyataan' => $suratPernyataanPath ?? null,
+    ]);
+
+    return redirect()->route('daftarlombaindex')->with('create', 'Saudara Berhasil Mendaftar!');
+}
+
+public function informasitim($id)
+{
+
+    $user = Auth::user();
+    $userId = Auth::id();
+
+    // Cari data berkasperlombaan berdasarkan $id dan akunpengguna_id harus sama dengan user login
+    $data = berkasperlombaan::with('akunpengguna')
+            ->where('id', $id)
+            ->where('akunpengguna_id', $userId)
+            ->first();
+
+    if (!$data) {
+        // Jika data tidak ditemukan atau bukan milik user, redirect atau abort 404
+        return redirect()->route('datas')->with('error', 'Data tidak ditemukan atau akses ditolak.');
+    }
+
+    return view('00_semarang.02_backend.02_daftarlomba.03_berkasinformasi', [
+        'title' => 'Detail Informasi Tim',
+        'data' => $data,
+        'user' => $user,
     ]);
 }
 

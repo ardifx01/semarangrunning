@@ -879,7 +879,6 @@ Route::post('/himbauandinas/{nama_lengkap}', [AdministratorController::class, 'c
 // });
 
 // ----------------------
-Route::get('/daftarlomba', [DaftartimController::class, 'daftarlomba'])->middleware('auth')->name('daftarlombaindex');
 // EVENT SNOC X 2025
 Route::get('/perlombaan/daftartim', [DaftartimController::class, 'daftartim'])->middleware('auth')->name('daftartimindex');
 Route::delete('/daftartimdelete/{id}', [DaftartimController::class, 'deletedaftartim'])->middleware('auth')->name('daftartim.destroy');
@@ -890,6 +889,13 @@ Route::get('/daftartimupdateupdate/{id}', [DaftarTimController::class, 'daftarti
 Route::put('/daftartim/updatenew/{id}', [DaftarTimController::class, 'daftartimupdatenew'])->name('daftartim.update');
 // Route::put('/daftartim/update/{id}', [DaftarTimController::class, 'daftartimupdatenew'])->name('daftartim.update');
 
+// DAFTAR LOMBA
+Route::get('/daftarlomba', [DaftartimController::class, 'daftarlomba'])->middleware('auth')->name('daftarlombaindex');
+Route::get('/daftarlomba/create/{userId}/{perlombaanId}', [DaftartimController::class, 'daftarlombanew'])
+->name('daftarlomba.create');
+Route::post('/daftarlombatim/createnew', [DaftarTimController::class, 'daftarlombatimnew'])->name('daftarlombatim');
+
+Route::get('/informasitim/{id}', [DaftartimController::class, 'informasitim'])->middleware('auth')->name('informasitim.show');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);

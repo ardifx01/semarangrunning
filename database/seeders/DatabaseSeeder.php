@@ -156,7 +156,10 @@ use App\Models\subhargadiv9peralatan;
 
 // -=============================
 use App\Models\headerberanda;
+use App\Models\kategoriperlombaan;
+use App\Models\kota;
 use App\Models\perlombaan;
+use App\Models\provinsi;
 // modelbaru
 
 // use App\Models\paketpekerjaan;
@@ -305,7 +308,7 @@ statusadmin::create(['id' => 27, 'statusadmin' => 'pos22']);
 
 
             // ================= =====================================================================================
-for ($i = 1; $i <= 11; $i++) {
+for ($i = 1; $i <= 2; $i++) {
     daftartim::create([
         'id'           => $i,
         'akun_id'      => 1,
@@ -340,7 +343,211 @@ for ($i = 12; $i <= 15; $i++) {
     'koordinat' => '-6.9667,110.4167', // Koordinat pusat kota Semarang (Simpang Lima)
     'lokasi'    => 'Lapangan Simpang Lima',
 ]);
+// =========================================================
+    kategoriperlombaan::create([
+    'id'        => 1,
+    'kategoriperlombaan'  => 'UMUM Putera',
+]);
 
+kategoriperlombaan::create([
+    'id'        => 2,
+    'kategoriperlombaan'  => 'UMUM Puteri',
+]);
+
+kategoriperlombaan::create([
+    'id'        => 3,
+    'kategoriperlombaan'  => 'Pelajar Putera',
+]);
+
+kategoriperlombaan::create([
+    'id'        => 4,
+    'kategoriperlombaan'  => 'Pelajar Puteri',
+]);
+// provinsi Aceh
+
+kota::create(['id' => 1, 'kota' => 'Kota Banda Aceh']);
+kota::create(['id' => 2, 'kota' => 'Kota Sabang']);
+kota::create(['id' => 3, 'kota' => 'Kota Lhokseumawe']);
+kota::create(['id' => 4, 'kota' => 'Kota Langsa']);
+kota::create(['id' => 5, 'kota' => 'Kota Subulussalam']);
+kota::create(['id' => 6, 'kota' => 'Kab. Aceh Selatan']);
+kota::create(['id' => 7, 'kota' => 'Kab. Aceh Tenggara']);
+kota::create(['id' => 8, 'kota' => 'Kab. Aceh Timur']);
+kota::create(['id' => 9, 'kota' => 'Kab. Aceh Tengah']);
+kota::create(['id' => 10, 'kota' => 'Kab. Aceh Barat']);
+kota::create(['id' => 11, 'kota' => 'Kab. Aceh Besar']);
+kota::create(['id' => 12, 'kota' => 'Kab. Pidie']);
+kota::create(['id' => 13, 'kota' => 'Kab. Aceh Utara']);
+kota::create(['id' => 14, 'kota' => 'Kab. Simeulue']);
+kota::create(['id' => 15, 'kota' => 'Kab. Aceh Singkil']);
+kota::create(['id' => 16, 'kota' => 'Kab. Bireuen']);
+kota::create(['id' => 17, 'kota' => 'Kab. Aceh Barat Daya']);
+kota::create(['id' => 18, 'kota' => 'Kab. Gayo Lues']);
+kota::create(['id' => 19, 'kota' => 'Kab. Aceh Jaya']);
+kota::create(['id' => 20, 'kota' => 'Kab. Nagan Raya']);
+kota::create(['id' => 21, 'kota' => 'Kab. Aceh Tamiang']);
+kota::create(['id' => 22, 'kota' => 'Kab. Bener Meriah']);
+kota::create(['id' => 23, 'kota' => 'Kab. Pidie Jaya']);
+
+// provinsi Sumatera Utara
+kota::create(['id' => 24, 'kota' => 'Kota Medan']);
+kota::create(['id' => 25, 'kota' => 'Kota Pematang Siantar']);
+kota::create(['id' => 26, 'kota' => 'Kota Sibolga']);
+kota::create(['id' => 27, 'kota' => 'Kota Tanjung Balai']);
+kota::create(['id' => 28, 'kota' => 'Kota Binjai']);
+kota::create(['id' => 29, 'kota' => 'Kota Tebing Tinggi']);
+kota::create(['id' => 30, 'kota' => 'Kota Padang Sidempuan']);
+kota::create(['id' => 31, 'kota' => 'Kab. Serdang Bedagai']);
+kota::create(['id' => 32, 'kota' => 'Kab. Deli Serdang']);
+kota::create(['id' => 33, 'kota' => 'Kab. Langkat']);
+kota::create(['id' => 34, 'kota' => 'Kab. Karo']);
+kota::create(['id' => 35, 'kota' => 'Kab. Simalungun']);
+kota::create(['id' => 36, 'kota' => 'Kab. Dairi']);
+kota::create(['id' => 37, 'kota' => 'Kab. Toba Samosir']);
+kota::create(['id' => 38, 'kota' => 'Kab. Mandailing Natal']);
+kota::create(['id' => 39, 'kota' => 'Kab. Nias']);
+kota::create(['id' => 40, 'kota' => 'Kab. Humbang Hasundutan']);
+kota::create(['id' => 41, 'kota' => 'Kab. Pakpak Bharat']);
+kota::create(['id' => 42, 'kota' => 'Kab. Samosir']);
+kota::create(['id' => 43, 'kota' => 'Kab. Labuhan Batu']);
+kota::create(['id' => 44, 'kota' => 'Kab. Asahan']);
+kota::create(['id' => 45, 'kota' => 'Kab. Tapanuli Selatan']);
+kota::create(['id' => 46, 'kota' => 'Kab. Tapanuli Utara']);
+kota::create(['id' => 47, 'kota' => 'Kab. Tapanuli Tengah']);
+kota::create(['id' => 48, 'kota' => 'Kab. Batu Bara']);
+kota::create(['id' => 49, 'kota' => 'Kab. Padang Lawas']);
+kota::create(['id' => 50, 'kota' => 'Kab. Padang Lawas Utara']);
+kota::create(['id' => 51, 'kota' => 'Kab. Nias Selatan']);
+kota::create(['id' => 52, 'kota' => 'Kab. Nias Barat']);
+kota::create(['id' => 53, 'kota' => 'Kab. Nias Utara']);
+
+// provinsi Sumatera Barat
+kota::create(['id' => 54, 'kota' => 'Kota Padang']);
+kota::create(['id' => 55, 'kota' => 'Kota Bukittinggi']);
+kota::create(['id' => 56, 'kota' => 'Kota Payakumbuh']);
+kota::create(['id' => 57, 'kota' => 'Kota Pariaman']);
+kota::create(['id' => 58, 'kota' => 'Kab. Agam']);
+kota::create(['id' => 59, 'kota' => 'Kab. Pasaman']);
+kota::create(['id' => 60, 'kota' => 'Kab. Lima Puluh Kota']);
+kota::create(['id' => 61, 'kota' => 'Kab. Solok']);
+kota::create(['id' => 62, 'kota' => 'Kab. Padang Pariaman']);
+kota::create(['id' => 63, 'kota' => 'Kab. Pesisir Selatan']);
+kota::create(['id' => 64, 'kota' => 'Kab. Tanah Datar']);
+kota::create(['id' => 65, 'kota' => 'Kab. Sijunjung']);
+kota::create(['id' => 66, 'kota' => 'Kab. Dharmasraya']);
+kota::create(['id' => 67, 'kota' => 'Kab. Pasaman Barat']);
+kota::create(['id' => 68, 'kota' => 'Kab. Kepulauan Mentawai']);
+
+// provinsi Riau
+kota::create(['id' => 69, 'kota' => 'Kota Pekanbaru']);
+kota::create(['id' => 70, 'kota' => 'Kota Dumai']);
+kota::create(['id' => 71, 'kota' => 'Kab. Kampar']);
+kota::create(['id' => 72, 'kota' => 'Kab. Indragiri Hulu']);
+kota::create(['id' => 73, 'kota' => 'Kab. Bengkalis']);
+kota::create(['id' => 74, 'kota' => 'Kab. Indragiri Hilir']);
+kota::create(['id' => 75, 'kota' => 'Kab. Pelalawan']);
+kota::create(['id' => 76, 'kota' => 'Kab. Rokan Hulu']);
+kota::create(['id' => 77, 'kota' => 'Kab. Rokan Hilir']);
+kota::create(['id' => 78, 'kota' => 'Kab. Siak']);
+kota::create(['id' => 79, 'kota' => 'Kab. Kuantan Singingi']);
+kota::create(['id' => 80, 'kota' => 'Kab. Kepulauan Meranti']);
+
+// provinsi Jambi
+kota::create(['id' => 81, 'kota' => 'Kota Jambi']);
+kota::create(['id' => 82, 'kota' => 'Kota Sungai Penuh']);
+kota::create(['id' => 83, 'kota' => 'Kab. Kerinci']);
+kota::create(['id' => 84, 'kota' => 'Kab. Merangin']);
+kota::create(['id' => 85, 'kota' => 'Kab. Sarolangun']);
+kota::create(['id' => 86, 'kota' => 'Kab. Batanghari']);
+kota::create(['id' => 87, 'kota' => 'Kab. Muaro Jambi']);
+kota::create(['id' => 88, 'kota' => 'Kab. Tanjung Jabung Barat']);
+kota::create(['id' => 89, 'kota' => 'Kab. Tanjung Jabung Timur']);
+kota::create(['id' => 90, 'kota' => 'Kab. Bungo']);
+kota::create(['id' => 91, 'kota' => 'Kab. Tebo']);
+
+// provinsi Sumatera Selatan
+kota::create(['id' => 92, 'kota' => 'Kota Palembang']);
+kota::create(['id' => 93, 'kota' => 'Kota Lubuklinggau']);
+kota::create(['id' => 94, 'kota' => 'Kota Pagar Alam']);
+kota::create(['id' => 95, 'kota' => 'Kota Prabumulih']);
+kota::create(['id' => 96, 'kota' => 'Kab. Musi Rawas']);
+kota::create(['id' => 97, 'kota' => 'Kab. Ogan Komering Ulu']);
+kota::create(['id' => 98, 'kota' => 'Kab. Ogan Komering Ilir']);
+kota::create(['id' => 99, 'kota' => 'Kab. Muara Enim']);
+kota::create(['id' => 100, 'kota' => 'Kab. Lahat']);
+kota::create(['id' => 101, 'kota' => 'Kab. Musi Banyuasin']);
+kota::create(['id' => 102, 'kota' => 'Kab. Banyuasin']);
+kota::create(['id' => 103, 'kota' => 'Kab. Ogan Ilir']);
+kota::create(['id' => 104, 'kota' => 'Kab. Empat Lawang']);
+kota::create(['id' => 105, 'kota' => 'Kab. Penukal Abab Lematang Ilir']);
+kota::create(['id' => 106, 'kota' => 'Kab. Ogan Komering Ulu Timur']);
+kota::create(['id' => 107, 'kota' => 'Kab. Ogan Komering Ulu Selatan']);
+
+// ... [continuing for all 34 provinces]
+
+// provinsi Papua
+
+kota::create(['id' => 500, 'kota' => 'Kota Jayapura']);
+kota::create(['id' => 501, 'kota' => 'Kab. Jayapura']);
+kota::create(['id' => 502, 'kota' => 'Kab. Biak Numfor']);
+kota::create(['id' => 503, 'kota' => 'Kab. Keerom']);
+kota::create(['id' => 504, 'kota' => 'Kab. Sarmi']);
+kota::create(['id' => 505, 'kota' => 'Kab. Mamberamo Raya']);
+kota::create(['id' => 506, 'kota' => 'Kab. Waropen']);
+kota::create(['id' => 507, 'kota' => 'Kab. Supiori']);
+kota::create(['id' => 508, 'kota' => 'Kab. Mamberamo Tengah']);
+kota::create(['id' => 509, 'kota' => 'Kab. Yapen Waropen']);
+kota::create(['id' => 510, 'kota' => 'Kab. Pegunungan Bintang']);
+kota::create(['id' => 511, 'kota' => 'Kab. Yahukimo']);
+kota::create(['id' => 512, 'kota' => 'Kab. Tolikara']);
+kota::create(['id' => 513, 'kota' => 'Kab. Jayawijaya']);
+kota::create(['id' => 514, 'kota' => 'Kab. Lanny Jaya']);
+kota::create(['id' => 515, 'kota' => 'Kab. Nduga']);
+kota::create(['id' => 516, 'kota' => 'Kab. Puncak']);
+kota::create(['id' => 517, 'kota' => 'Kab. Dogiyai']);
+kota::create(['id' => 518, 'kota' => 'Kab. Intan Jaya']);
+kota::create(['id' => 519, 'kota' => 'Kab. Deiyai']);
+kota::create(['id' => 520, 'kota' => 'Kab. Puncak Jaya']);
+kota::create(['id' => 521, 'kota' => 'Kab. Mimika']);
+kota::create(['id' => 522, 'kota' => 'Kab. Boven Digoel']);
+kota::create(['id' => 523, 'kota' => 'Kab. Mappi']);
+kota::create(['id' => 524, 'kota' => 'Kab. Asmat']);
+kota::create(['id' => 525, 'kota' => 'Kab. Merauke']);
+
+provinsi::create(['id' => 1, 'provinsi' => 'Aceh']);
+provinsi::create(['id' => 2, 'provinsi' => 'Sumatera Utara']);
+provinsi::create(['id' => 3, 'provinsi' => 'Sumatera Barat']);
+provinsi::create(['id' => 4, 'provinsi' => 'Riau']);
+provinsi::create(['id' => 5, 'provinsi' => 'Jambi']);
+provinsi::create(['id' => 6, 'provinsi' => 'Sumatera Selatan']);
+provinsi::create(['id' => 7, 'provinsi' => 'Bengkulu']);
+provinsi::create(['id' => 8, 'provinsi' => 'Lampung']);
+provinsi::create(['id' => 9, 'provinsi' => 'Kepulauan Bangka Belitung']);
+provinsi::create(['id' => 10, 'provinsi' => 'Kepulauan Riau']);
+provinsi::create(['id' => 11, 'provinsi' => 'DKI Jakarta']);
+provinsi::create(['id' => 12, 'provinsi' => 'Jawa Barat']);
+provinsi::create(['id' => 13, 'provinsi' => 'Jawa Tengah']);
+provinsi::create(['id' => 14, 'provinsi' => 'DI Yogyakarta']);
+provinsi::create(['id' => 15, 'provinsi' => 'Jawa Timur']);
+provinsi::create(['id' => 16, 'provinsi' => 'Banten']);
+provinsi::create(['id' => 17, 'provinsi' => 'Bali']);
+provinsi::create(['id' => 18, 'provinsi' => 'Nusa Tenggara Barat']);
+provinsi::create(['id' => 19, 'provinsi' => 'Nusa Tenggara Timur']);
+provinsi::create(['id' => 20, 'provinsi' => 'Kalimantan Barat']);
+provinsi::create(['id' => 21, 'provinsi' => 'Kalimantan Tengah']);
+provinsi::create(['id' => 22, 'provinsi' => 'Kalimantan Selatan']);
+provinsi::create(['id' => 23, 'provinsi' => 'Kalimantan Timur']);
+provinsi::create(['id' => 24, 'provinsi' => 'Kalimantan Utara']);
+provinsi::create(['id' => 25, 'provinsi' => 'Sulawesi Utara']);
+provinsi::create(['id' => 26, 'provinsi' => 'Sulawesi Tengah']);
+provinsi::create(['id' => 27, 'provinsi' => 'Sulawesi Selatan']);
+provinsi::create(['id' => 28, 'provinsi' => 'Sulawesi Tenggara']);
+provinsi::create(['id' => 29, 'provinsi' => 'Gorontalo']);
+provinsi::create(['id' => 30, 'provinsi' => 'Sulawesi Barat']);
+provinsi::create(['id' => 31, 'provinsi' => 'Maluku']);
+provinsi::create(['id' => 32, 'provinsi' => 'Maluku Utara']);
+provinsi::create(['id' => 33, 'provinsi' => 'Papua']);
+provinsi::create(['id' => 34, 'provinsi' => 'Papua Barat']);
 // =========================================================
     berkaslomba::create([
     'id'        => 1,
@@ -373,7 +580,7 @@ for ($i = 12; $i <= 15; $i++) {
     }
 
 
-    // PEMERINTAH KABUPATEN BLORA PROVINSI JAWA TENGAH
+    // PEMERINTAH KABUPATEN BLORA provinsi JAWA TENGAH
 
 
 }

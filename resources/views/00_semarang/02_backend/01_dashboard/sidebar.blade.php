@@ -158,7 +158,7 @@
 </script>
 
     @endcanany
-    <a href="/bepeserta" class="menu-item" style="
+    {{-- <a href="/bepeserta" class="menu-item" style="
       color: white;
       text-decoration: none;
       display: flex;
@@ -170,10 +170,10 @@
       transition: background-color 0.3s;
     ">
       <i class="bi bi-bar-chart-fill"></i><span>Peserta</span>
-    </a>
+    </a> --}}
 
     <!-- Menu Peta (Trigger) -->
-    <div class="menu-item" onclick="toggleSubmenu()" style="
+    {{-- <div class="menu-item" onclick="toggleSubmenu()" style="
       color: white;
       text-decoration: none;
       display: flex;
@@ -188,7 +188,7 @@
       <i class="bi bi-geo-alt-fill"></i>
       <span>Peta</span>
       <i class="bi bi-caret-down-fill ms-auto" id="peta-arrow"></i>
-    </div>
+    </div> --}}
 
     <!-- Submenu Peta -->
     <div id="submenu-peta" style="
@@ -276,6 +276,7 @@
       </a>
     </div>
 
+{{--
     <a href="/laporan" class="menu-item" style="
       color: white;
       text-decoration: none;
@@ -288,7 +289,7 @@
       transition: background-color 0.3s;
     ">
       <i class="bi bi-file-earmark-text-fill"></i><span>Laporan</span>
-    </a>
+    </a> --}}
 
     <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display:none;">
     @csrf

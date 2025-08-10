@@ -18,6 +18,11 @@ class perlombaan extends Model
         return $this->hasMany(berkaslomba::class);
     }
 
+    public function berkasperlombaan()
+    {
+        return $this->hasMany(berkasperlombaan::class);
+    }
+
     // public function pos1()
     // {
     //     return $this->belongsTo(pos1::class, 'pos1_id');

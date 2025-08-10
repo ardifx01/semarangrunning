@@ -18,6 +18,26 @@ class berkasperlombaan extends Model
         return $this->belongsTo(User::class, 'akunpengguna_id');
     }
 
+    public function kategoriperlombaan()
+    {
+        return $this->belongsTo(kategoriperlombaan::class, 'kategoriperlombaan_id');
+    }
+
+    public function kota()
+    {
+        return $this->belongsTo(kota::class, 'kota_id');
+    }
+
+    public function provinsi()
+    {
+        return $this->belongsTo(provinsi::class, 'provinsi_id');
+    }
+
+    public function perlombaan()
+    {
+        return $this->belongsTo(perlombaan::class, 'perlombaan_id');
+    }
+
     // public function pos1()
     // {
     //     return $this->belongsTo(pos1::class, 'pos1_id');

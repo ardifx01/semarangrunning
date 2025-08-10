@@ -13,17 +13,18 @@ return new class extends Migration
     {
 Schema::create('berkasperlombaans', function (Blueprint $table) {
     $table->id();
-    $table->foreignId('akunpengguna_id')->nullable()->index();
-
+    // $table->foreignId('kota_id')->nullable()->index();        // Pilih Kategori
     // Kolom info tim dan organisasi
-    $table->foreignId('kategori_id')->nullable()->index();        // Pilih Kategori
-    $table->foreignId('kota_id')->nullable()->index();        // Pilih Kategori
-    $table->foreignIdstring('provinsi_id')->nullable()->index();        // Pilih Kategori
+    $table->foreignId('akunpengguna_id')->nullable()->index(); // sudah
+    $table->foreignId('perlombaan_id')->nullable()->index();        // Pilih Kategori
 
     $table->string('nama_tim')->nullable();        // Nama Tim
-    $table->string('nama_organisasi')->nullable();// Nama Organisasi
+    $table->text('nama_organisasi')->nullable();// Nama Organisasi
+    $table->string('kota')->nullable()->index();        // Pilih Kategori
+    $table->foreignId('provinsi_id')->nullable()->index();        // Pilih Kategori
     $table->text('alamat_organisasi')->nullable();// Alamat Organisasi
 
+    $table->foreignId('kategoriperlombaan_id')->nullable()->index();        // Pilih Kategori
     // Kolom upload file, simpan path/file name
     $table->string('surat_tugas_organisasi')->nullable();  // Surat tugas dr organisasi
     $table->string('surat_keterangan_sehat')->nullable();  // Surat keterangan sehat

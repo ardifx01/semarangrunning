@@ -25,67 +25,52 @@
       </div>
 
 <div class="content">
-  <div class="table-container">
-    <table class="responsive-table">
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Nama Lengkap</th>
-                <th>Jenis Kelamin</th>
-                <th>Tanggal Lahir</th>
-                <th>NIK</th>
-                <th>No. Telepon</th>
-                <th>Foto</th>
-                <th style="width: 100px;">Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-
-            @forelse($data as $item)
-<tr>
-    <td>{{ $loop->iteration }}</td> <!-- nomor urut -->
-    <td>{{ $item->namalengkap ?? '-' }}</td>
-    <td>{{ $item->jeniskelamin ?? '-' }}</td>
-    <td>{{ $item->ttl ? \Carbon\Carbon::parse($item->ttl)->format('d-m-Y') : '-' }}</td>
-    <td>{{ $item->nik ?? '-' }}</td>
-    <td>{{ $item->notelepon ?? '-' }}</td>
-    <td>
-
-        <div style="margin-top: 10px;">
-
-                                                                                                            @if($item->foto && $item->foto && $item->foto && file_exists(public_path('storage/' . $item->foto)))
-                                                                                                                <!-- Menampilkan gambar dari storage -->
-                                                                                                                <img src="{{ asset('storage/' . $item->foto) }}" alt="Foto Belum Di Upload" style="width: 100%; max-height: 100px; object-fit: contain;" loading="lazy">
-                                                                                                            @elseif($item->foto && $item->foto && $item->foto)
-                                                                                                                <!-- Menampilkan gambar dari path luar storage -->
-                                                                                                                <img src="{{ asset($item->foto) }}" alt="Foto Belum Di Upload " style="width: 100%; max-height: 100px; object-fit: contain;" loading="lazy">
-                                                                                                            @else
-                                                                                                                <!-- Placeholder jika tidak ada data -->
-                                                                                                                <p style="font-size: 11px;">Tidak Ada Tanda Tangan !</p>
-
-                                                                                                                @endif
-                                                                                                        </div>
-
-    <td>
-<div style="display: flex; align-items: center; gap: 8px;">
-    <!-- Tombol Edit -->
-    <a href="{{ url('/daftartimupdateupdate/' . $item->id ) }}" class="button-berkas">
-        <i class="bi bi-pencil-square"></i> Update
+<div class="table-container">
+  <table class="responsive-table">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Nama TIM</th>
+        <th>Nama Organisasi</th>
+        <th>Alamat Organisasi</th>
+        <th>Berkas <br> Pendaftaran</th>
+        {{-- <th>Tanggal Lahir</th>
+        <th>NIK</th>
+        <th>No. Telepon</th>
+        <th>Foto</th> --}}
+        <th style="width: 150px;">Aksi</th>
+      </tr>
+    </thead>
+    <tbody>
+      @forelse($data as $item)
+      <tr>
+        <td>{{ $loop->iteration }}</td> <!-- nomor urut -->
+        <td>{{ $item->nama_tim ?? '-' }}</td>
+        <td>{{ $item->nama_organisasi ?? '-' }}</td>
+        <td>{{ $item->alamat_organisasi ?? '-' }}</td>
+  <td>
+    <a href="{{ route('informasitim.show', $item->id) }}" class="button-baru" style="display: inline-flex; align-items: center; gap: 6px;">
+      <i class="bi bi-eye"></i> Lihat
     </a>
+  </td>
+        <td>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <!-- Tombol Edit -->
+            <a href="{{ url('/daftartimupdateupdate/' . $item->id ) }}" class="button-berkas">
+              <i class="bi bi-pencil-square"></i> Edit
+            </a>
 
-    <!-- Tombol Hapus -->
-    <form action="{{ route('daftartim.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Apakah Saudara ingin menghapus data ini?')" style="margin: 0;">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="button-merah">
-            <i class="bi bi-trash-fill" style="font-size: 18px;"></i> Hapus
-        </button>
-    </form>
-</div>
-
-</td>
-
-</tr>
+            <!-- Tombol Hapus -->
+            {{-- <form action="{{ route('daftartim.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Apakah Saudara ingin menghapus data ini?')" style="margin: 0;">
+              @csrf
+              @method('DELETE')
+              <button type="submit" class="button-merah">
+                <i class="bi bi-trash-fill" style="font-size: 18px;"></i> Hapus
+              </button>
+            </form> --}}
+          </div>
+        </td>
+      </tr>
                 @empty
     <tr>
     <td colspan="100%"> {{-- Memenuhi semua kolom --}}
@@ -104,8 +89,8 @@
                 font-size: 16px;
                 animation: fadeIn 0.5s ease-in-out;
             ">
-                <i class="bi bi-folder-x" style="margin-right: 8px; font-size: 20px; color: #dc3545;"></i>
-                Saudara Belum Mendaftarkan Anggota Tim, Silahkan Tambahkan Tim Saudara  !!
+                <i class="button-berkas bi bi-folder-x" style="margin-right: 8px; font-size: 20px; color: #dc3545;"></i>
+                Saudara Belum Daftar Event Ini, Silahkan Daftarkan Tim Anda  !!
             </div>
         </td>
         <br>
@@ -114,10 +99,11 @@
 
 </tbody>
 </table>
-@if($data->count() < 2)
+
+@if($data->count() < 1)
 <div style="display: flex; justify-content: center; margin-top: 20px;">
-    <a href="{{ url('/daftartim/create/' . $userId) }}" class="button-maroon">
-        <i class="bi bi-person-plus-fill" style="margin-right: 8px;"></i> Tambahkan Anggota Tim
+    <a href="{{ url('/daftarlomba/create/' . $userId . '/' . $perlombaanId) }}" class="button-berkas">
+        <i class="bi bi-person-plus-fill" style="margin-right: 8px;"></i> Daftar Lomba !
     </a>
 </div>
 @endif
