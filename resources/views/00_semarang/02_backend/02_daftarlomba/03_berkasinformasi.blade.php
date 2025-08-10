@@ -39,7 +39,7 @@
         { id: 1, name: 'Berkas Pendaftaran Masuk', status: 'completed', time: '2025-08-10 12:00:00', message: '' },
         { id: 2, name: 'Verifikasi Persyaratan ', status: 'pending', time: '', message: 'Menunggu Verifikasi Panitia' },
         { id: 3, name: 'Cek Pembayaran', status: 'pending', time: '', message: 'Status Pembayaran' },
-        { id: 4, name: 'Technical Meeting', status: 'pending', time: '', message: 'Status Kehadiran' },
+        { id: 4, name: 'Daftar Ulang', status: 'pending', time: '', message: 'Status Kehadiran' },
         { id: 5, name: 'Sertifikat', status: 'pending', time: '', message: 'Belum Terbit' }
     ];
 
