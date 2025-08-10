@@ -837,13 +837,13 @@ Route::get('/bepbgberitaacaraslfshow/{id}', [PbgslfController::class, 'bepbgberi
 // ================================================================================================================================================
 
 // Route::get('/dashboard', [AdminDashboardController::class, 'index'])->middleware('auth');
-Route::get('/dashboard', [AdminDashboardController::class, 'index']);
-Route::get('/beperlombaan', [PerlombaanController::class, 'beperlombaan']);
-Route::get('/bepeserta', [PerlombaanController::class, 'bepeserta'])->name('bepeserta');
-Route::get('/peta/lokasi1', [PerlombaanController::class, 'lokasi1'])->name('lokasi1index');
-Route::get('/tambahdatastart', [PerlombaanController::class, 'tambahdatastart']);
-Route::post('/tambahdatastartnew', [PerlombaanController::class, 'tambahdatastartcreate'])->name('datapos1.store');
-Route::post('/tambahdatastartupdate/{id}', [PerlombaanController::class, 'tambahdatastartcreateupdate'])->name('datapos1.update');
+Route::get('/dashboard', [AdminDashboardController::class, 'index'])->middleware('auth');
+Route::get('/beperlombaan', [PerlombaanController::class, 'beperlombaan'])->middleware('auth');
+Route::get('/bepeserta', [PerlombaanController::class, 'bepeserta'])->name('bepeserta')->middleware('auth');
+Route::get('/peta/lokasi1', [PerlombaanController::class, 'lokasi1'])->name('lokasi1index')->middleware('auth');
+Route::get('/tambahdatastart', [PerlombaanController::class, 'tambahdatastart'])->middleware('auth');
+Route::post('/tambahdatastartnew', [PerlombaanController::class, 'tambahdatastartcreate'])->name('datapos1.store')->middleware('auth');
+Route::post('/tambahdatastartupdate/{id}', [PerlombaanController::class, 'tambahdatastartcreateupdate'])->name('datapos1.update')->middleware('auth');
 // Route::put('/jawabposstart/{id}', [PerlombaanController::class, 'tambahdatastartcreateupdate'])->name('datapos1.update');
 
 // Route::put('/jawabposstart/{id}', [PerlombaanController::class, 'tambahdatastartcreateupdate'])->name('datapos1.update');
