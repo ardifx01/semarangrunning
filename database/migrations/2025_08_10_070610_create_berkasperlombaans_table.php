@@ -29,7 +29,15 @@ Schema::create('berkasperlombaans', function (Blueprint $table) {
     $table->string('surat_tugas_organisasi')->nullable();  // Surat tugas dr organisasi
     $table->string('surat_keterangan_sehat')->nullable();  // Surat keterangan sehat
     $table->string('bukti_pembayaran')->nullable();        // Bukti Pembayaran
-    $table->string('surat_pernyataan')->nullable();        // Surat Pernyataan
+    $table->string('surat_pernyataan')->nullable();
+
+    $table->string('verifikasiktp')->nullable();
+    $table->string('verifikasinpwp')->nullable();
+    $table->string('verifikasisert')->nullable();
+    $table->string('verifikasittd')->nullable();
+
+
+    // Surat Pernyataan
 
             $table->string('cekdokumen1')->nullable();
             $table->string('cekdokumen2')->nullable();

@@ -438,5 +438,175 @@ public function bedaftartim()
         'data' => $data,
     ]);
 }
+public function katumumputera()
+{
+    $user = Auth::user();
+
+    // Ambil ID pertama dari tabel perlombaan
+    $perlombaanPertama = perlombaan::orderBy('id', 'asc')->first();
+    $perlombaanId = $perlombaanPertama ? $perlombaanPertama->id : null;
+
+    // Ambil semua data berdasarkan kategori 1
+    $data = berkasperlombaan::where('kategoriperlombaan_id', 1)
+        ->get();
+
+    return view('00_semarang.02_backend.00_superadmin.01_katumumputera.01_katumumputera', [
+        'title' => 'Kategori Umum Tim Putera',
+        'user' => $user,
+        'data' => $data,
+        'perlombaanId' => $perlombaanId,
+    ]);
+}
+
+
+public function katumumputeri()
+{
+    $user = Auth::user();
+
+    // Ambil ID pertama dari tabel perlombaan
+    $perlombaanPertama = perlombaan::orderBy('id', 'asc')->first();
+    $perlombaanId = $perlombaanPertama ? $perlombaanPertama->id : null;
+
+    // Ambil semua data kategori 2
+    $data = berkasperlombaan::where('kategoriperlombaan_id', 2)
+        ->get();
+
+    return view('00_semarang.02_backend.00_superadmin.01_katumumputera.01_katumumputera', [
+        'title' => 'Kategori Umum Tim Puteri',
+        'user' => $user,
+        'data' => $data,
+        'perlombaanId' => $perlombaanId,
+    ]);
+}
+
+public function katpelajarputera()
+{
+    $user = Auth::user();
+
+    // Ambil ID pertama dari tabel perlombaan
+    $perlombaanPertama = perlombaan::orderBy('id', 'asc')->first();
+    $perlombaanId = $perlombaanPertama ? $perlombaanPertama->id : null;
+
+    // Ambil semua data kategori 3
+    $data = berkasperlombaan::where('kategoriperlombaan_id', 3)
+        ->get();
+
+    return view('00_semarang.02_backend.00_superadmin.01_katumumputera.01_katumumputera', [
+        'title' => 'Kategori Pelajar Tim Putera',
+        'user' => $user,
+        'data' => $data,
+        'perlombaanId' => $perlombaanId,
+    ]);
+}
+
+public function katpelajarputeri()
+{
+    $user = Auth::user();
+
+    // Ambil ID pertama dari tabel perlombaan
+    $perlombaanPertama = perlombaan::orderBy('id', 'asc')->first();
+    $perlombaanId = $perlombaanPertama ? $perlombaanPertama->id : null;
+
+    // Ambil semua data kategori 4
+    $data = berkasperlombaan::where('kategoriperlombaan_id', 4)
+        ->get();
+
+    return view('00_semarang.02_backend.00_superadmin.01_katumumputera.01_katumumputera', [
+        'title' => 'Kategori Pelajar Tim Puteri',
+        'user' => $user,
+        'data' => $data,
+        'perlombaanId' => $perlombaanId,
+    ]);
+}
+
+
+public function informasitimadmin($id)
+{
+    $user = Auth::user();
+
+    // Ambil data berkasperlombaan berdasarkan ID saja, jika tidak ada otomatis 404
+    $data = berkasperlombaan::findOrFail($id);
+
+    return view('00_semarang.02_backend.02_daftarlomba.03_berkasinformasi', [
+        'title' => 'Daftar Informasi Tim',
+        'data' => $data,
+        'user' => $user,
+    ]);
+
+}
+
+
+
+public function validasipendaftaran(Request $request, $id)
+{
+    // Validasi input wajib & opsional
+    $request->validate([
+        'verifikasiktp' => 'required|in:sesuai,tidak_sesuai',
+        'verifikasinpwp' => 'required|in:sesuai,tidak_sesuai',
+        'verifikasisert' => 'required|in:sesuai,tidak_sesuai',
+        'verifikasittd' => 'required|in:sesuai,tidak_sesuai',
+    ]);
+
+    // Cari peserta berdasarkan ID
+    $item = berkasperlombaan::findOrFail($id);
+
+    // Simpan data
+    $item->update([
+        'verifikasiktp' => $request->verifikasiktp,
+        'verifikasinpwp' => $request->verifikasinpwp,
+        'verifikasisert' => $request->verifikasisert,
+        'verifikasittd' => $request->verifikasittd,
+    ]);
+
+    // Flash message
+session()->flash('update', 'Data Verifikasi Peserta Berhasil !');
+
+// Redirect kembali ke halaman sebelumnya
+return redirect()->back();
+}
+
+
+// In ValBerkasUsaha2Controller.php
+
+public function update(Request $request, $id)
+{
+    $data = berkasperlombaan::findOrFail($id);
+    $data->update([
+        $request->field => $request->value
+    ]);
+    return back()->with('success', 'Status verifikasi berkas berhasil diperbarui');
+}
+
+public function updatePayment(Request $request, $id)
+{
+    $data = berkasperlombaan::findOrFail($id);
+    $data->update([
+        'validasiberkas2' => $request->value
+    ]);
+    return back()->with('success', 'Status pembayaran berhasil diperbarui');
+}
+
+public function updateAttendance(Request $request, $id)
+{
+    $data = berkasperlombaan::findOrFail($id);
+    $data->update([
+        'validasiberkas3' => $request->value
+    ]);
+    return back()->with('success', 'Status kehadiran berhasil diperbarui');
+}
+
+public function updateCertificate(Request $request, $id)
+{
+    $data = berkasperlombaan::findOrFail($id);
+    $data->update([
+        'validasiberkas4' => $request->value
+    ]);
+
+    if ($request->value == 'terbit') {
+        // Logic untuk menerbitkan sertifikat
+    }
+
+    return back()->with('success', 'Status sertifikat berhasil diperbarui');
+}
 
 }

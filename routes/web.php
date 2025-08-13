@@ -897,6 +897,7 @@ Route::get('/daftarlomba/create/{userId}/{perlombaanId}', [DaftartimController::
 Route::post('/daftarlombatim/createnew', [DaftarTimController::class, 'daftarlombatimnew'])->name('daftarlombatim');
 
 Route::get('/informasitim/{id}', [DaftartimController::class, 'informasitim'])->middleware('auth')->name('informasitim.show');
+Route::get('/informasitimadmin/{id}', [DaftartimController::class, 'informasitimadmin'])->middleware('auth')->name('informasitimadmin');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
@@ -905,6 +906,34 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/daftar', [LoginController::class, 'showRegisterForm']);
 Route::post('/daftar', [LoginController::class, 'register']);
 
+
+
+// SUPER ADMIN
+Route::get('/katumumputera', [DaftartimController::class, 'katumumputera'])->middleware('auth')->name('katumumputeraindex');
+Route::get('/katumumputeri', [DaftartimController::class, 'katumumputeri'])->middleware('auth')->name('katumumputeriindex');
+Route::get('/katpelajarputera', [DaftartimController::class, 'katpelajarputera'])->middleware('auth')->name('katpelajarputeraindex');
+Route::get('/katpelajarputeri', [DaftartimController::class, 'katpelajarputeri'])->middleware('auth')->name('katpelajarputeraindex');
+
+
+// PERMOHONAN VALIDASI PENDAFTARAN
+Route::put('/validasipendaftaran/{id}', [DaftartimController::class, 'validasipendaftaran'])->middleware('auth')->name('validasipendaftaran');
+
+
+// For verification 1 (Berkas)
+Route::put('/valberkasusaha/{id}', [DaftartimController::class, 'update'])
+    ->name('valberkasusaha2.update');
+
+// For verification 2 (Pembayaran)
+Route::put('/valberkasusaha/{id}/payment', [DaftartimController::class, 'updatePayment'])
+    ->name('valberkasusaha2.updatePayment');
+
+// For verification 3 (Kehadiran)
+Route::put('/valberkasusaha/{id}/attendance', [DaftartimController::class, 'updateAttendance'])
+    ->name('valberkasusaha2.updateAttendance');
+
+// For verification 4 (Sertifikat)
+Route::put('/valberkasusaha/{id}/certificate', [DaftartimController::class, 'updateCertificate'])
+    ->name('valberkasusaha2.updateCertificate');
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');

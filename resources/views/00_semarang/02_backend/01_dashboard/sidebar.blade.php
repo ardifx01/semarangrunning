@@ -65,16 +65,16 @@
 
 <div id="submenu-perlombaan" class="submenu">
   <a href="/perlombaan/daftartim" class="submenu-item">
-    <i class="bi bi-list-check"></i> Daftar Tim
+    <i class="bi bi-list-check"></i>1. Daftar Tim
   </a>
   <a href="/daftarlomba" class="submenu-item">
-    <i class="bi bi-trophy"></i> Daftar Lomba
+    <i class="bi bi-trophy"></i>2. Daftar Lomba
   </a>
   <a href="/404" class="submenu-item">
-    <i class="bi bi-activity"></i> Status
+    <i class="bi bi-activity"></i>3. Status
   </a>
   <a href="/404" class="submenu-item">
-    <i class="bi bi-patch-check-fill"></i> Sertifikat
+    <i class="bi bi-patch-check-fill"></i>4. Sertifikat
   </a>
 </div>
 
@@ -249,20 +249,384 @@
 
 @can('super_admin')
 
-<a href="/bedaftartim" class="menu-item" style="
-      color: white;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 8px;
-      border-radius: 4px;
-      margin-bottom: 4px;
-      transition: background-color 0.3s;
-      ">
-      <i class="bi bi-person"></i><span>Daftar Tim</span>
-    </a>
-    @endcan
+<!-- ========== MENU DAFTAR SEMUA TIM ========== -->
+<!-- Menu Daftar Semua Tim -->
+<div class="daftarsemua-tim-menu-item" onclick="toggleDaftarSemuaTimSubmenu()">
+  <i class="bi bi-people-fill"></i>
+  <span class="menu-label">Daftar Tim</span>
+  <i class="bi bi-caret-down-fill ms-auto" id="daftarsemuatim-arrow"></i>
+</div>
+
+<div id="daftarsemuatim-submenu" class="submenu">
+  <a href="/katumumputera" class="daftarsemuatim-submenu-item">
+    <i class="bi bi-list-ul"></i> Kat Umum Putera
+  </a>
+  <a href="/katumumputeri" class="daftarsemuatim-submenu-item">
+    <i class="bi bi-list-ul"></i> Kat Umum Puteri
+  </a>
+  <a href="/katpelajarputera" class="daftarsemuatim-submenu-item">
+    <i class="bi bi-list-ul"></i> Kat Pelajar Putera
+  </a>
+  <a href="/katpelajarputeri" class="daftarsemuatim-submenu-item">
+    <i class="bi bi-list-ul"></i> Kat Pelajar Puteri
+  </a>
+</div>
+
+<style>
+  /* Menu Utama */
+  .daftarsemua-tim-menu-item {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 8px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 0.95rem;
+    font-weight: 500;
+    background-color: transparent;
+  }
+  .daftarsemua-tim-menu-item i {
+    font-size: 1.3rem;
+  }
+  .daftarsemua-tim-menu-item:hover {
+    background-color: #333;
+  }
+  .menu-label {
+    margin-left: 13px;
+  }
+
+  /* Submenu Container */
+  .submenu {
+    display: none;
+    margin-left: 24px;
+    flex-direction: column;
+    animation: slideDown 0.3s ease forwards;
+  }
+
+  /* Submenu Items */
+  .daftarsemuatim-submenu-item {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 8px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    transition: background-color 0.3s;
+    font-size: 0.9rem;
+  }
+  .daftarsemuatim-submenu-item i {
+    font-size: 1.2rem;
+  }
+  .daftarsemuatim-submenu-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  /* Animasi slide down */
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  function toggleDaftarSemuaTimSubmenu() {
+    const submenu = document.getElementById("daftarsemuatim-submenu");
+    const arrow = document.getElementById("daftarsemuatim-arrow");
+    const isHidden = submenu.style.display === "none" || submenu.style.display === "";
+
+    if (isHidden) {
+      submenu.style.display = "flex";
+      submenu.style.animation = "slideDown 0.3s ease forwards";
+    } else {
+      submenu.style.display = "none";
+    }
+
+    arrow.classList.toggle("bi-caret-up-fill", isHidden);
+    arrow.classList.toggle("bi-caret-down-fill", !isHidden);
+  }
+</script>
+
+
+
+<!-- ========== MENU PENJURIAN ========== -->
+<div class="penjurian-menu-item" onclick="togglePenjurianSubmenu()">
+  <i class="bi bi-journal-text"></i>
+  <span style="margin-left:13px;">Materi Perlombaan</span>
+  <i class="bi bi-caret-down-fill ms-auto" id="penjurian-arrow"></i>
+</div>
+
+<div id="penjurian-submenu" class="submenu">
+  <a href="/404" class="penjurian-submenu-item">
+    <i class="bi bi-geo-alt"></i> Track Jalur
+  </a>
+  <a href="/404" class="penjurian-submenu-item">
+    <i class="bi bi-tools"></i> Informasi Peralatan
+  </a>
+  <a href="/404" class="penjurian-submenu-item">
+    <i class="bi bi-book"></i> Panduan Perlombaan
+  </a>
+  <a href="/404" class="penjurian-submenu-item">
+    <i class="bi bi-clock-history"></i> Waktu Perlombaan
+  </a>
+</div>
+
+<style>
+  /* Style umum untuk menu */
+  .menu-item, .penjurian-menu-item {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 8px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+  .menu-item i, .penjurian-menu-item i {
+    font-size: 1.3rem;
+  }
+  .menu-item:hover, .penjurian-menu-item:hover {
+    background-color: #333;
+  }
+
+  /* Style untuk submenu */
+  .submenu {
+    margin-left: 20px;
+    display: none;
+    border-left: 1px solid #333;
+    padding-left: 12px;
+  }
+  .submenu-item, .penjurian-submenu-item {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 8px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    transition: background-color 0.3s;
+    font-size: 0.9rem;
+  }
+  .submenu-item i, .penjurian-submenu-item i {
+    font-size: 1.3rem;
+  }
+  .submenu-item:hover, .penjurian-submenu-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+</style>
+
+<script>
+  function toggleSubmenuPerlombaan() {
+    const submenu = document.getElementById("submenu-perlombaan");
+    const arrow = document.getElementById("perlombaan-arrow");
+    const isHidden = submenu.style.display === "none";
+    submenu.style.display = isHidden ? "block" : "none";
+    arrow.classList.toggle("bi-caret-up-fill", isHidden);
+    arrow.classList.toggle("bi-caret-down-fill", !isHidden);
+  }
+
+  function togglePenjurianSubmenu() {
+    const submenu = document.getElementById("penjurian-submenu");
+    const arrow = document.getElementById("penjurian-arrow");
+    const isHidden = submenu.style.display === "none";
+    submenu.style.display = isHidden ? "block" : "none";
+    arrow.classList.toggle("bi-caret-up-fill", isHidden);
+    arrow.classList.toggle("bi-caret-down-fill", !isHidden);
+  }
+</script>
+
+
+<!-- ========== MENU POS PENJURIAN ========== -->
+<div class="penjurian-menu-item" onclick="togglePosPenjurianSubmenu()">
+  <i class="bi bi-flag"></i>
+  <span style="margin-left:13px;">Pos Penjurian</span>
+  <i class="bi bi-caret-down-fill ms-auto" id="pos-penjurian-arrow"></i>
+</div>
+
+<div id="pos-penjurian-submenu" class="submenu">
+  <a href="/404" class="penjurian-submenu-item">
+    <i class="bi bi-play-circle"></i> Start
+  </a>
+  <!-- Loop Pos 1 - 20 -->
+  <!-- Bisa juga di-generate dengan PHP/JS jika dinamis -->
+  <a href="/404" class="penjurian-submenu-item"><i class="bi bi-geo-alt"></i> Pos 1</a>
+  <a href="/404" class="penjurian-submenu-item"><i class="bi bi-geo-alt"></i> Pos 2</a>
+  <a href="/404" class="penjurian-submenu-item"><i class="bi bi-geo-alt"></i> Pos 3</a>
+  <a href="/404" class="penjurian-submenu-item"><i class="bi bi-geo-alt"></i> Pos 4</a>
+  <a href="/404" class="penjurian-submenu-item"><i class="bi bi-geo-alt"></i> Pos 5</a>
+  <a href="/404" class="penjurian-submenu-item"><i class="bi bi-geo-alt"></i> Pos 6</a>
+  <a href="/404" class="penjurian-submenu-item"><i class="bi bi-geo-alt"></i> Pos 7</a>
+  <a href="/404" class="penjurian-submenu-item"><i class="bi bi-geo-alt"></i> Pos 8</a>
+  <a href="/404" class="penjurian-submenu-item"><i class="bi bi-geo-alt"></i> Pos 9</a>
+  <a href="/404" class="penjurian-submenu-item"><i class="bi bi-geo-alt"></i> Pos 10</a>
+  <a href="/404" class="penjurian-submenu-item"><i class="bi bi-geo-alt"></i> Pos 11</a>
+  <a href="/404" class="penjurian-submenu-item"><i class="bi bi-geo-alt"></i> Pos 12</a>
+  <a href="/404" class="penjurian-submenu-item"><i class="bi bi-geo-alt"></i> Pos 13</a>
+  <a href="/404" class="penjurian-submenu-item"><i class="bi bi-geo-alt"></i> Pos 14</a>
+  <a href="/404" class="penjurian-submenu-item"><i class="bi bi-geo-alt"></i> Pos 15</a>
+  <a href="/404" class="penjurian-submenu-item"><i class="bi bi-geo-alt"></i> Pos 16</a>
+  <a href="/404" class="penjurian-submenu-item"><i class="bi bi-geo-alt"></i> Pos 17</a>
+  <a href="/404" class="penjurian-submenu-item"><i class="bi bi-geo-alt"></i> Pos 18</a>
+  <a href="/404" class="penjurian-submenu-item"><i class="bi bi-geo-alt"></i> Pos 19</a>
+  <a href="/404" class="penjurian-submenu-item"><i class="bi bi-geo-alt"></i> Pos 20</a>
+  <!-- Finish -->
+  <a href="/404" class="penjurian-submenu-item">
+    <i class="bi bi-flag-fill"></i> Finish
+  </a>
+</div>
+
+<style>
+  .penjurian-menu-item {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 8px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+  .penjurian-menu-item i {
+    font-size: 1.3rem;
+  }
+  .penjurian-menu-item:hover {
+    background-color: #333;
+  }
+  .submenu {
+    margin-left: 20px;
+    display: none;
+    border-left: 1px solid #333;
+    padding-left: 12px;
+  }
+  .penjurian-submenu-item {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 8px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    transition: background-color 0.3s;
+    font-size: 0.9rem;
+  }
+  .penjurian-submenu-item i {
+    font-size: 1.3rem;
+  }
+  .penjurian-submenu-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+</style>
+
+<script>
+  function togglePosPenjurianSubmenu() {
+    const submenu = document.getElementById("pos-penjurian-submenu");
+    const arrow = document.getElementById("pos-penjurian-arrow");
+    const isHidden = submenu.style.display === "none";
+    submenu.style.display = isHidden ? "block" : "none";
+    arrow.classList.toggle("bi-caret-up-fill", isHidden);
+    arrow.classList.toggle("bi-caret-down-fill", !isHidden);
+  }
+</script>
+<!-- ========== MENU QUICK COUNT ========== -->
+<div class="quickcount-menu-item" onclick="toggleQuickCountSubmenu()">
+  <i class="bi bi-graph-up"></i>
+  <span style="margin-left:13px;">Quick Count</span>
+  <i class="bi bi-caret-down-fill ms-auto" id="quickcount-arrow"></i>
+</div>
+
+<div id="quickcount-submenu" class="submenu">
+  <a href="/404" class="quickcount-submenu-item">
+    <i class="bi bi-people"></i> Penonton
+  </a>
+  <a href="/404" class="quickcount-submenu-item">
+    <i class="bi bi-person-badge"></i> Panitia
+  </a>
+</div>
+
+<style>
+  /* Style umum untuk menu */
+  .menu-item, .quickcount-menu-item {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 8px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+  .menu-item i, .quickcount-menu-item i {
+    font-size: 1.3rem;
+  }
+  .menu-item:hover, .quickcount-menu-item:hover {
+    background-color: #333;
+  }
+
+  /* Style untuk submenu */
+  .submenu {
+    margin-left: 20px;
+    display: none;
+    border-left: 1px solid #333;
+    padding-left: 12px;
+  }
+  .submenu-item, .quickcount-submenu-item {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 8px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    transition: background-color 0.3s;
+    font-size: 0.9rem;
+  }
+  .submenu-item i, .quickcount-submenu-item i {
+    font-size: 1.3rem;
+  }
+  .submenu-item:hover, .quickcount-submenu-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+</style>
+
+<script>
+  function toggleQuickCountSubmenu() {
+    const submenu = document.getElementById("quickcount-submenu");
+    const arrow = document.getElementById("quickcount-arrow");
+    const isHidden = submenu.style.display === "none";
+    submenu.style.display = isHidden ? "block" : "none";
+    arrow.classList.toggle("bi-caret-up-fill", isHidden);
+    arrow.classList.toggle("bi-caret-down-fill", !isHidden);
+  }
+</script>
+
+@endcan
 
     <!-- Menu Peta (Trigger) -->
     {{-- <div class="menu-item" onclick="toggleSubmenu()" style="

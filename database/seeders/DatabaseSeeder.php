@@ -222,43 +222,24 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'id'  => 3,
-            'name'  => 'Miftahunnuril Anam',
-            'username' => 'Anam',
+            'name'  => 'Anindya Ghanni',
+            'username' => 'Anindya Ghanni',
             'statusadmin_id' => '1',
             'avatar' => 'user/avatar/foto4.png',
-            'email' => 'masjakiblora@gmail.com',
-            'password' => bcrypt('adminadmin123')
+            'email' => 'anindyaghanni1989@gmail.com',
+            'password' => bcrypt('20050219')
         ]);
 
         User::create([
             'id'  => 4,
-            'name'  => 'Mas Budi',
-            'username' => 'Mas Budi',
-            'statusadmin_id' => '3',
+            'name'  => 'Putri Wulandary',
+            'username' => 'Putri Wulandary',
+            'statusadmin_id' => '2',
             'avatar' => 'user/avatar/sigit.jpg',
-            'email' => 'sigitpekerja@gmail.com',
-            'password' => bcrypt('adminadmin123$$')
+            'email' => 'putriwulandary1234@gmail.com',
+            'password' => bcrypt('13102')
         ]);
 
-        User::create([
-            'id'  => 5,
-            'name'  => 'Anam',
-            'username' => 'Anam',
-            'statusadmin_id' => '3',
-            'avatar' => 'user/avatar/sigit.jpg',
-            'email' => 'sigitsupp_pabrik@gmail.com',
-            'password' => bcrypt('adminadmin123$$')
-        ]);
-
-        User::create([
-            'id'  => 6,
-            'name'  => 'Zaqi',
-            'username' => 'Zaqi',
-            'statusadmin_id' => '3',
-            'avatar' => 'user/avatar/sigit.jpg',
-            'email' => 'sigitsupp_peralatan@gmail.com',
-            'password' => bcrypt('adminadmin123$$')
-        ]);
 
 
         // =================================================================
@@ -269,7 +250,7 @@ class DatabaseSeeder extends Seeder
 
         statusadmin::create([
             'id'  => '2',
-            'statusadmin'  => 'admin',
+            'statusadmin'  => 'keuangan',
         ]);
 
         statusadmin::create([

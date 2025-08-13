@@ -31,8 +31,8 @@ class AuthServiceProvider extends ServiceProvider
             return $user->statusadmin->statusadmin === 'super_admin';
         });
 
-        Gate::define('admin', function (User $user) {
-            return $user->statusadmin->statusadmin === 'admin';
+        Gate::define('keuangan', function (User $user) {
+            return $user->statusadmin->statusadmin === 'keuangan';
         });
 
         Gate::define('peserta', function (User $user) {
