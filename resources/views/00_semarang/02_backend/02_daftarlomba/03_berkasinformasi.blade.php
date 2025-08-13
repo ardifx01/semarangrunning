@@ -410,7 +410,7 @@
   <td style="text-align: center;">4</td>
   <td style="text-align: left;"><i class="bi bi-flag" style="margin-right:6px;"></i> Provinsi</td>
   <td style="text-align: center;">:</td>
-  <td style="text-align: left;">{{ $data->provinsi->nama ?? '-' }}</td>
+  <td style="text-align: left;">{{ $data->provinsi->provinsi ?? '-' }}</td>
 </tr>
 <tr>
   <td style="text-align: center;">5</td>
@@ -422,7 +422,7 @@
   <td style="text-align: center;">6</td>
   <td style="text-align: left;"><i class="bi bi-list" style="margin-right:6px;"></i> Kategori Perlombaan</td>
   <td style="text-align: center;">:</td>
-  <td style="text-align: left;">{{ $data->kategoriperlombaan->nama ?? '-' }}</td>
+  <td style="text-align: left;">{{ $data->kategoriperlombaan->kategoriperlombaan ?? '-' }}</td>
 </tr>
 
       </tbody>

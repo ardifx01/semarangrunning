@@ -53,111 +53,199 @@
       <i class="bi bi-speedometer2"></i><span>Dashboard</span>
     </a>
 
-    @canany(['peserta', 'super_admin'])
 
-    <!-- Menu Perlombaan -->
-<div class="menu-item" onclick="toggleSubmenuPerlombaan()" style="
-      color: white;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 8px;
-      border-radius: 4px;
-      margin-bottom: 4px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    ">
+@canany(['peserta'])
+
+<!-- ========== MENU PERLOMBAAN ========== -->
+<div class="menu-item" onclick="toggleSubmenuPerlombaan()">
   <i class="bi bi-people-fill"></i>
   <span>Informasi Tim</span>
   <i class="bi bi-caret-down-fill ms-auto" id="perlombaan-arrow"></i>
 </div>
 
-<!-- Submenu Perlombaan -->
-<div id="submenu-perlombaan" style="
-      margin-left: 20px;
-      display: none;
-      border-left: 1px solid #333;
-      padding-left: 12px;
-    ">
-  <a href="/perlombaan/daftartim" class="submenu-item" style="
-        color: white;
-        text-decoration: none;
-        display: block;
-        padding: 8px 8px;
-        border-radius: 4px;
-        margin-bottom: 4px;
-        transition: background-color 0.3s;
-      ">
-    <i class="bi bi-people"></i> Daftar Tim
+<div id="submenu-perlombaan" class="submenu">
+  <a href="/perlombaan/daftartim" class="submenu-item">
+    <i class="bi bi-list-check"></i> Daftar Tim
   </a>
-<a href="/daftarlomba" class="submenu-item" style="
+  <a href="/daftarlomba" class="submenu-item">
+    <i class="bi bi-trophy"></i> Daftar Lomba
+  </a>
+  <a href="/404" class="submenu-item">
+    <i class="bi bi-activity"></i> Status
+  </a>
+  <a href="/404" class="submenu-item">
+    <i class="bi bi-patch-check-fill"></i> Sertifikat
+  </a>
+</div>
+
+<!-- ========== MENU PENJURIAN ========== -->
+<div class="penjurian-menu-item" onclick="togglePenjurianSubmenu()">
+  <i class="bi bi-journal-text"></i>
+  <span style="margin-left:13px;">Materi</span>
+  <i class="bi bi-caret-down-fill ms-auto" id="penjurian-arrow"></i>
+</div>
+
+<div id="penjurian-submenu" class="submenu">
+  <a href="/404" class="penjurian-submenu-item">
+    <i class="bi bi-geo-alt"></i> Track Jalur
+  </a>
+  <a href="/404" class="penjurian-submenu-item">
+    <i class="bi bi-tools"></i> Informasi Peralatan
+  </a>
+  <a href="/404" class="penjurian-submenu-item">
+    <i class="bi bi-book"></i> Panduan Perlombaan
+  </a>
+  <a href="/404" class="penjurian-submenu-item">
+    <i class="bi bi-clock-history"></i> Waktu Perlombaan
+  </a>
+</div>
+
+<style>
+  /* Style umum untuk menu */
+  .menu-item, .penjurian-menu-item {
     color: white;
     text-decoration: none;
-    display: flex;             /* Flex supaya sejajar horizontal */
-    align-items: center;       /* Vertikal rata tengah */
-    gap: 8px;                  /* Jarak icon ke teks */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 8px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+  .menu-item i, .penjurian-menu-item i {
+    font-size: 1.3rem;
+  }
+  .menu-item:hover, .penjurian-menu-item:hover {
+    background-color: #333;
+  }
+
+  /* Style untuk submenu */
+  .submenu {
+    margin-left: 20px;
+    display: none;
+    border-left: 1px solid #333;
+    padding-left: 12px;
+  }
+  .submenu-item, .penjurian-submenu-item {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     padding: 8px 8px;
     border-radius: 4px;
     margin-bottom: 4px;
     transition: background-color 0.3s;
-">
-  <i class="bi bi-trophy-fill" style="font-size: 1.2rem;"></i> Daftar Lomba
-</a>
+    font-size: 0.9rem;
+  }
+  .submenu-item i, .penjurian-submenu-item i {
+    font-size: 1.3rem;
+  }
+  .submenu-item:hover, .penjurian-submenu-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+</style>
 
-  <a href="/404" class="submenu-item" style="
-        color: white;
-        text-decoration: none;
-        display: block;
-        padding: 8px 8px;
-        border-radius: 4px;
-        margin-bottom: 4px;
-        transition: background-color 0.3s;
-      ">
-    <i class="bi bi-flag-fill"></i> Status
-  </a>
-  <a href="/404" class="submenu-item" style="
-        color: white;
-        text-decoration: none;
-        display: block;
-        padding: 8px 8px;
-        border-radius: 4px;
-        margin-bottom: 4px;
-        transition: background-color 0.3s;
-      ">
-    <i class="bi bi-award-fill"></i> Sertifikat
-  </a>
-</div>
-
-<!-- Script Toggle Submenu Perlombaan -->
 <script>
   function toggleSubmenuPerlombaan() {
     const submenu = document.getElementById("submenu-perlombaan");
     const arrow = document.getElementById("perlombaan-arrow");
-
-    if (submenu.style.display === "none") {
-      submenu.style.display = "block";
-      arrow.classList.remove("bi-caret-down-fill");
-      arrow.classList.add("bi-caret-up-fill");
-    } else {
-      submenu.style.display = "none";
-      arrow.classList.remove("bi-caret-up-fill");
-      arrow.classList.add("bi-caret-down-fill");
-    }
+    const isHidden = submenu.style.display === "none";
+    submenu.style.display = isHidden ? "block" : "none";
+    arrow.classList.toggle("bi-caret-up-fill", isHidden);
+    arrow.classList.toggle("bi-caret-down-fill", !isHidden);
   }
 
-  // Hover effect
-  document.querySelectorAll('.menu-item, .submenu-item').forEach(item => {
-    item.addEventListener('mouseenter', function() {
-      this.style.backgroundColor = '#333';
-    });
-    item.addEventListener('mouseleave', function() {
-      this.style.backgroundColor = '';
-    });
-  });
+  function togglePenjurianSubmenu() {
+    const submenu = document.getElementById("penjurian-submenu");
+    const arrow = document.getElementById("penjurian-arrow");
+    const isHidden = submenu.style.display === "none";
+    submenu.style.display = isHidden ? "block" : "none";
+    arrow.classList.toggle("bi-caret-up-fill", isHidden);
+    arrow.classList.toggle("bi-caret-down-fill", !isHidden);
+  }
 </script>
 
-    @endcanany
+
+<!-- ========== MENU QUICK COUNT ========== -->
+<div class="quickcount-menu-item" onclick="toggleQuickCountSubmenu()">
+  <i class="bi bi-graph-up-arrow"></i>
+  <span>Quick Count</span>
+  <i class="bi bi-caret-down-fill ms-auto" id="quickcount-arrow"></i>
+</div>
+
+<div id="quickcount-submenu" class="submenu">
+  <a href="/404" class="quickcount-submenu-item">
+    <i class="bi bi-bar-chart-line"></i> Hasil Sementara
+  </a>
+  <a href="/404" class="quickcount-submenu-item">
+    <i class="bi bi-pie-chart"></i> Statistik
+  </a>
+  <a href="/404" class="quickcount-submenu-item">
+    <i class="bi bi-file-earmark-text"></i> Laporan
+  </a>
+</div>
+
+<style>
+  /* Style umum untuk Quick Count */
+  .quickcount-menu-item {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 8px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+  .quickcount-menu-item i {
+    font-size: 1.3rem;
+  }
+  .quickcount-menu-item:hover {
+    background-color: #333;
+  }
+
+  /* Submenu Quick Count */
+  .quickcount-submenu-item {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 8px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    transition: background-color 0.3s;
+    font-size: 0.9rem;
+  }
+  .quickcount-submenu-item i {
+    font-size: 1.3rem;
+  }
+  .quickcount-submenu-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+</style>
+
+<script>
+  function toggleQuickCountSubmenu() {
+    const submenu = document.getElementById("quickcount-submenu");
+    const arrow = document.getElementById("quickcount-arrow");
+    const isHidden = submenu.style.display === "none";
+    submenu.style.display = isHidden ? "block" : "none";
+    arrow.classList.toggle("bi-caret-up-fill", isHidden);
+    arrow.classList.toggle("bi-caret-down-fill", !isHidden);
+  }
+</script>
+
+@endcanany
 
 @can('super_admin')
 
@@ -221,7 +309,7 @@
         margin-bottom: 4px;
         transition: background-color 0.3s;
       ">
-        <i class="bi bi-dot"></i> Quick Count
+        <i class="bi bi-dot" style="margin-right: 12px;"></i><span style="margin-left:12px;">Quick Count</span>
       </a>
       <a href="/peta/lokasi1" class="submenu-item" style="
         color: white;
