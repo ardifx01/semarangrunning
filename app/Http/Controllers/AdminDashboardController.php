@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\berkasperlombaan;
 use App\Models\headerberanda;
 use App\Models\pagevisit;
 use Illuminate\Support\Facades\Auth;
@@ -24,10 +25,10 @@ public function index()
     $jumlahUser4 = \App\Models\User::where('statusadmin_id', 4)->count();
 
     // Hitung jumlah berkasperlombaan berdasarkan kategoriperlombaan_id 1 sampai 4
-    $jumlahBerkas1 = \App\Models\BerkasPerlombaan::where('kategoriperlombaan_id', 1)->count();
-    $jumlahBerkas2 = \App\Models\BerkasPerlombaan::where('kategoriperlombaan_id', 2)->count();
-    $jumlahBerkas3 = \App\Models\BerkasPerlombaan::where('kategoriperlombaan_id', 3)->count();
-    $jumlahBerkas4 = \App\Models\BerkasPerlombaan::where('kategoriperlombaan_id', 4)->count();
+    $jumlahBerkas1 = berkasperlombaan::where('kategoriperlombaan_id', 1)->count();
+    $jumlahBerkas2 = berkasperlombaan::where('kategoriperlombaan_id', 2)->count();
+    $jumlahBerkas3 = berkasperlombaan::where('kategoriperlombaan_id', 3)->count();
+    $jumlahBerkas4 = berkasperlombaan::where('kategoriperlombaan_id', 4)->count();
 
     return view('00_semarang.02_backend.01_dashboard.01_halamandasboard', [
         'title' => 'Dashboard SNOC X 2025',
