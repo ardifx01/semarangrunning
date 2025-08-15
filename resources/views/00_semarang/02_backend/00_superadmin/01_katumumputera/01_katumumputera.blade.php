@@ -24,7 +24,22 @@
         </div>
       </div>
 
-<div class="content">
+      <div class="content">
+
+        @canany(['super_admin', 'keuangan'])
+
+        <div style="text-align: right; margin-top: 10px;">
+            <button class="button-baru">
+                <i class="bi bi-card-text me-1"></i> {{$title}}
+</button>
+<button class="button-baru">
+    <i class="bi bi-cash-stack me-1"></i> Total Uang Masuk: Rp {{ number_format($totalUangMasuk, 0, ',', '.') }}
+</button>
+
+</div>
+
+@endcanany
+
 <div class="table-container">
   <table class="responsive-table">
     <thead>
@@ -33,6 +48,11 @@
         <th>Nama TIM</th>
         <th>Nama Organisasi</th>
         <th>Alamat Organisasi</th>
+        @can('keuangan')
+        <th>Uang Masuk</th>
+        <th>Status Pembayaran</th>
+        <th>Masukan Nominal</th>
+        @endcan
         <th>Berkas <br> Pendaftaran</th>
         {{-- <th>Tanggal Lahir</th>
         <th>NIK</th>
@@ -47,12 +67,109 @@
         <td>{{ $loop->iteration }}</td> <!-- nomor urut -->
         <td>{{ $item->nama_tim ?? '-' }}</td>
         <td>{{ $item->nama_organisasi ?? '-' }}</td>
+
         <td>{{ $item->alamat_organisasi ?? '-' }}</td>
+        @can('keuangan')
+        <td>
+    {{ $item->uangmasuk ? 'Rp ' . number_format($item->uangmasuk, 0, ',', '.') : '-' }}
+</td>
+<td>
+            @if(!empty($item->validasiberkas2))
+            <button class="button-hijau" disabled>
+                <i class="bi bi-check-circle-fill me-1"></i> {{ $item->validasiberkas2 }}
+            </button>
+            @else
+            <button class="button-newvalidasi" disabled>
+                <i class="bi bi-x-circle-fill me-1"></i> Diverifikasi Bendaraha
+            </button>
+            @endif
+        </td>
+
+
+        <td>
+    <button type="button" class="button-berkas btn-open-card"
+            data-id="{{ $item->id }}"
+            data-uang="{{ $item->uangmasuk ?? 0 }}">
+        <i class="bi bi-eye"></i> Input Uang Masuk
+    </button>
+</td>
+
+<script>
+document.querySelectorAll('.btn-open-card').forEach(button => {
+    button.addEventListener('click', function() {
+        const id = this.dataset.id;
+        const uangValue = parseInt(this.dataset.uang) || 0;
+        const formattedValue = uangValue.toLocaleString('id-ID');
+
+        // Hapus modal card lama kalau ada
+        const oldCard = document.getElementById('modalCard');
+        if(oldCard) oldCard.remove();
+
+        // Buat modal card
+        const cardHtml = document.createElement('div');
+        cardHtml.id = 'modalCard';
+        cardHtml.style.position = 'fixed';
+        cardHtml.style.top = '50%';
+        cardHtml.style.left = '50%';
+        cardHtml.style.transform = 'translate(-50%, -50%)';
+        cardHtml.style.background = '#fff';
+        cardHtml.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
+        cardHtml.style.padding = '20px';
+        cardHtml.style.zIndex = '1050';
+        cardHtml.style.borderRadius = '8px';
+        cardHtml.style.minWidth = '300px';
+       cardHtml.innerHTML = `
+    <button type="button" class="button-baru mb-3" style="width:100%; text-align:left; margin-bottom:15px;">
+        Input Uang Masuk
+    </button>
+
+    <form action="/updateUangMasuk/${id}" method="GET" style="margin-top:10px;">
+        <div class="mb-3">
+            <label>Nominal Uang Masuk</label>
+            <input type="text" class="form-control uang-format" name="uangmasuk" value="${formattedValue}" style="margin-bottom:15px;">
+        </div>
+        <div style="display:flex; gap:10px; justify-content:flex-end; margin-top:10px;">
+            <button type="submit" class="button-hijau">Simpan</button>
+            <button type="button" class="button-merah btn-close-card">Tutup</button>
+        </div>
+    </form>
+`;
+
+        document.body.appendChild(cardHtml);
+
+        // Event close button
+        cardHtml.querySelector('.btn-close-card').addEventListener('click', () => {
+            cardHtml.remove();
+        });
+
+        // Format ribuan saat input
+        const input = cardHtml.querySelector('.uang-format');
+        input.addEventListener('input', function() {
+            let value = this.value.replace(/\./g, '');
+            if(!isNaN(value) && value.length > 0){
+                this.value = parseInt(value).toLocaleString('id-ID');
+            } else {
+                this.value = '';
+            }
+        });
+
+        // Hapus titik sebelum submit agar tersimpan angka murni
+        input.closest('form').addEventListener('submit', function() {
+            input.value = input.value.replace(/\./g, '');
+        });
+    });
+});
+</script>
+
+
+        @endcan
+
   <td>
     <a href="{{ route('informasitimadmin', $item->id) }}" class="button-baru" style="display: inline-flex; align-items: center; gap: 6px;">
       <i class="bi bi-eye"></i> Lihat
     </a>
   </td>
+
         {{-- <td>
           <div style="display: flex; align-items: center; gap: 8px;">
             <!-- Tombol Edit -->

@@ -70,16 +70,16 @@
   <a href="/daftarlomba" class="submenu-item">
     <i class="bi bi-trophy"></i>2. Daftar Lomba
   </a>
-  <a href="/404" class="submenu-item">
+  {{-- <a href="/404" class="submenu-item">
     <i class="bi bi-activity"></i>3. Status
-  </a>
-  <a href="/404" class="submenu-item">
-    <i class="bi bi-patch-check-fill"></i>4. Sertifikat
+  </a> --}}
+  <a href="/sertifikatpeserta" class="submenu-item">
+    <i class="bi bi-patch-check-fill"></i>3. Sertifikat
   </a>
 </div>
 
 <!-- ========== MENU PENJURIAN ========== -->
-<div class="penjurian-menu-item" onclick="togglePenjurianSubmenu()">
+{{-- <div class="penjurian-menu-item" onclick="togglePenjurianSubmenu()">
   <i class="bi bi-journal-text"></i>
   <span style="margin-left:13px;">Materi</span>
   <i class="bi bi-caret-down-fill ms-auto" id="penjurian-arrow"></i>
@@ -98,7 +98,7 @@
   <a href="/404" class="penjurian-submenu-item">
     <i class="bi bi-clock-history"></i> Waktu Perlombaan
   </a>
-</div>
+</div> --}}
 
 <style>
   /* Style umum untuk menu */
@@ -358,10 +358,113 @@
   }
 </script>
 
+<!-- ========== MENU SERTIFIKAT ========== -->
+<div class="sertifikat-menu-item" onclick="toggleSertifikatSubmenu()">
+  <i class="bi bi-file-earmark-text-fill"></i>
+  <span class="menu-label">Sertifikat</span>
+  <i class="bi bi-caret-down-fill ms-auto" id="sertifikat-arrow"></i>
+</div>
+
+<div id="sertifikat-submenu" class="sertifikat-submenu">
+  <a href="/katumumputerasertifikat" class="sertifikat-submenu-item">
+    <i class="bi bi-list-ul"></i> Umum Putera
+  </a>
+  <a href="/katumumputerisertifikat" class="sertifikat-submenu-item">
+    <i class="bi bi-list-ul"></i> Umum Puteri
+  </a>
+  <a href="/katpelajarputerasertifikat" class="sertifikat-submenu-item">
+    <i class="bi bi-list-ul"></i> Pelajar Putera
+  </a>
+  <a href="/katpelajarputerisertifikat" class="sertifikat-submenu-item">
+    <i class="bi bi-list-ul"></i> Pelajar Puteri
+  </a>
+</div>
+
+<style>
+  /* Menu Utama Sertifikat */
+  .sertifikat-menu-item {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 8px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 0.95rem;
+    font-weight: 500;
+    background-color: transparent;
+  }
+  .sertifikat-menu-item i {
+    font-size: 1.3rem;
+  }
+  .sertifikat-menu-item:hover {
+    background-color: #333;
+  }
+
+  /* Submenu Sertifikat */
+  .sertifikat-submenu {
+    display: none;
+    margin-left: 24px;
+    flex-direction: column;
+    animation: slideDownSertifikat 0.3s ease forwards;
+  }
+
+  .sertifikat-submenu-item {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 8px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    transition: background-color 0.3s;
+    font-size: 0.9rem;
+  }
+  .sertifikat-submenu-item i {
+    font-size: 1.2rem;
+  }
+  .sertifikat-submenu-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  @keyframes slideDownSertifikat {
+    from {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  function toggleSertifikatSubmenu() {
+    const submenu = document.getElementById("sertifikat-submenu");
+    const arrow = document.getElementById("sertifikat-arrow");
+    const isHidden = submenu.style.display === "none" || submenu.style.display === "";
+
+    if (isHidden) {
+      submenu.style.display = "flex";
+      submenu.style.animation = "slideDownSertifikat 0.3s ease forwards";
+    } else {
+      submenu.style.display = "none";
+    }
+
+    arrow.classList.toggle("bi-caret-up-fill", isHidden);
+    arrow.classList.toggle("bi-caret-down-fill", !isHidden);
+  }
+</script>
+
 
 
 <!-- ========== MENU PENJURIAN ========== -->
-<div class="penjurian-menu-item" onclick="togglePenjurianSubmenu()">
+{{-- <div class="penjurian-menu-item" onclick="togglePenjurianSubmenu()">
   <i class="bi bi-journal-text"></i>
   <span style="margin-left:13px;">Materi Perlombaan</span>
   <i class="bi bi-caret-down-fill ms-auto" id="penjurian-arrow"></i>
@@ -380,7 +483,7 @@
   <a href="/404" class="penjurian-submenu-item">
     <i class="bi bi-clock-history"></i> Waktu Perlombaan
   </a>
-</div>
+</div> --}}
 
 <style>
   /* Style umum untuk menu */
@@ -625,6 +728,120 @@
     arrow.classList.toggle("bi-caret-down-fill", !isHidden);
   }
 </script>
+
+@endcan
+
+@can('keuangan')
+
+<!-- ========== MENU DAFTAR SEMUA TIM ========== -->
+<!-- Menu Daftar Semua Tim -->
+<div class="daftarsemua-tim-menu-item" onclick="toggleDaftarSemuaTimSubmenu()">
+  <i class="bi bi-cash-stack"></i>
+  <span class="menu-label">Bagian Keuangan</span>
+  <i class="bi bi-caret-down-fill ms-auto" id="daftarsemuatim-arrow"></i>
+</div>
+
+<div id="daftarsemuatim-submenu" class="submenu">
+  <a href="/katumumputera" class="daftarsemuatim-submenu-item">
+    <i class="bi bi-list-ul"></i> Kat Umum Putera
+  </a>
+  <a href="/katumumputeri" class="daftarsemuatim-submenu-item">
+    <i class="bi bi-list-ul"></i> Kat Umum Puteri
+  </a>
+  <a href="/katpelajarputera" class="daftarsemuatim-submenu-item">
+    <i class="bi bi-list-ul"></i> Kat Pelajar Putera
+  </a>
+  <a href="/katpelajarputeri" class="daftarsemuatim-submenu-item">
+    <i class="bi bi-list-ul"></i> Kat Pelajar Puteri
+  </a>
+</div>
+
+<style>
+  /* Menu Utama */
+  .daftarsemua-tim-menu-item {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 8px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 0.95rem;
+    font-weight: 500;
+    background-color: transparent;
+  }
+  .daftarsemua-tim-menu-item i {
+    font-size: 1.3rem;
+  }
+  .daftarsemua-tim-menu-item:hover {
+    background-color: #333;
+  }
+  .menu-label {
+    margin-left: 13px;
+  }
+
+  /* Submenu Container */
+  .submenu {
+    display: none;
+    margin-left: 24px;
+    flex-direction: column;
+    animation: slideDown 0.3s ease forwards;
+  }
+
+  /* Submenu Items */
+  .daftarsemuatim-submenu-item {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 8px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    transition: background-color 0.3s;
+    font-size: 0.9rem;
+  }
+  .daftarsemuatim-submenu-item i {
+    font-size: 1.2rem;
+  }
+  .daftarsemuatim-submenu-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  /* Animasi slide down */
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  function toggleDaftarSemuaTimSubmenu() {
+    const submenu = document.getElementById("daftarsemuatim-submenu");
+    const arrow = document.getElementById("daftarsemuatim-arrow");
+    const isHidden = submenu.style.display === "none" || submenu.style.display === "";
+
+    if (isHidden) {
+      submenu.style.display = "flex";
+      submenu.style.animation = "slideDown 0.3s ease forwards";
+    } else {
+      submenu.style.display = "none";
+    }
+
+    arrow.classList.toggle("bi-caret-up-fill", isHidden);
+    arrow.classList.toggle("bi-caret-down-fill", !isHidden);
+  }
+</script>
+
 
 @endcan
 

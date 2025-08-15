@@ -36,6 +36,9 @@ Schema::create('berkasperlombaans', function (Blueprint $table) {
     $table->string('verifikasisert')->nullable();
     $table->string('verifikasittd')->nullable();
 
+    $table->string('sertifikat1')->nullable();
+    $table->string('sertifikat2')->nullable();
+    $table->string('uangmasuk')->nullable();
 
     // Surat Pernyataan
 

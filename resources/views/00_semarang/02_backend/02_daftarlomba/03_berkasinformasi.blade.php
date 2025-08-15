@@ -48,67 +48,50 @@
     checkpointData[0].status = 'completed';
     checkpointData[0].message = '';
 
-    // Step 2: Verifikasi Berkas (validasiberkas1)
-    if ('<?php echo isset($data->validasiberkas1) ? $data->validasiberkas1 : "" ?>' === 'sudah') {
-        checkpointData[1].status = 'completed';
-        checkpointData[1].message = 'Berkas Lolos Verifikasi DPUPR';
-    } else if ('<?php echo isset($data->validasiberkas1) ? $data->validasiberkas1 : "" ?>' === 'belum') {
-        checkpointData[1].status = 'pending';
-        checkpointData[1].message = 'Menunggu Verifikasi DPUPR';
-    } else if ('<?php echo isset($data->validasiberkas1) ? $data->validasiberkas1 : "" ?>' === 'ditolak') {
-        checkpointData[1].status = 'rejected';
-        checkpointData[1].message = 'Berkas Ditolak DPUPR';
-    }
+        if ('<?php echo isset($data->validasiberkas1) ? $data->validasiberkas1 : "" ?>' === 'lolos') {
+            checkpointData[1].status = 'completed';
+            checkpointData[1].message = 'Berkas Lolos Verifikasi Panitia';
+        } else if ('<?php echo isset($data->validasiberkas1) ? $data->validasiberkas1 : "" ?>' === 'dikembalikan') {
+            checkpointData[1].status = 'rejected';
+            checkpointData[1].message = 'Dikembalikan Kepada Pemohon';
+        }
+
+        if ('<?php echo isset($data->validasiberkas2) ? $data->validasiberkas2 : "" ?>' === 'sudah') {
+            checkpointData[2].status = 'completed';
+            checkpointData[2].message = 'Lunas';
+        } else if ('<?php echo isset($data->validasiberkas2) ? $data->validasiberkas2 : "" ?>' === 'belum') {
+            checkpointData[2].status = 'rejected';
+            checkpointData[2].message = 'Belum Membayar';
+        }
+
+        if ('<?php echo isset($data->validasiberkas3) ? $data->validasiberkas3 : "" ?>' === 'sudah') {
+            checkpointData[3].status = 'completed';
+            checkpointData[3].message = 'Peserta Hadir';
+        } else if ('<?php echo isset($data->validasiberkas3) ? $data->validasiberkas3 : "" ?>' === 'belum') {
+            checkpointData[3].status = 'rejected';
+            checkpointData[3].message = 'Tidak Hadir';
+        }
+
+        if ('<?php echo isset($data->validasiberkas4) ? $data->validasiberkas4 : "" ?>' === 'sudah') {
+            checkpointData[4].status = 'completed';
+            checkpointData[4].message = 'Sertifikat Terbit';
+        } else if ('<?php echo isset($data->validasiberkas4) ? $data->validasiberkas4 : "" ?>' === 'belum') {
+            checkpointData[4].status = 'rejected';
+            checkpointData[4].message = 'Sertifikat Belum Terbit';
+        }
 
     // Step 3: Cek Lapangan (validasiberkas2)
-    if ('<?php echo isset($data->validasiberkas2) ? $data->validasiberkas2 : "" ?>' === 'sudah') {
-        checkpointData[2].status = 'completed';
-        checkpointData[2].message = 'Sudah Cek Lapangan';
-    } else if ('<?php echo isset($data->validasiberkas2) ? $data->validasiberkas2 : "" ?>' === 'belum') {
-        checkpointData[2].status = 'pending';
-        checkpointData[2].message = 'Menunggu Penjadwalan';
-    } else if ('<?php echo isset($data->validasiberkas2) ? $data->validasiberkas2 : "" ?>' === 'ditolak') {
-        checkpointData[2].status = 'rejected';
-        checkpointData[2].message = 'Cek Lapangan Ditolak';
-    }
+    // if ('<?php echo isset($data->validasiberkas2) ? $data->validasiberkas2 : "" ?>' === 'sudah') {
+    //     checkpointData[2].status = 'completed';
+    //     checkpointData[2].message = 'Sudah Cek Lapangan';
+    // } else if ('<?php echo isset($data->validasiberkas2) ? $data->validasiberkas2 : "" ?>' === 'belum') {
+    //     checkpointData[2].status = 'pending';
+    //     checkpointData[2].message = 'Menunggu Penjadwalan';
+    // } else if ('<?php echo isset($data->validasiberkas2) ? $data->validasiberkas2 : "" ?>' === 'ditolak') {
+    //     checkpointData[2].status = 'rejected';
+    //     checkpointData[2].message = 'Cek Lapangan Ditolak';
+    // }
 
-    // Step 4: Pengolahan Data (validasiberkas3)
-    if ('<?php echo isset($data->validasiberkas3) ? $data->validasiberkas3 : "" ?>' === 'sudah') {
-        checkpointData[3].status = 'completed';
-        checkpointData[3].message = 'Olah Data Selesai';
-    } else if ('<?php echo isset($data->validasiberkas3) ? $data->validasiberkas3 : "" ?>' === 'belum') {
-        checkpointData[3].status = 'pending';
-        checkpointData[3].message = 'Verifikasi Data Lapangan';
-    } else if ('<?php echo isset($data->validasiberkas3) ? $data->validasiberkas3 : "" ?>' === 'ditolak') {
-        checkpointData[3].status = 'rejected';
-        checkpointData[3].message = 'Pengolahan Data Ditolak';
-    }
-
-    // Step 5: Surat Terbit (validasiberkas4)
-    if ('<?php echo isset($data->validasiberkas4) ? $data->validasiberkas4 : "" ?>' === 'sudah') {
-        checkpointData[4].status = 'completed';
-        checkpointData[4].message = 'Surat Sudah Terbit';
-    } else if ('<?php echo isset($data->validasiberkas4) ? $data->validasiberkas4 : "" ?>' === 'belum') {
-        checkpointData[4].status = 'pending';
-        checkpointData[4].message = 'Menunggu Terbit';
-    } else if ('<?php echo isset($data->validasiberkas4) ? $data->validasiberkas4 : "" ?>' === 'ditolak') {
-        checkpointData[4].status = 'rejected';
-        checkpointData[4].message = 'Surat Tidak Diterbitkan';
-    }
-
-    // Bonus Step 6: validasiberkas5, kalau mau kamu tambah juga
-    if (checkpointData[5]) { // pastikan ada step 6 di checkpointData kalau mau pakai
-        if ('<?php echo isset($data->validasiberkas5) ? $data->validasiberkas5 : "" ?>' === 'sudah') {
-            checkpointData[5].status = 'completed';
-            checkpointData[5].message = 'Step 6 Selesai';
-        } else if ('<?php echo isset($data->validasiberkas5) ? $data->validasiberkas5 : "" ?>' === 'belum') {
-            checkpointData[5].status = 'pending';
-            checkpointData[5].message = 'Menunggu Step 6';
-        } else if ('<?php echo isset($data->validasiberkas5) ? $data->validasiberkas5 : "" ?>' === 'ditolak') {
-            checkpointData[5].status = 'rejected';
-            checkpointData[5].message = 'Step 6 Ditolak';
-        }
-    }
 }
 
 
@@ -582,7 +565,7 @@
             Silahkan Lakukan Perbaikan Data <i class="bi bi-arrow-right"></i>
         </p>
 
-        <a href="/bekrkusahaperbaikan/{{$data->id}}" style="text-decoration: none;">
+        <a href="/perbaikanberkaspeserta/{{$data->id}}" style="text-decoration: none;">
             <button class="button-baru">
                 <i class="bi bi-pencil-square" style="margin-right:5px;"></i> Perbaikan Data
             </button>

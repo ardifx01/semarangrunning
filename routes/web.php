@@ -51,92 +51,6 @@ Route::get('/respbgslfindex', [FedashboardController::class, 'menurespbgslfindex
 Route::get('/resbgindex', [FedashboardController::class, 'menuresbangunangedungindex']);
 
 // 04_ MENU BANTUAN TEKNIS
-// ----------------------------------------------------------------------------------------
-Route::get('/resbantekindex', [FedashboardController::class, 'resbantekindex']);
-Route::get('/resbantekpermohonan', [FedashboardController::class, 'resbantekpermohonan'])->middleware('auth');
-
-// WEB 03_ MENU BANGUNAN GEDUNG ANDROID
-// ----------------------------------------------------------------------------------------
-Route::get('/pendataankicbangunangedung', [PendataanBangunanGedungController::class, 'datakicbangunan']);
-Route::get('/databangunangedung', [PendataanBangunanGedungController::class, 'databangunangedung']);
-Route::get('/databangunangedung/{namabangunan}', [PendataanBangunanGedungController::class, 'databangunangedungshow']);
-Route::get('/statistikbg', [PendataanBangunanGedungController::class, 'statistikbg']);
-
-
-// WEB 06_ MENU KRK BANGUNAN GEDUNG
-// ----------------------------------------------------------------------------------------
-Route::get('/informasikrk', [KrkController::class, 'informasikrk']);
-Route::get('/permohonankrk', [KrkController::class, 'permohonankrk'])->middleware('auth');
-
-
-Route::get('/pemohonkrk', [KrkController::class, 'pemohonkrk'])->middleware('auth');
-
-// MENU 02 PERMOHONAN KRK USAHA
-Route::get('/permohonankrkusaha', [KrkController::class, 'permohonankrkusaha'])->name('permohonan.krkusaha');
-Route::post('/permohonankrkusaha/create', [KrkController::class, 'permohonankrkusahacreate'])->name('permohonan.krkusahacreate');
-Route::post('/berkasusaha/{id}/validate', [KrkController::class, 'validateBerkasusaha'])->name('berkasusaha.validate');
-Route::get('/permohonanpengesahanusaha/{id}', [KrkController::class, 'permohonanpengesahanusaha'])->name('permohonan.pengesahanusaha');
-Route::post('/permohonanpengesahanusahacreate/{id}', [KrkController::class, 'permohonanpengesahanusahacreate'])->name('permohonan.pengesahanusahacreate');
-Route::get('/permohonanpengesahanusahaber/{id}', [KrkController::class, 'permohonanpengesahanusahaber'])->name('permohonan.permohonanpengesahanusahaber');
-Route::delete('/krkusahasuratdelete/{id}', [KrkController::class, 'destroykrkusahasurat'])->name('krkusahasurat.destroy');
-
-// Route::get('/permohonankrk', [KrkController::class, 'permohonankrk'])->middleware('auth');
-
-// MENU 02 PERMOHONAN KRK HUNIAN
-Route::get('/permohonankrkhunian', [KrkController::class, 'permohonankrkhunian'])->name('permohonan.krkhunian');
-Route::post('/permohonankrkhunian/create', [KrkController::class, 'permohonankrkhuniancreate'])->name('permohonan.krkhuniancreate');
-Route::post('/berkashunian/{id}/validate', [KrkController::class, 'validateBerkashunian'])->name('berkashunian.validate');
-// Route::get('/permohonankrk', [KrkController::class, 'permohonankrk'])->middleware('auth');
-
-
-// MENU 03 PERMOHONAN KRK KEGAAMAAN
-Route::get('/permohonankrkagama', [KrkController::class, 'permohonankrkagama'])->name('permohonan.krkagama');
-Route::post('/permohonankrkagama/create', [KrkController::class, 'permohonankrkagamacreate'])->name('permohonan.krkagamacreate');
-
-// MENU 03 PERMOHONAN KRK KEGAAMAAN
-Route::get('/permohonankrksosbud', [KrkController::class, 'permohonankrksosbud'])->name('permohonan.krksosbud');
-Route::post('/permohonankrksosbud/create', [KrkController::class, 'permohonankrksosbudcreate'])->name('permohonan.krksosbudcreate');
-
-
-// =================================================================================================================================
-// MENU BACKEND ABG BLORA BANGUNAN GEDUNG KABUPATEN BLORA
-// MENU 06 KRK BANGUNAN GEDUNG
-
-// AKUN PEMOHON KRK KETERANGAN RENCANA KOTA
-Route::get('/bekrkusahapemohon', [KrkController::class, 'bekrkusahapemohon'])->name('bekrkusahapemohon.indexpemohon');
-Route::get('/bekrkhunianpemohon', [KrkController::class, 'bekrkhunianpemohon'])->name('bekrkhunianpemohon.indexpemohon');
-Route::get('/bekrkkeagamaanpemohon', [KrkController::class, 'bekrkkeagamaanpemohon'])->name('bekrkkeagamaanpemohon.indexpemohon');
-Route::get('/bekrksosbudpemohon', [KrkController::class, 'bekrksosbudpemohon'])->name('bekrksosbud.indexpemohon');
-
-
-// MENU KRK USAHA
-Route::get('/bekrkusaha', [KrkController::class, 'bekrkusaha'])->name('krkusaha.index');
-Route::get('/bekrkshowpermohonan/{id}', [KrkController::class, 'bekrkshowpermohonan'])->middleware('auth')->name('bekrkshowpermohonan.show');
-Route::put('/validasikrkusaha/{id}', [KrkController::class, 'validasikrkusaha'])->middleware('auth')->name('validasikrkusaha');
-Route::put('/valberkasusaha/{id}', [KrkController::class, 'valberkasusaha1'])->name('valberkasusaha.update');
-Route::get('/doklapkrkusaha/{id}', [KrkController::class, 'doklapkrkusaha'])->middleware('auth')->name('doklapkrkusaha.show');
-
-Route::get('/doklapkrkusahacreate/{id}', [KrkController::class, 'doklapkrkusahacreate'])->middleware('auth')->name('doklapkrkusahacreate.create');
-Route::post('/doklapkrkusahacreatenew', [KrkController::class, 'doklapkrkusahacreatenew'])->middleware('auth')->name('create.doklapkrkusahacreatenew');
-
-Route::delete('/doklapkrkusahacreatedelete/{id}', [KrkController::class, 'doklapkrkusahacreatedelete'])->middleware('auth')->name('delete.doklapkrkusahacreatedelete');
-
-Route::put('/valberkasusaha2/{id}', [KrkController::class, 'valberkasusaha2'])->name('valberkasusaha2.update');
-Route::put('/valberkasusaha3/{id}', [KrkController::class, 'valberkasusaha3'])->name('valberkasusaha3.update');
-Route::put('/valberkasusaha4/{id}', [KrkController::class, 'valberkasusaha4'])->name('valberkasusaha4.update');
-
-Route::get('/permohonankrkusahafinal/{id}', [KrkController::class, 'permohonankrkusahafinal'])->name('permohonan.permohonankrkusahafinal');
-
-Route::get('/krkusahanoterbit/{id}', [KrkController::class, 'krkusahanoterbit'])->middleware('auth')->name('krkusahanoterbit.create');
-Route::post('/krkusahanoterbitnew/{id}', [KrkController::class, 'krkusahanoterbitnew'])->middleware('auth')->name('create.krkusahanoterbitnew');
-
-
-Route::get('/bekrkusahaperbaikan/{id}', [KrkController::class, 'bekrkusahaperbaikan'])->middleware('auth')->name('bekrkusahaperbaikan.perbaikan');
-Route::post('/bekrkusahaperbaikannew/{id}', [KrkController::class, 'bekrkusahaperbaikannewupdate'])->middleware('auth')->name('bekrkusahaperbaikannewupdate');
-
-Route::delete('/dokbekrkusahadelete/{id}', [KrkController::class, 'dokbekrkusahadelete'])->middleware('auth')->name('delete.dokbekrkusahadelete');
-
-
 
 // MENU KRK HUNIAN
 Route::get('/bekrkindex', [KrkController::class, 'bekrkindex']);
@@ -902,10 +816,21 @@ Route::get('/informasitimadmin/{id}', [DaftartimController::class, 'informasitim
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
-
 Route::get('/daftar', [LoginController::class, 'showRegisterForm']);
 Route::post('/daftar', [LoginController::class, 'register']);
 
+
+Route::get('/perbaikanberkaspeserta/{id}', [DaftartimController::class, 'perbaikanberkaspeserta'])->middleware('auth')->name('perbaikanberkaspeserta');
+Route::post('/daftarlombatimperbaikan/{id}', [DaftarTimController::class, 'daftarlombatimperbaikan'])->name('daftarlombatimperbaikan');
+
+// SERTIFIKAT ADMIN
+Route::get('/sertifikatpeserta', [DaftartimController::class, 'sertifikatpeserta'])->middleware('auth')->name('sertifikatpeserta');
+
+Route::get('/sertifikatpesertaupload/{id}', [DaftartimController::class, 'sertifikatpesertaupload'])->middleware('auth')->name('sertifikatpesertaupload');
+Route::post('/uploadsertifikatnew/{id}', [DaftarTimController::class, 'uploadsertifikatnew'])->name('uploadsertifikatnew');
+
+Route::get('/updateUangMasuk/{id}', [DaftartimController::class, 'updateUangMasuk'])->middleware('auth')->name('updateUangMasuk');
+// Route::post('/uploadsertifikatnew/{id}', [DaftarTimController::class, 'uploadsertifikatnew'])->name('uploadsertifikatnew');
 
 
 // SUPER ADMIN
@@ -913,6 +838,15 @@ Route::get('/katumumputera', [DaftartimController::class, 'katumumputera'])->mid
 Route::get('/katumumputeri', [DaftartimController::class, 'katumumputeri'])->middleware('auth')->name('katumumputeriindex');
 Route::get('/katpelajarputera', [DaftartimController::class, 'katpelajarputera'])->middleware('auth')->name('katpelajarputeraindex');
 Route::get('/katpelajarputeri', [DaftartimController::class, 'katpelajarputeri'])->middleware('auth')->name('katpelajarputeraindex');
+// Route::get('/katpelajarputeri', [DaftartimController::class, 'katpelajarputeri'])->middleware('auth')->name('katpelajarputeraindex');
+
+
+// SUPER ADMIN
+Route::get('/katumumputerasertifikat', [DaftartimController::class, 'katumumputerasertifikat'])->middleware('auth')->name('katumumputeraindexsertifikat');
+Route::get('/katumumputerisertifikat', [DaftartimController::class, 'katumumputerisertifikat'])->middleware('auth')->name('katumumputeriindexsertifikat');
+Route::get('/katpelajarputerasertifikat', [DaftartimController::class, 'katpelajarputerasertifikat'])->middleware('auth')->name('katpelajarputeraindexsertifikat');
+Route::get('/katpelajarputerisertifikat', [DaftartimController::class, 'katpelajarputerisertifikat'])->middleware('auth')->name('katpelajarputeraindexsertifikat');
+// Route::get('/katpelajarputerisertifikat', [DaftartimController::class, 'katpelajarputeri'])->middleware('auth')->name('katpelajarputeraindex');
 
 
 // PERMOHONAN VALIDASI PENDAFTARAN
@@ -921,19 +855,19 @@ Route::put('/validasipendaftaran/{id}', [DaftartimController::class, 'validasipe
 
 // For verification 1 (Berkas)
 Route::put('/valberkasusaha/{id}', [DaftartimController::class, 'update'])
-    ->name('valberkasusaha2.update');
+    ->name('verifikasi1');
 
 // For verification 2 (Pembayaran)
 Route::put('/valberkasusaha/{id}/payment', [DaftartimController::class, 'updatePayment'])
-    ->name('valberkasusaha2.updatePayment');
+    ->name('verifikasi2');
 
 // For verification 3 (Kehadiran)
 Route::put('/valberkasusaha/{id}/attendance', [DaftartimController::class, 'updateAttendance'])
-    ->name('valberkasusaha2.updateAttendance');
+    ->name('verifikasi3');
 
 // For verification 4 (Sertifikat)
 Route::put('/valberkasusaha/{id}/certificate', [DaftartimController::class, 'updateCertificate'])
-    ->name('valberkasusaha2.updateCertificate');
+    ->name('verifikasi4');
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');

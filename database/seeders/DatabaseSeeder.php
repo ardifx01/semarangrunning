@@ -230,6 +230,7 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('20050219')
         ]);
 
+        // keuangan
         User::create([
             'id'  => 4,
             'name'  => 'Putri Wulandary',
