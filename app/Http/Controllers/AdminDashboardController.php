@@ -44,40 +44,6 @@ public function index()
     ]);
 }
 
-    public function header()
-    {
-
-        $data = headerberanda::all();
-        $user = Auth::user();
-        // return view('backend.00_adminmasjaki.01_fiturterpisah.01_dashboard', [
-        return view('backend.01_beranda.01_header.index', [
-            'title' => 'Beranda | Header',
-            'user' => $user,
-            'data' => $data,
-        ]);
-    }
-
-    public function headerdelete($judul)
-    {
-        // Cari item berdasarkan judul
-        $entry = headerberanda::where('judul', $judul)->first();
-
-        if ($entry) {
-            // Jika ada file header yang terdaftar, hapus dari storage
-            if (Storage::disk('public')->exists($entry->header)) {
-                Storage::disk('public')->delete($entry->header);
-            }
-
-            // Hapus entri dari database
-            $entry->delete();
-
-            // Redirect atau memberi respons sesuai kebutuhan
-            return redirect('/header')->with('delete', 'Data Berhasil Di Hapus !');
-
-        }
-
-        return redirect()->back()->with('error', 'Item not found');
-    }
 
 
 
