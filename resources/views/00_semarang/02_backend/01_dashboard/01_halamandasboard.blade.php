@@ -23,27 +23,95 @@
         </div>
       </div>
 
-<div class="content">
-  <div class="welcome-container">
-    <div class="animated-background">
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-    </div>
-    <div class="welcome-content">
-      {{-- <h3 class="welcome-text">Selamat Datang</h3> --}}
-      <h3 class="subtitle">Selamat Datang di EVENT SNOC-X</h3>
-      <h3 class="team-name">Sabhagiriwana17</h3>
-      <div class="logo-container">
-        <div class="logo-circle">
-          <svg viewBox="0 0 100 100" class="logo-svg">
-            <path d="M50 15 L75 50 L50 85 L25 50 Z" class="logo-path"/>
-          </svg>
+    <div class="content">
+    <div class="welcome-container">
+        <div class="animated-background">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
         </div>
-      </div>
+        <div class="welcome-content">
+            <h3 class="subtitle">Selamat Datang di EVENT SNOC-X</h3>
+            <h3 class="team-name">Sabhagiriwana17</h3>
+            <div class="logo-container">
+                <div class="logo-circle">
+                    <svg viewBox="0 0 100 100" class="logo-svg">
+                        <path d="M50 15 L75 50 L50 85 L25 50 Z" class="logo-path"/>
+                    </svg>
+                </div>
+            </div>
+
+@canany(['super_admin', 'keuangan'])
+
+<!-- 4 Icon Card -->
+<div class="icon-cards" style="display:flex; gap:20px; margin-top:30px; flex-wrap:wrap;">
+
+    <!-- Akun Peserta -->
+    <div class="icon-card" style="text-align:center; flex:1; min-width:150px; background:#fff; padding:20px; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.1);">
+        <i class="bi bi-people-fill" style="font-size:36px; color:#000;"></i>
+        <div>
+            {{ $jumlahUser3 ?? 0 }} <br> Akun Peserta
+        </div>
     </div>
+
+    <!-- Super Admin -->
+    <div class="icon-card" style="text-align:center; flex:1; min-width:150px; background:#fff; padding:20px; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.1);">
+        <i class="bi bi-person-badge" style="font-size:36px; color:#000;"></i>
+        <div>
+            {{ $jumlahUser1 ?? 0 }} <br> Super Admin
+        </div>
+    </div>
+
+    <!-- Keuangan -->
+    <div class="icon-card" style="text-align:center; flex:1; min-width:150px; background:#fff; padding:20px; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.1);">
+        <i class="bi bi-cash-stack" style="font-size:36px; color:#000;"></i>
+        <div>
+            {{ $jumlahUser2 ?? 0 }} <br> Keuangan
+        </div>
+    </div>
+
+    <!-- Official -->
+    <div class="icon-card" style="text-align:center; flex:1; min-width:150px; background:#fff; padding:20px; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.1);">
+        <i class="bi bi-award" style="font-size:36px; color:#000;"></i>
+        <div>
+            {{ $jumlahUser4 ?? 0 }} <br> Official
+        </div>
+    </div>
+
+</div>
+
+<div class="icon-cards" style="display:flex; gap:20px; margin-top:30px; flex-wrap:wrap;">
+    <div class="icon-card" style="text-align:center; flex:1; min-width:150px;">
+        <i class="bi bi-person-badge-fill" style="font-size:36px; color:white;"></i>
+        <div style="color:white;">Umum Putera</div>
+        <div style="color:white; font-weight:bold;">{{ $jumlahBerkas1 }}</div>
+    </div>
+    <div class="icon-card" style="text-align:center; flex:1; min-width:150px;">
+        <i class="bi bi-person-fill" style="font-size:36px; color:white;"></i>
+        <div style="color:white;">Umum Puteri</div>
+        <div style="color:white; font-weight:bold;">{{ $jumlahBerkas2 }}</div>
+    </div>
+    <div class="icon-card" style="text-align:center; flex:1; min-width:150px;">
+        <i class="bi bi-mortarboard-fill" style="font-size:36px; color:white;"></i>
+        <div style="color:white;">Pelajar Putera</div>
+        <div style="color:white; font-weight:bold;">{{ $jumlahBerkas3 }}</div>
+    </div>
+    <div class="icon-card" style="text-align:center; flex:1; min-width:150px;">
+        <i class="bi bi-book-fill" style="font-size:36px; color:white;"></i>
+        <div style="color:white;">Pelajar Puteri</div>
+        <div style="color:white; font-weight:bold;">{{ $jumlahBerkas4 }}</div>
+    </div>
+</div>
+
+
+@endcanany
+
+        </div>
+    </div>
+</div>
+
   </div>
 </div>
 
