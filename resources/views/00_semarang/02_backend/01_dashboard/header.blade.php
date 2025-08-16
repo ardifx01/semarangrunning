@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 
   <!-- Favicon -->
-  <link rel="icon" href="/assets/abgblora/logo/racenewlogo.png" type="image/x-icon">
+  <link rel="icon" href="/assets/abgblora/logo/snocnew.png" type="image/x-icon">
 
   <!-- Style -->
   <style>
