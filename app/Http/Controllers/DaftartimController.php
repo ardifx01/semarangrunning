@@ -470,7 +470,7 @@ public function katumumputera()
     // ->orderBy('updated_at', 'desc') // atau created_at
     // ->get();
 
-    $data = Berkasperlombaan::with('daftartims')
+    $data = berkasperlombaan::with('daftartims')
     ->where('kategoriperlombaan_id', 1)
     ->orderBy('updated_at', 'desc')
     ->get();
@@ -502,7 +502,10 @@ public function katumumputeri()
 
     $kategoriperlombaan = kategoriperlombaan::all();
     // Ambil semua data kategori 2
-    $data = berkasperlombaan::where('kategoriperlombaan_id', 2)
+
+    $data = berkasperlombaan::with('daftartims')
+    ->where('kategoriperlombaan_id', 2)
+    ->orderBy('updated_at', 'desc')
     ->get();
 
     $totalUangMasuk = $data->sum(function($item) {
@@ -529,7 +532,10 @@ public function katpelajarputera()
 
     $kategoriperlombaan = kategoriperlombaan::all();
     // Ambil semua data kategori 3
-    $data = berkasperlombaan::where('kategoriperlombaan_id', 3)
+
+    $data = berkasperlombaan::with('daftartims')
+    ->where('kategoriperlombaan_id', 3)
+    ->orderBy('updated_at', 'desc')
     ->get();
 
 
@@ -557,7 +563,10 @@ public function katpelajarputeri()
     $perlombaanId = $perlombaanPertama ? $perlombaanPertama->id : null;
 
     // Ambil semua data kategori 4
-    $data = berkasperlombaan::where('kategoriperlombaan_id', 4)
+
+    $data = berkasperlombaan::with('daftartims')
+    ->where('kategoriperlombaan_id', 4)
+    ->orderBy('updated_at', 'desc')
     ->get();
 
     $totalUangMasuk = $data->sum(function($item) {
