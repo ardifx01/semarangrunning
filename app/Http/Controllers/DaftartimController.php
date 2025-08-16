@@ -57,6 +57,21 @@ public function deletedaftartim($id)
 }
 
 
+public function daftartimpeserta($id)
+{
+    $tim = berkasperlombaan::findOrFail($id);
+
+    // Hapus foto jika ada
+    // if ($tim->foto && file_exists(storage_path('app/public/' . $tim->foto))) {
+    //     unlink(storage_path('app/public/' . $tim->foto));
+    // }
+
+    $tim->delete();
+
+    return redirect()->back()->with('delete', 'Data tim berhasil dihapus.');
+}
+
+
 public function daftartimcreate()
 {
     $user = Auth::user(); // Dapatkan data user yang login
@@ -442,13 +457,24 @@ public function bedaftartim()
 public function katumumputera()
 {
     $user = Auth::user();
+    $kategoriperlombaan = kategoriperlombaan::all();
 
-    // Ambil ID pertama dari tabel perlombaan
-    $perlombaanPertama = perlombaan::orderBy('id', 'asc')->first();
-    $perlombaanId = $perlombaanPertama ? $perlombaanPertama->id : null;
+    // Ambil ID perlombaan terbaru
+    $perlombaanTerbaru = perlombaan::orderBy('id', 'desc')->first();
+    $perlombaanId = $perlombaanTerbaru ? $perlombaanTerbaru->id : null;
 
-    // Ambil semua data berdasarkan kategori 1
-    $data = berkasperlombaan::where('kategoriperlombaan_id', 1)->get();
+    // $datatim = daftartim::all();
+    // // Ambil semua data kategori 1 dengan urutan terbaru
+
+    // $data = berkasperlombaan::where('kategoriperlombaan_id', 1)
+    // ->orderBy('updated_at', 'desc') // atau created_at
+    // ->get();
+
+    $data = Berkasperlombaan::with('daftartims')
+    ->where('kategoriperlombaan_id', 1)
+    ->orderBy('updated_at', 'desc')
+    ->get();
+
 
     // Hitung total uang masuk
     $totalUangMasuk = $data->sum(function($item) {
@@ -459,20 +485,22 @@ public function katumumputera()
         'title' => 'Kategori Umum Tim Putera',
         'user' => $user,
         'data' => $data,
+        // 'data' => $datatim,
         'perlombaanId' => $perlombaanId,
         'totalUangMasuk' => $totalUangMasuk,
+        'kategoriperlombaan' => $kategoriperlombaan,
     ]);
 }
-
 
 public function katumumputeri()
 {
     $user = Auth::user();
 
     // Ambil ID pertama dari tabel perlombaan
-    $perlombaanPertama = perlombaan::orderBy('id', 'asc')->first();
+    $perlombaanPertama = perlombaan::orderBy('id', 'desc')->first();
     $perlombaanId = $perlombaanPertama ? $perlombaanPertama->id : null;
 
+    $kategoriperlombaan = kategoriperlombaan::all();
     // Ambil semua data kategori 2
     $data = berkasperlombaan::where('kategoriperlombaan_id', 2)
     ->get();
@@ -481,10 +509,11 @@ public function katumumputeri()
         return intval($item->uangmasuk ?? 0);
     });
 
-    return view('00_semarang.02_backend.00_superadmin.01_katumumputera.01_katumumputera', [
+    return view('00_semarang.02_backend.00_superadmin.01_katumumputera.02_katumumputeri', [
         'title' => 'Kategori Umum Tim Puteri',
         'user' => $user,
         'data' => $data,
+        'kategoriperlombaan' => $kategoriperlombaan,
         'perlombaanId' => $perlombaanId,
         'totalUangMasuk' => $totalUangMasuk,
     ]);
@@ -498,6 +527,7 @@ public function katpelajarputera()
     $perlombaanPertama = perlombaan::orderBy('id', 'asc')->first();
     $perlombaanId = $perlombaanPertama ? $perlombaanPertama->id : null;
 
+    $kategoriperlombaan = kategoriperlombaan::all();
     // Ambil semua data kategori 3
     $data = berkasperlombaan::where('kategoriperlombaan_id', 3)
     ->get();
@@ -507,10 +537,11 @@ public function katpelajarputera()
         return intval($item->uangmasuk ?? 0);
     });
 
-    return view('00_semarang.02_backend.00_superadmin.01_katumumputera.01_katumumputera', [
+    return view('00_semarang.02_backend.00_superadmin.01_katumumputera.03_katupelajarputera', [
         'title' => 'Kategori Pelajar Tim Putera',
         'user' => $user,
         'data' => $data,
+        'kategoriperlombaan' => $kategoriperlombaan,
         'perlombaanId' => $perlombaanId,
         'totalUangMasuk' => $totalUangMasuk,
     ]);
@@ -520,6 +551,7 @@ public function katpelajarputeri()
 {
     $user = Auth::user();
 
+    $kategoriperlombaan = kategoriperlombaan::all();
     // Ambil ID pertama dari tabel perlombaan
     $perlombaanPertama = perlombaan::orderBy('id', 'asc')->first();
     $perlombaanId = $perlombaanPertama ? $perlombaanPertama->id : null;
@@ -532,10 +564,11 @@ public function katpelajarputeri()
         return intval($item->uangmasuk ?? 0);
     });
 
-    return view('00_semarang.02_backend.00_superadmin.01_katumumputera.01_katumumputera', [
+    return view('00_semarang.02_backend.00_superadmin.01_katumumputera.04_katpelputeri', [
         'title' => 'Kategori Pelajar Tim Puteri',
         'user' => $user,
         'data' => $data,
+        'kategoriperlombaan' => $kategoriperlombaan,
         'perlombaanId' => $perlombaanId,
         'totalUangMasuk' => $totalUangMasuk,
     ]);
@@ -550,6 +583,22 @@ public function informasitimadmin($id)
     $data = berkasperlombaan::findOrFail($id);
 
     return view('00_semarang.02_backend.02_daftarlomba.03_berkasinformasi', [
+        'title' => 'Daftar Informasi Tim',
+        'data' => $data,
+        'user' => $user,
+    ]);
+
+}
+
+
+public function informasitimkatputeri($id)
+{
+    $user = Auth::user();
+
+    // Ambil data berkasperlombaan berdasarkan ID saja, jika tidak ada otomatis 404
+    $data = berkasperlombaan::findOrFail($id);
+
+    return view('00_semarang.02_backend.02_daftarlomba.03_berkasinformasiputeri', [
         'title' => 'Daftar Informasi Tim',
         'data' => $data,
         'user' => $user,
@@ -1013,16 +1062,115 @@ public function updateUangMasuk(Request $request, $id)
 {
     $data = berkasperlombaan::findOrFail($id);
 
-    // Validasi input nominal uang masuk
+    // Validasi input
     $validated = $request->validate([
         'uangmasuk' => 'nullable|string',
+        'keteranganuangmasuk' => 'nullable|string|max:255',
     ]);
 
     // Simpan data
     $data->uangmasuk = $validated['uangmasuk'] ?? null;
+    $data->keteranganuangmasuk = $validated['keteranganuangmasuk'] ?? null;
     $data->save();
 
-    return redirect()->back()->with('update', 'Nominal Uang Masuk berhasil dimasukan!');
+    return redirect()->back()->with('update', 'Nominal Uang Masuk & Keterangan berhasil dimasukkan!');
+}
+
+public function cekdokumenpeserta(Request $request, $id)
+{
+    $data = berkasperlombaan::findOrFail($id);
+
+    // Validasi input cadangan
+    $validated = $request->validate([
+        'cadangan1'  => 'nullable|string',
+        'cadangan2'  => 'nullable|string',
+        'cadangan3'  => 'nullable|string',
+        'cadangan4'  => 'nullable|string',
+        // cadangan5 otomatis "sudah"
+    ]);
+
+    // Simpan data
+    $data->cadangan1  = $validated['cadangan1'] ?? null;
+    $data->cadangan2  = $validated['cadangan2'] ?? null;
+    $data->cadangan3  = $validated['cadangan3'] ?? null;
+    $data->cadangan4  = $validated['cadangan4'] ?? null;
+    $data->validasiberkas3  = 'sudah'; // selalu otomatis
+    $data->validasiberkas7  = 'sudah'; // selalu otomatis
+
+    $data->save();
+
+    return redirect()->back()->with('create', 'Dokumen Daftar Ulang Berhasil Di Cek !');
+}
+
+
+public function informasitimkatpelputera($id)
+{
+    $user = Auth::user();
+
+    // Ambil data berkasperlombaan berdasarkan ID saja, jika tidak ada otomatis 404
+    $data = berkasperlombaan::findOrFail($id);
+
+    return view('00_semarang.02_backend.02_daftarlomba.04_berkasinformasipelputera', [
+        'title' => 'Daftar Informasi Tim',
+        'data' => $data,
+        'user' => $user,
+    ]);
+
+}
+
+public function informasitimkatpelputeri($id)
+{
+    $user = Auth::user();
+
+    // Ambil data berkasperlombaan berdasarkan ID saja, jika tidak ada otomatis 404
+    $data = berkasperlombaan::findOrFail($id);
+
+    return view('00_semarang.02_backend.02_daftarlomba.04_berkasinformasipelputeri', [
+        'title' => 'Daftar Informasi Tim',
+        'data' => $data,
+        'user' => $user,
+    ]);
+
+}
+
+
+    public function perbaikankatlomba(Request $request, $id)
+    {
+        // Validasi input (pastikan dia kirim id kategori yang valid)
+        $request->validate([
+            'kategoriperlombaan_id' => 'required|string',
+        ]);
+
+        // Cari data berkas
+        $berkas = berkasperlombaan::findOrFail($id);
+
+        // Update foreign key kategori
+        $berkas->kategoriperlombaan_id = $request->kategoriperlombaan_id;
+        $berkas->save();
+
+        return back()->with('create', 'Kategori perlombaan berhasil diperbarui.');
+    }
+
+public function datasemuaakun()
+{
+    $user = Auth::user();
+    $data = User::all();
+
+    // Ambil status admin dengan id 1 sampai 5
+    $statusList = Statusadmin::whereBetween('id', [1, 5])->get();
+
+    // Hitung jumlah user per status
+    $statusCounts = [];
+    foreach ($statusList as $status) {
+        $statusCounts[$status->statusadmin] = User::where('statusadmin_id', $status->id)->count();
+    }
+
+    return view('00_semarang.02_backend.00_superadmin.01_katumumputera.05_daftarsemuaakun', [
+        'title' => 'Daftar Semua Akun',
+        'user' => $user,
+        'data' => $data,
+        'statusCounts' => $statusCounts,
+    ]);
 }
 
 

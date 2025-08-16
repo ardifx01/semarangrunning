@@ -29,12 +29,12 @@
   box-sizing: border-box;
 ">
 <div class="sidebar-header" style="display: flex; flex-direction: column; align-items: flex-start;">
-    <div style="display: flex; gap: 5px; margin-bottom: 10px;">
-        <img src="/assets/abgblora/logo/3remove.png" alt="" width="75px;">
-        <img src="/assets/abgblora/logo/5remove.png" alt="" width="75px;">
+    <div style="display: flex; gap: 5px; margin-bottom: -100px;">
+        <img src="/assets/abgblora/logo/snocnew.png" alt="" width="200px;">
+        {{-- <img src="/assets/abgblora/logo/5remove.png" alt="" width="75px;"> --}}
     </div>
     <h3 style="color: white; margin: 0; padding-bottom: 15px; border-bottom: 1px solid #333; width: 100%;">
-        SNOC X Dashboard
+        Dashboard
     </h3>
 </div>
 
@@ -461,6 +461,110 @@
   }
 </script>
 
+<!-- ========== MENU DAFTAR AKUN ========== -->
+<div class="daftarakun-menu-item" onclick="toggleDaftarakunSubmenu()">
+  <i class="bi bi-file-earmark-text-fill"></i>
+  <span class="menu-label">Daftar Akun</span>
+  <i class="bi bi-caret-down-fill ms-auto" id="daftarakun-arrow"></i>
+</div>
+
+<div id="daftarakun-submenu" class="daftarakun-submenu">
+  <a href="/datasemuaakun" class="daftarakun-submenu-item">
+    <i class="bi bi-list-ul"></i> Semua Akun
+  </a>
+  {{-- <a href="/katumumputerisertifikat" class="daftarakun-submenu-item">
+    <i class="bi bi-list-ul"></i> Umum Puteri
+  </a>
+  <a href="/katpelajarputerasertifikat" class="daftarakun-submenu-item">
+    <i class="bi bi-list-ul"></i> Pelajar Putera
+  </a>
+  <a href="/katpelajarputerisertifikat" class="daftarakun-submenu-item">
+    <i class="bi bi-list-ul"></i> Pelajar Puteri
+  </a> --}}
+</div>
+
+<style>
+  /* Menu Utama Daftar Akun */
+  .daftarakun-menu-item {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 8px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 0.95rem;
+    font-weight: 500;
+    background-color: transparent;
+  }
+  .daftarakun-menu-item i {
+    font-size: 1.3rem;
+  }
+  .daftarakun-menu-item:hover {
+    background-color: #333;
+  }
+
+  /* Submenu Daftar Akun */
+  .daftarakun-submenu {
+    display: none;
+    margin-left: 24px;
+    flex-direction: column;
+    animation: slideDownDaftarakun 0.3s ease forwards;
+  }
+
+  .daftarakun-submenu-item {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 8px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    transition: background-color 0.3s;
+    font-size: 0.9rem;
+  }
+  .daftarakun-submenu-item i {
+    font-size: 1.2rem;
+  }
+  .daftarakun-submenu-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  @keyframes slideDownDaftarakun {
+    from {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  function toggleDaftarakunSubmenu() {
+    const submenu = document.getElementById("daftarakun-submenu");
+    const arrow = document.getElementById("daftarakun-arrow");
+    const isHidden = submenu.style.display === "none" || submenu.style.display === "";
+
+    if (isHidden) {
+      submenu.style.display = "flex";
+      submenu.style.animation = "slideDownDaftarakun 0.3s ease forwards";
+    } else {
+      submenu.style.display = "none";
+    }
+
+    arrow.classList.toggle("bi-caret-up-fill", isHidden);
+    arrow.classList.toggle("bi-caret-down-fill", !isHidden);
+  }
+</script>
+
+
 
 
 <!-- ========== MENU PENJURIAN ========== -->
@@ -556,7 +660,7 @@
 </script>
 
 
-<!-- ========== MENU POS PENJURIAN ========== -->
+{{-- <!-- ========== MENU POS PENJURIAN ========== -->
 <div class="penjurian-menu-item" onclick="togglePosPenjurianSubmenu()">
   <i class="bi bi-flag"></i>
   <span style="margin-left:13px;">Pos Penjurian</span>
@@ -651,7 +755,7 @@
     arrow.classList.toggle("bi-caret-up-fill", isHidden);
     arrow.classList.toggle("bi-caret-down-fill", !isHidden);
   }
-</script>
+</script> --}}
 <!-- ========== MENU QUICK COUNT ========== -->
 <div class="quickcount-menu-item" onclick="toggleQuickCountSubmenu()">
   <i class="bi bi-graph-up"></i>

@@ -236,8 +236,9 @@ $(document).ready(function() {
   <div class="form-column" style="flex: 0 0 48%; min-width: 280px;">
     <div class="form-group">
       <label for="surat_tugas_organisasi" style="font-weight: bold; font-size:16px;">
-        <i class="bi bi-file-earmark-text form-icon"></i> Surat Tugas Organisasi (PDF) Max 15MB
+        <i class="bi bi-file-earmark-text form-icon"></i> Surat Tugas Organisasi (PDF) Max 15MB <br>
       </label>
+      Keterangan : Wajib Bagi Yang Mempunyai Organisasi (Bagi Perorangan Tidak Wajib)
       <input
         type="file"
         id="surat_tugas_organisasi"
@@ -310,6 +311,18 @@ $(document).ready(function() {
       <label for="surat_pernyataan" style="font-weight: bold; font-size:16px;">
         <i class="bi bi-file-text form-icon"></i> Surat Pernyataan (PDF) Max 15MB
       </label>
+<br>
+<div class="button-baru">
+
+    <span>
+
+        <a href="{{ asset('assets/abgblora/logo/Form_Surat_Pernyataan_Peserta_SNOC_X.docx') }}" download>
+          Silahkan Download Form SNOC X
+        </a>
+    </span>
+</div>
+
+
       <input
         type="file"
         id="surat_pernyataan"
@@ -366,10 +379,10 @@ function formatFileSize(bytes) {
 
         <!-- end::Body -->
 <div class="form-footer" style="margin-top: 20px; background: white; padding: 15px; border-radius: 8px; display: flex; justify-content: flex-end; gap: 10px;">
-    <a href="/perlombaan/daftartim" class="button-newvalidasi">
-        <i class="bi bi-arrow-left-circle button-icon"></i>
-        <span>Kembali</span>
-    </a>
+<a href="{{ url()->previous() }}" class="button-newvalidasi">
+    <i class="bi bi-arrow-left-circle button-icon"></i>
+    <span>Kembali</span>
+</a>
     <button class="button-hijau" type="button" onclick="openModal()">
         <i class="bi bi-save button-icon"></i>
         <span>Simpan</span>

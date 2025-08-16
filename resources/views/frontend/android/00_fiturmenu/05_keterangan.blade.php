@@ -4,7 +4,7 @@
 
     <div class="px-4 flex justify-center items-center" style="display: flex; justify-content: center; align-items: center;" style="margin-top:40px;">
         <div class="w-10 h-10 flex justify-center items-center shrink-0">
-            <img src="/assets/abgblora/logo/racenewlogo.png" alt="icon" width="15%" style="margin-right: 6px;">
+            <img src="/assets/abgblora/logo/snocnew.png" alt="icon" width="25%" style="margin-bottom:-50px;">
             {{-- <img src="/assets/abgblora/logo/semarangrace.png" alt="icon" width="1%"> --}}
           </div>
 

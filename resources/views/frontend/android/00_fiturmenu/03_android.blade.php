@@ -14,7 +14,7 @@
     {{-- Dashboard --}}
 </a>
 
-<!-- Tracking -->
+{{-- <!-- Tracking -->
 <a href="/404" class="nav-icon" style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 56px; color: #757C98;">
   <div style="width: 24px; height: 24px; display: flex; justify-content: center; align-items: center;">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -23,11 +23,11 @@
     </svg>
   </div>
   <span style="font-size: 10px;">Status</span>
-</a>
+</a> --}}
 
 
 <!-- Home (Center) -->
-<a href="/404" class="nav-icon" style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 56px; transform: translateY(-24px);">
+<a href="/" class="nav-icon" style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 56px; transform: translateY(-24px);">
     <div style="width: 56px; height: 56px; display: flex; justify-content: center; align-items: center; background-color: #8f0101; border-radius: 50%; box-shadow: 0 4px 12px rgba(27,51,88,0.3); color: white;">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
@@ -37,7 +37,7 @@
 </a>
 
 <!-- Information -->
-<a href="/404" class="nav-icon" style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 56px; color: #757C98;">
+{{-- <a href="/404" class="nav-icon" style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 56px; color: #757C98;">
     <div style="width: 24px; height: 24px; display: flex; justify-content: center; align-items: center;">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"></circle>
@@ -46,10 +46,10 @@
         </svg>
     </div>
     <span style="font-size: 10px;">Sertifikat</span>
-</a>
+</a> --}}
 
 <!-- Settings/Login -->
-  <a href="/404" id="settings-icon" class="nav-icon" style="display: none; flex-direction: column; align-items: center; justify-content: center; width: 56px; color: #757C98;">
+  {{-- <a href="/404" id="settings-icon" class="nav-icon" style="display: none; flex-direction: column; align-items: center; justify-content: center; width: 56px; color: #757C98;">
     <div style="width: 24px; height: 24px; display: flex; justify-content: center; align-items: center;">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="3"></circle>
@@ -57,7 +57,7 @@
         </svg>
     </div>
     <span style="font-size: 10px;">Pengaturan</span>
-</a>
+</a> --}}
 
 <!-- Login -->
 <a href="/login" id="login-icon" class="nav-icon" style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 56px; color: #757C98;">

@@ -18,6 +18,20 @@ class berkasperlombaan extends Model
         return $this->belongsTo(User::class, 'akunpengguna_id');
     }
 
+
+public function daftartims()
+{
+    return $this->hasManyThrough(
+        daftartim::class,  // model tujuan
+        User::class,       // model perantara
+        'id',              // foreign key User (akun_id di Daftartim)
+        'akun_id',         // foreign key Daftartim
+        'akunpengguna_id', // local key Berkasperlombaan
+        'id'               // local key User
+    );
+}
+
+
     public function kategoriperlombaan()
     {
         return $this->belongsTo(kategoriperlombaan::class, 'kategoriperlombaan_id');
@@ -37,6 +51,8 @@ class berkasperlombaan extends Model
     {
         return $this->belongsTo(perlombaan::class, 'perlombaan_id');
     }
+
+
 
     // public function pos1()
     // {

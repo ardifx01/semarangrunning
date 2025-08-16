@@ -203,7 +203,7 @@ class DatabaseSeeder extends Seeder
         User::create([
             'id'  => 1,
             'name'  => 'Sigit Septiadi',
-            'username' => 'Sigit',
+            'username' => 'Sigit Septiadi',
             'statusadmin_id' => '1',
             'avatar' => 'user/avatar/sigit.jpg',
             'email' => 'sigitseptiadi1@gmail.com',
@@ -213,7 +213,7 @@ class DatabaseSeeder extends Seeder
         User::create([
             'id'  => 2,
             'name'  => 'Anex Fachrian, ST. MT',
-            'username' => 'Anex',
+            'username' => 'Pa Anex Fachrian',
             'statusadmin_id' => '1',
             'avatar' => 'user/avatar/foto4.png',
             'email' => 'sipjakiblora@gmail.com',

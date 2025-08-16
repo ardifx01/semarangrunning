@@ -38,27 +38,68 @@
       <tr>
         {{-- <td>{{ $loop->iteration }}</td> <!-- nomor urut --> --}}
      <td>
-    @if($item->sertifikat1)
-        @if(file_exists(public_path('storage/' . $item->sertifikat1)))
-            <img src="{{ asset('storage/' . $item->sertifikat1) }}" alt="Sertifikat 1" style="width: 80px; max-height: 80px; object-fit: contain;">
-        @else
-            <img src="{{ asset($item->sertifikat1) }}" alt="Sertifikat 1" style="width: 80px; max-height: 80px; object-fit: contain;">
-        @endif
+<div style="margin-top: 10px;">
+    {{-- Sertifikat 1 --}}
+    @if($item->sertifikat1 && file_exists(public_path('storage/' . $item->sertifikat1)))
+        <iframe src="{{ asset('storage/' . $item->sertifikat1) }}"
+                style="width:100%; height:400px;"
+                frameborder="0"></iframe>
+        <div style="margin-top: 5px;">
+            <a href="{{ asset('storage/' . $item->sertifikat1) }}"
+               class="button-berkas"
+               download>
+               <i class="bi bi-download"></i> Download Sertifikat 1
+            </a>
+        </div>
+    @elseif($item->sertifikat1)
+        <iframe src="{{ asset($item->sertifikat1) }}"
+                style="width:100%; height:400px;"
+                frameborder="0"></iframe>
+        <div style="margin-top: 5px;">
+            <a href="{{ asset($item->sertifikat1) }}"
+               class="button-berkas"
+               download>
+               <i class="bi bi-download"></i> Download Sertifikat 1
+            </a>
+        </div>
     @else
-        -
+        <p style="font-size: 12px; color: red;">Sertifikat 1 Belum Tersedia</p>
     @endif
+</div>
+
 </td>
 
 <td>
-    @if($item->sertifikat2)
-        @if(file_exists(public_path('storage/' . $item->sertifikat2)))
-            <img src="{{ asset('storage/' . $item->sertifikat2) }}" alt="Sertifikat 2" style="width: 80px; max-height: 80px; object-fit: contain;">
-        @else
-            <img src="{{ asset($item->sertifikat2) }}" alt="Sertifikat 2" style="width: 80px; max-height: 80px; object-fit: contain;">
-        @endif
+
+<div style="margin-top: 10px;">
+    {{-- Sertifikat 2 --}}
+    @if($item->sertifikat2 && file_exists(public_path('storage/' . $item->sertifikat2)))
+        <iframe src="{{ asset('storage/' . $item->sertifikat2) }}"
+                style="width:100%; height:400px;"
+                frameborder="0"></iframe>
+        <div style="margin-top: 5px;">
+            <a href="{{ asset('storage/' . $item->sertifikat2) }}"
+               class="button-berkas"
+               download>
+               <i class="bi bi-download"></i> Download Sertifikat 2
+            </a>
+        </div>
+    @elseif($item->sertifikat2)
+        <iframe src="{{ asset($item->sertifikat2) }}"
+                style="width:100%; height:400px;"
+                frameborder="0"></iframe>
+        <div style="margin-top: 5px;">
+            <a href="{{ asset($item->sertifikat2) }}"
+               class="button-berkas"
+               download>
+               <i class="bi bi-download"></i> Download Sertifikat 2
+            </a>
+        </div>
     @else
-        -
+        <p style="font-size: 12px; color: red;">Sertifikat 2 Belum Tersedia</p>
     @endif
+</div>
+
 </td>
 
         {{-- <td>{{ $item->alamat_organisasi ?? '-' }}</td> --}}

@@ -360,6 +360,16 @@
 @include('00_semarang.02_backend.00_superadmin.01_katumumputera.00_fiturpengembalian')
 @endcanany
 
+@canany(['super_admin', 'keuangan'])
+
+<div style="text-align:center; margin:10px 0;">
+    <a href="{{ url('katumumputera') }}" class="button-maroon">
+        <i class="bi bi-arrow-left-circle me-1"></i> Kembali Ke Daftar Peserta
+    </a>
+</div>
+
+@endcanany
+
 <h5 style="color: navy; font-weight:800; font-size:16px; margin-left:50px;">I. INFORMASI BERKAS PERMOHONAN PERLOMBAAN SAUDARA</h5>
 
 <div class="table-responsive-wrapper" style="padding: 0 15px;">

@@ -107,8 +107,20 @@ Gate::define('pos20', function (User $user) {
 Gate::define('pos21', function (User $user) {
     return $user->statusadmin->statusadmin === 'pos21';
 });
+
 Gate::define('pos22', function (User $user) {
     return $user->statusadmin->statusadmin === 'pos22';
+});
+
+
+// 2 AKUN YANG BERDIIRI
+Gate::define('superadmindankeuangan', function (User $user) {
+    return in_array($user->statusadmin->statusadmin, ['super_admin', 'keuangan']);
+});
+
+// 2 AKUN YANG BERDIIRI
+Gate::define('semuaakun', function (User $user) {
+    return in_array($user->statusadmin->statusadmin, ['super_admin', 'keuangan', 'peserta']);
 });
 
 

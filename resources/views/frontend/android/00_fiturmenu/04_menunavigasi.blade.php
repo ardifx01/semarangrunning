@@ -6,7 +6,7 @@
 
     <!-- Pendaftaran -->
 
-    <a href="/404" class="group">
+    <a href="/daftar" class="group">
       <div class="flex flex-col items-center gap-2">
         <div class="w-[60px] h-[60px] flex shrink-0 rounded-full overflow-hidden bg-red-50 group-hover:bg-red-100 transition-colors duration-300">
           <img src="/assets/abgblora/logo/iconrunner.png" class="w-full h-full object-cover p-3" alt="icon" loading="lazy">
@@ -18,7 +18,7 @@
     </a>
 
     <!-- Informasi -->
-    <a href="/404" class="group">
+    <a href="/daftar" class="group">
       <div class="flex flex-col items-center gap-2">
         <div class="w-[60px] h-[60px] flex shrink-0 rounded-full overflow-hidden bg-blue-50 group-hover:bg-blue-100 transition-colors duration-300">
           <img src="/assets/abgblora/logo/iconrunner.png" class="w-full h-full object-cover p-3" alt="icon" loading="lazy">
@@ -30,7 +30,7 @@
     </a>
 
     <!-- Track -->
-    <a href="/404" class="group">
+    <a href="/daftar" class="group">
       <div class="flex flex-col items-center gap-2">
         <div class="w-[60px] h-[60px] flex shrink-0 rounded-full overflow-hidden bg-green-50 group-hover:bg-green-100 transition-colors duration-300">
           <img src="/assets/abgblora/logo/iconrunner.png" class="w-full h-full object-cover p-3" alt="icon" loading="lazy">
@@ -42,7 +42,7 @@
     </a>
 
     <!-- Kontak -->
-    <a href="/404" class="group">
+    <a href="/daftar" class="group">
       <div class="flex flex-col items-center gap-2">
         <div class="w-[60px] h-[60px] flex shrink-0 rounded-full overflow-hidden bg-yellow-50 group-hover:bg-yellow-100 transition-colors duration-300">
           <img src="/assets/abgblora/logo/iconrunner.png" class="w-full h-full object-cover p-3" alt="icon" loading="lazy">

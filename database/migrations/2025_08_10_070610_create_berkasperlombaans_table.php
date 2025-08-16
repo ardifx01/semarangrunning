@@ -39,6 +39,7 @@ Schema::create('berkasperlombaans', function (Blueprint $table) {
     $table->string('sertifikat1')->nullable();
     $table->string('sertifikat2')->nullable();
     $table->string('uangmasuk')->nullable();
+    $table->string('keteranganuangmasuk')->nullable();
 
     // Surat Pernyataan
 
@@ -59,6 +60,17 @@ Schema::create('berkasperlombaans', function (Blueprint $table) {
             $table->string('cadangan2')->nullable();
             $table->string('cadangan3')->nullable();
             $table->string('cadangan4')->nullable();
+            $table->string('cadangan5')->nullable();
+
+
+// DATABASE CADANGAN JIKA DI PERLUKAN NANTI PADA SAAT PENGEMBANGAN
+            $table->string('gudang1')->nullable();
+            $table->string('gudang2')->nullable();
+            $table->string('gudang3')->nullable();
+            $table->string('gudang4')->nullable();
+            $table->string('gudang5')->nullable();
+
+            // ====================================================
 
             $table->string('pos1')->nullable();
             $table->string('pos2')->nullable();

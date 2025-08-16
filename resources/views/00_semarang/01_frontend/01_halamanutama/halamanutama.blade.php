@@ -284,7 +284,7 @@
 <div class="promo-section poppins">
   <div class="promo-header flex justify-between items-center mb-6 px-4">
    <h2 class="text-2xl font-semibold text-gray-800 font-[Poppins, sans-serif]">
-  SNOC-X
+<img src="/assets/abgblora/logo/snocnew.png" alt="" width="200px" style="margin-bottom:-160px; margin-top:-50px;">
 </h2>
 
     {{-- <a href="#" class="flex items-center text-blue-600 hover:text-blue-800 font-medium text-sm">
