@@ -224,10 +224,10 @@
       <div class="mountain-header text-center">
     {{-- <img src="/assets/abgblora/logo/racenewlogo.png" alt="Logo" class="mb-2" style="max-width: 120px;" loading="lazy"> --}}
 <div class="mountain-header text-center">
-  <div style="display: flex; gap: 10px; align-items: center; justify-content: center;">
-    <img src="/assets/abgblora/logo/3.jpg" alt="" width="75px">
+  {{-- <div style="display: flex; gap: 10px; align-items: center; justify-content: center;"> --}}
+    {{-- <img src="/assets/abgblora/logo/3.jpg" alt="" width="75px"> --}}
     {{-- <img src="/assets/abgblora/logo/5.png" alt="" width="75px"> --}}
-</div>
+{{-- </div> --}}
 
 <img src="/assets/abgblora/logo/snocnew.png" alt="" width="200px" style="margin-bottom:-100px; margin-top: -40px;">
   {{-- <h1 class="fw-bold">SNOC-X</h1> --}}
