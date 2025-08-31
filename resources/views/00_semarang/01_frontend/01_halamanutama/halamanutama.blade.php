@@ -299,14 +299,57 @@
     <!-- CARD 1 -->
     <div class="bg-white rounded-xl shadow-md overflow-hidden">
 <div class="relative">
-    <img src="/assets/abgblora/logo/1.jpg"
+    <p class="button-maroon">Panduan Pendaftaran !</p>
+        <!-- Tombol Mute/Unmute -->
+    <button id="toggleSound" class="button-baru"
+        class="absolute bottom-5 right-5 bg-black bg-opacity-50 text-white px-3 py-2 rounded-lg text-sm">
+        <span style="color: black;">🔇Hidupkan Suara !</span>
+    </button>
+    <div class="relative w-full h-full">
+    <!-- Video -->
+    <video
+        id="panduanVideo"
+        src="/assets/abgblora/logo/panduanbaru.mp4"
+        class="w-full h-full object-cover p-3"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+    ></video>
+
+
+</div>
+<br><br>
+<script>
+    const video = document.getElementById('panduanVideo');
+    const toggleSound = document.getElementById('toggleSound');
+
+    // Default tombol mute
+    toggleSound.textContent = "🔇 Mute";
+
+    toggleSound.addEventListener('click', () => {
+        if (video.muted) {
+            video.muted = false;
+            toggleSound.textContent = "🔊 Unmute";
+        } else {
+            video.muted = true;
+            toggleSound.textContent = "🔇 Mute";
+        }
+    });
+</script>
+
+
+<p class="button-maroon">Brosur Pendaftaran !</p>
+
+<img src="/assets/abgblora/logo/1.jpg"
          class="w-full h-full object-cover p-3"
          alt="Orienteering Sprint"
          loading="lazy">
 
     <a href="/assets/abgblora/logo/1.jpg"
        download
-       class="button-maroon">
+       class="button-berkas">
         Download Brosur
     </a>
 
